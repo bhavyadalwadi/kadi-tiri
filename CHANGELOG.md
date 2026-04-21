@@ -1,5 +1,16 @@
 # Changelog
 
+## V2 Repo Hygiene
+
+- Removed empty placeholder test/manual files from the repo root.
+- Removed duplicate empty `store/` and `styles/` scaffold files that were not used by the app.
+- Removed the stale `GamePlayArea.tsx.backup` file from source control.
+- Simplified TypeScript path config to use the real `src` tree only.
+- Pointed `_app.tsx` at the real stylesheet under `src/styles/globals.css`.
+- Verified the project with:
+  - `tsc --noEmit`
+  - `next build`
+
 ## V2 Rules and Flow Update
 
 This update aligns the project with the clarified Kadi Tiri rules used in the current product direction.
