@@ -1,0 +1,838 @@
+import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useGameStore } from '@/store/gameStore';
+import { Player, GameState } from '@/types/game';
+import PlayingCard from '@/components/ui/PlayingCard';
+import BiddingPanel from '@/components/game/BiddingPanel';
+import DealingAnimation from '@/components/game/DealingAnimation';
+import { determineTrickWinner, testTrickWinner, PlayedCard } from '@/utils/gameUtils';
+
+interface GamePlayAreaProps {
+  gameState: GameState;
+  currentPlayerId: string;
+}
+
+interface PlayerPosition {
+  top: string;
+  left: string;
+  transform: string;
+  rotation: number;
+  isBottom?: boolean;
+}
+
+const GamePlayArea: React.FC<GamePlayAreaProps> = ({ gameState, currentPlayerId }) => {
+  const [showDealAnimation, setShowDealAnimation] = useState(false);
+  const [showCardAnimation, setShowCardAnimation] = useState(false);
+  const [viewingPlayerId, setViewingPlayerId] = useState(currentPlayerId); // For testing: which player's perspective
+
+  // Find current player and reorder so they're always at the bottom
+  const getOrderedPlayers = (): Player[] => {
+    const currentPlayerIndex = gameState.players.findIndex(p => p.id === viewingPlayerId);
+    if (currentPlayerIndex === -1) return gameState.players;
+    
+    // Put current player first, then others in order
+    const reorderedPlayers = [
+      gameState.players[currentPlayerIndex],
+      ...gameState.players.slice(currentPlayerIndex + 1),
+      ...gameState.players.slice(0, currentPlayerIndex)
+    ];
+    
+    return reorderedPlayers;
+  };
+
+  const orderedPlayers = getOrderedPlayers();
+  const totalCardsDealt = gameState.players.reduce((sum, player) => sum + player.cards.length, 0);
+
+  // Handle dealing animations
+  useEffect(() => {
+    if (gameState.status === 'dealing') {
+      setShowDealAnimation(true);
+      
+      setTimeout(() => {
+        setShowDealAnimation(false);
+        setShowCardAnimation(true);
+        
+        setTimeout(() => {
+          setShowCardAnimation(false);
+        }, 3000);
+      }, 2000);
+    } else {
+      setShowDealAnimation(false);
+      setShowCardAnimation(false);
+    }
+  }, [gameState.status]);
+
+  return (
+    <div className="position-relative w-100" style={{ 
+      height: '100vh', 
+      overflow: 'hidden',
+      background: 'linear-gradient(135deg, #1e5128, #2d5016, #1e5128)'
+    }}>
+      
+      {/* Player Perspective Switcher for Testing */}
+      <div className="position-absolute top-0 start-0 mt-2 ms-2 z-3">
+        <div className="bg-dark bg-opacity-75 text-white px-3 py-2 rounded">
+          <div className="small mb-2">👀 Player Perspective:</div>
+          <div className="btn-group-vertical" role="group">
+            {gameState.players.map((player) => (
+              <button
+                key={player.id}
+                onClick={() => setViewingPlayerId(player.id)}
+                className={`btn btn-sm ${viewingPlayerId === player.id ? 'btn-warning' : 'btn-outline-light'}`}
+                style={{ fontSize: '10px', padding: '2px 8px' }}
+              >
+                {player.name}
+                {player.id === gameState.currentPlayer && ' 🎯'}
+                {player.id === currentPlayerId && ' (You)'}
+              </button>
+            ))}
+          </div>
+          
+          {/* Trick Winner Test Button */}
+          <div className="mt-2 pt-2 border-top border-secondary">
+            <button
+              onClick={() => {
+                console.log('🧪 Testing Trick Winner Logic...');
+                
+                // Test case 1: WITH powerhouse in play
+                const trick1: PlayedCard[] = [
+                  { playerId: 'p1', playerName: 'Alice', card: { id: '8d', rank: '8', suit: '♦', points: 0, isKaliTiri: false }, playOrder: 0 },
+                  { playerId: 'p2', playerName: 'Bob', card: { id: 'ah', rank: 'A', suit: '♥', points: 10, isKaliTiri: false }, playOrder: 1 },
+                  { playerId: 'p3', playerName: 'Carol', card: { id: 'kd', rank: 'K', suit: '♦', points: 10, isKaliTiri: false }, playOrder: 2 },
+                  { playerId: 'p4', playerName: 'Dave', card: { id: 'qh', rank: 'Q', suit: '♥', points: 10, isKaliTiri: false }, playOrder: 3 }
+                ];
+                
+                const winner1 = determineTrickWinner(trick1, '♦', '♥');
+                console.log('✅ Test 1 result:', winner1, '(Expected: p2 - Bob with Ace of Hearts)');
+                
+                // Test case 2: WITHOUT powerhouse in play
+                const trick2: PlayedCard[] = [
+                  { playerId: 'p1', playerName: 'Alice', card: { id: '8d', rank: '8', suit: '♦', points: 0, isKaliTiri: false }, playOrder: 0 },
+                  { playerId: 'p2', playerName: 'Bob', card: { id: 'ad', rank: 'A', suit: '♦', points: 10, isKaliTiri: false }, playOrder: 1 },
+                  { playerId: 'p3', playerName: 'Carol', card: { id: 'kc', rank: 'K', suit: '♣', points: 10, isKaliTiri: false }, playOrder: 2 },
+                  { playerId: 'p4', playerName: 'Dave', card: { id: '5d', rank: '5', suit: '♦', points: 5, isKaliTiri: false }, playOrder: 3 }
+                ];
+                
+                const winner2 = determineTrickWinner(trick2, '♦', '♥');
+                console.log('✅ Test 2 result:', winner2, '(Expected: p2 - Bob with Ace of Diamonds)');
+                
+                console.log('🎯 Check console for detailed logs!');
+              }}
+              className="btn btn-outline-info btn-sm w-100"
+              style={{ fontSize: '9px', padding: '2px 4px' }}
+            >
+              🧪 Test Trick Winner
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Dealing Animation Overlay */}
+      <DealingAnimation 
+        isActive={showDealAnimation}
+        totalCards={totalCardsDealt}
+        onComplete={() => setShowDealAnimation(false)}
+      />
+
+      {/* Game Table Surface */}
+      <div className="position-absolute w-100 h-100" style={{ zIndex: -1 }}>
+        {/* Center table circle */}
+        <div className="position-absolute top-50 start-50 translate-middle rounded-circle border border-warning bg-success shadow-lg d-flex align-items-center justify-content-center" 
+             style={{ width: '200px', height: '200px', borderWidth: '2px' }}>
+          
+          {/* Current Trick Display */}
+          {gameState.currentTrick && gameState.currentTrick.cards.length > 0 ? (
+            <div className="position-relative w-100 h-100 d-flex align-items-center justify-content-center">
+              {/* Played cards in trick */}
+              {gameState.currentTrick.cards.map((playedCard, index) => {
+                const angle = (index * 90) - 45; // Position cards around center
+                const radius = 60;
+                const x = Math.cos((angle * Math.PI) / 180) * radius;
+                const y = Math.sin((angle * Math.PI) / 180) * radius;
+                
+                return (
+                  <div
+                    key={`${playedCard.playerId}-${playedCard.card.id}`}
+                    className="position-absolute"
+                    style={{
+                      transform: `translate(${x}px, ${y}px)`,
+                      width: '40px',
+                      height: '56px',
+                      zIndex: 10 + index
+                    }}
+                  >
+                    <PlayingCard 
+                      card={playedCard.card}
+                      size="small"
+                      isPlayable={false}
+                    />
+                    {/* Player name label */}
+                    <div className="position-absolute top-100 start-50 translate-middle-x mt-1">
+                      <div className="bg-dark bg-opacity-75 text-white px-1 rounded" style={{ fontSize: '8px' }}>
+                        {playedCard.playerName}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              
+              {/* Trick info in center */}
+              <div className="text-center text-warning position-absolute top-50 start-50 translate-middle">
+                <div className="small fw-bold">
+                  Trick {gameState.completedTricks.length + 1}
+                </div>
+                <div className="small" style={{ fontSize: '10px' }}>
+                  Lead: {gameState.currentTrick.leadSuit}
+                </div>
+                {gameState.currentTrick.cards.length === gameState.players.length && (
+                  <div className="small text-success" style={{ fontSize: '10px' }}>
+                    Complete!
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            /* Default center display when no trick active */
+            <div className="text-center text-warning">
+              <div className="fs-6 fw-bold mb-1">KT</div>
+              <div className="small" style={{ opacity: 0.8 }}>
+                {gameState.status === 'bidding' && `Bid: ${gameState.bidding.currentBid}`}
+                {gameState.status === 'dealing' && 'Dealing...'}
+                {gameState.status === 'setup' && 'Setup'}
+                {gameState.status === 'partner-selection' && `Winner: ${gameState.players.find(p => p.id === gameState.bidding.winner)?.name || 'Unknown'}`}
+                {gameState.status === 'playing' && `R${gameState.currentRound + 1}`}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ALL PLAYERS LAYOUT - Show all during playing, current player during other phases */}
+      <div className="position-absolute bottom-0 start-50 translate-middle-x w-100" style={{ maxWidth: '1400px', paddingBottom: '1rem' }}>
+        <div className="row g-2 px-2">
+          {gameState.players.map((player, index) => {
+            const isViewingPlayer = player.id === viewingPlayerId;
+            const isCurrentTurnPlayer = player.id === gameState.currentPlayer;
+            const isActivePlayer = player.id === gameState.currentPlayer;
+            
+            // Show all players during playing phase, only current player during other phases
+            if (gameState.status !== 'playing' && !isCurrentTurnPlayer) {
+              return null;
+            }
+            
+            return (
+              <div key={player.id} className={gameState.status === 'playing' ? 'col-3' : 'col-12'}>
+                <div className={`p-2 rounded border ${
+                  isViewingPlayer 
+                    ? 'bg-primary text-white border-primary' 
+                    : isActivePlayer 
+                    ? 'bg-warning text-dark border-warning' 
+                    : 'bg-dark text-white border-secondary'
+                }`} style={{ 
+                  transition: 'all 0.3s ease',
+                  animation: isActivePlayer ? 'pulse 2s infinite' : 'none',
+                  borderWidth: '2px',
+                  backgroundColor: isViewingPlayer ? 'rgba(13, 110, 253, 0.25)' : 
+                                  isActivePlayer ? 'rgba(255, 193, 7, 0.25)' : 
+                                  'rgba(33, 37, 41, 0.5)',
+                  fontSize: '12px'
+                }}>
+                  {/* Player name */}
+                  <div className="text-center mb-2">
+                    <div className="text-white small fw-medium">
+                      {player.name}
+                      {player.isDealer && <span className="ms-1 bg-primary text-white badge">D</span>}
+                      {isViewingPlayer && <span className="ms-1 bg-success text-white badge">You</span>}
+                      {isActivePlayer && <span className="ms-1 bg-warning text-dark badge">Turn</span>}
+                    </div>
+                    <div className="text-white-50 small">{player.cards.length} cards</div>
+                  </div>
+
+                  {/* Player cards */}
+                  <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '60px', overflowX: 'auto' }}>
+                    {gameState.status === 'playing' ? (
+                      // During playing phase - show actual cards for viewing player, face-down for others
+                      isViewingPlayer ? (
+                        // Show viewing player's actual cards (clickable when it's their turn)
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'row', 
+                          flexWrap: 'nowrap', 
+                          gap: '4px', 
+                          justifyContent: 'center', 
+                          alignItems: 'center' 
+                        }}>
+                          {player.cards.length === 0 ? (
+                            <div className="text-white small">No cards left</div>
+                          ) : (
+                            player.cards.map((card, cardIndex) => (
+                              <div key={card.id} style={{ 
+                                width: '48px', 
+                                flexShrink: 0,
+                                display: 'inline-block'
+                              }}>
+                                <PlayingCard 
+                                  card={card}
+                                  size="small"
+                                  isPlayable={isActivePlayer}
+                                  showDealAnimation={showCardAnimation}
+                                  animationDelay={cardIndex * 100}
+                                  onClick={isActivePlayer ? 
+                                    () => {
+                                      const { playCard } = useGameStore.getState();
+                                      playCard(player.id, card);
+                                    } : undefined
+                                  }
+                                />
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      ) : (
+                        // Show other players' card backs during playing
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'row', 
+                          flexWrap: 'nowrap', 
+                          gap: '4px', 
+                          justifyContent: 'center', 
+                          alignItems: 'center' 
+                        }}>
+                          {player.cards.length === 0 ? (
+                            <div className="text-white small">No cards left</div>
+                          ) : (
+                            player.cards.slice(0, Math.min(6, player.cards.length)).map((card, cardIndex) => (
+                              <div key={`${player.id}-${cardIndex}`} style={{ 
+                                width: '48px', 
+                                flexShrink: 0,
+                                display: 'inline-block'
+                              }}>
+                                <PlayingCard 
+                                  card={card}
+                                  size="small"
+                                  isHidden={true}
+                                  showDealAnimation={showCardAnimation}
+                                  animationDelay={(index * 200) + (cardIndex * 80)}
+                                />
+                              </div>
+                            ))
+                          )}
+                          {player.cards.length > 6 && (
+                            <div className="text-white small bg-dark rounded px-2 py-1 ms-1 d-flex align-items-center" style={{ backgroundColor: 'rgba(33, 37, 41, 0.75)' }}>
+                              +{player.cards.length - 6}
+                            </div>
+                          )}
+                        </div>
+                      )
+                    ) : (
+                      // During other phases - show actual cards for current turn player only
+                      isCurrentTurnPlayer ? (
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'row', 
+                          flexWrap: 'nowrap', 
+                          gap: '4px', 
+                          justifyContent: 'center', 
+                          alignItems: 'center' 
+                        }}>
+                          {player.cards.length === 0 ? (
+                            <div className="text-white small">No cards yet</div>
+                          ) : (
+                            player.cards.map((card, cardIndex) => (
+                              <div key={card.id} style={{ 
+                                width: '48px', 
+                                flexShrink: 0,
+                                display: 'inline-block'
+                              }}>
+                                <PlayingCard 
+                                  card={card}
+                                  size="small"
+                                  isPlayable={false}
+                                  showDealAnimation={showCardAnimation}
+                                  animationDelay={cardIndex * 100}
+                                />
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      ) : (
+                        <div className="text-white-50 small text-center">
+                          <i className="fas fa-eye-slash mb-1"></i>
+                          <br />
+                          Cards Hidden
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Game Status Display */}
+      <div className="position-absolute top-0 start-0 m-3 bg-dark bg-opacity-75 text-white p-2 rounded small">
+        <div>Status: <span className="fw-medium text-capitalize">{gameState.status}</span></div>
+        <div>Current Turn: {gameState.players.find(p => p.id === gameState.currentPlayer)?.name || 'Unknown'}</div>
+        {gameState.status === 'playing' && (
+          <>
+            <div>Powerhouse: <span className="text-warning fw-bold">{gameState.settings.powerhouseSuit}</span></div>
+            <div>Tricks Won: {gameState.completedTricks.length}</div>
+            <div>Cards Left: {gameState.players.find(p => p.id === currentPlayerId)?.cards.length || 0}</div>
+          </>
+        )}
+        {gameState.bidding?.isActive && (
+          <div className="text-warning">Bidding Active: {gameState.bidding.currentBid}</div>
+        )}
+      </div>
+
+      {/* Score Display */}
+      <div className="position-absolute top-0 end-0 m-3 bg-dark bg-opacity-75 text-white p-2 rounded small">
+        <div className="fw-medium mb-1">Scores</div>
+        <div>Bid Team: <span className="fw-bold">{gameState.scores.bidWinnerTeam}</span></div>
+        <div>Other Team: <span className="fw-bold">{gameState.scores.opposingTeam}</span></div>
+        
+        {/* Recent Tricks */}
+        {gameState.completedTricks.length > 0 && (
+          <div className="mt-2 pt-2 border-top border-secondary">
+            <div className="fw-medium mb-1">Recent Tricks</div>
+            {gameState.completedTricks.slice(-3).map((trick, index) => (
+              <div key={trick.id} className="small mb-1">
+                <div className="text-success">
+                  {gameState.players.find(p => p.id === trick.winner)?.name || 'Unknown'} 
+                  <span className="text-warning ms-1">({trick.points}pts)</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Deck indicator */}
+      {gameState.deck.length > 0 && (
+        <div className="position-absolute top-50 start-50 translate-middle" style={{ transform: 'translate(-50%, -50%) translate(48px, 48px)' }}>
+          <div className="position-relative" style={{ transform: 'scale(0.75)' }}>
+            <PlayingCard card={gameState.deck[0]} size="small" isHidden={true} />
+            <div className="position-absolute top-100 start-50 translate-middle-x text-white small bg-dark bg-opacity-75 px-2 py-1 rounded mt-1">
+              {gameState.deck.length} left
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default GamePlayArea;
+          
+          {/* Trick Winner Test Button */}
+          <div className="mt-2 pt-2 border-top border-secondary">
+            <button
+              onClick={() => {
+                console.log('🧪 Testing Trick Winner Logic...');
+                
+                // Test case 1: WITH powerhouse in play
+                const trick1: PlayedCard[] = [
+                  { playerId: 'p1', playerName: 'Alice', card: { id: '8d', rank: '8', suit: '♦', points: 0, isKaliTiri: false } },
+                  { playerId: 'p2', playerName: 'Bob', card: { id: 'ah', rank: 'A', suit: '♥', points: 10, isKaliTiri: false } },
+                  { playerId: 'p3', playerName: 'Carol', card: { id: 'kd', rank: 'K', suit: '♦', points: 10, isKaliTiri: false } },
+                  { playerId: 'p4', playerName: 'Dave', card: { id: 'qh', rank: 'Q', suit: '♥', points: 10, isKaliTiri: false } }
+                ];
+                
+                const winner1 = determineTrickWinner(trick1, '♦', '♥');
+                console.log('✅ Test 1 result:', winner1, '(Expected: p2 - Bob with Ace of Hearts)');
+                
+                // Test case 2: WITHOUT powerhouse in play
+                const trick2: PlayedCard[] = [
+                  { playerId: 'p1', playerName: 'Alice', card: { id: '8d', rank: '8', suit: '♦', points: 0, isKaliTiri: false } },
+                  { playerId: 'p2', playerName: 'Bob', card: { id: 'ad', rank: 'A', suit: '♦', points: 10, isKaliTiri: false } },
+                  { playerId: 'p3', playerName: 'Carol', card: { id: 'kc', rank: 'K', suit: '♣', points: 10, isKaliTiri: false } },
+                  { playerId: 'p4', playerName: 'Dave', card: { id: '5d', rank: '5', suit: '♦', points: 5, isKaliTiri: false } }
+                ];
+                
+                const winner2 = determineTrickWinner(trick2, '♦', '♥');
+                console.log('✅ Test 2 result:', winner2, '(Expected: p2 - Bob with Ace of Diamonds)');
+                
+                console.log('🎯 Check console for detailed logs!');
+              }}
+              className="btn btn-outline-info btn-sm w-100"
+              style={{ fontSize: '9px', padding: '2px 4px' }}
+            >
+              🧪 Test Trick Winner
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Dealing Animation Overlay */}
+      <DealingAnimation 
+        isActive={showDealAnimation}
+        totalCards={totalCardsDealt}
+        onComplete={() => setShowDealAnimation(false)}
+      />
+
+      {/* Game Table Surface */}
+      <div className="position-absolute w-100 h-100" style={{ zIndex: -1 }}>
+        {/* Center table circle */}
+        <div className="position-absolute top-50 start-50 translate-middle rounded-circle border border-warning bg-success shadow-lg d-flex align-items-center justify-content-center" 
+             style={{ width: '200px', height: '200px', borderWidth: '2px' }}>
+          
+          {/* Current Trick Display */}
+          {gameState.currentTrick && gameState.currentTrick.cards.length > 0 ? (
+            <div className="position-relative w-100 h-100 d-flex align-items-center justify-content-center">
+              {/* Played cards in trick */}
+              {gameState.currentTrick.cards.map((playedCard, index) => {
+                const angle = (index * 90) - 45; // Position cards around center
+                const radius = 60;
+                const x = Math.cos((angle * Math.PI) / 180) * radius;
+                const y = Math.sin((angle * Math.PI) / 180) * radius;
+                
+                return (
+                  <div
+                    key={`${playedCard.playerId}-${playedCard.card.id}`}
+                    className="position-absolute"
+                    style={{
+                      transform: `translate(${x}px, ${y}px)`,
+                      width: '40px',
+                      height: '56px',
+                      zIndex: 10 + index
+                    }}
+                  >
+                    <PlayingCard 
+                      card={playedCard.card}
+                      size="small"
+                      isPlayable={false}
+                    />
+                    {/* Player name label */}
+                    <div className="position-absolute top-100 start-50 translate-middle-x mt-1">
+                      <div className="bg-dark bg-opacity-75 text-white px-1 rounded" style={{ fontSize: '8px' }}>
+                        {playedCard.playerName}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              
+              {/* Trick info in center */}
+              <div className="text-center text-warning position-absolute top-50 start-50 translate-middle">
+                <div className="small fw-bold">
+                  Trick {gameState.completedTricks.length + 1}
+                </div>
+                <div className="small" style={{ fontSize: '10px' }}>
+                  Lead: {gameState.currentTrick.leadSuit}
+                </div>
+                {gameState.currentTrick.cards.length === gameState.players.length && (
+                  <div className="small text-success" style={{ fontSize: '10px' }}>
+                    Complete!
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            /* Default center display when no trick active */
+            <div className="text-center text-warning">
+              <div className="fs-6 fw-bold mb-1">KT</div>
+              <div className="small" style={{ opacity: 0.8 }}>
+                {gameState.status === 'bidding' && `Bid: ${gameState.bidding.currentBid}`}
+                {gameState.status === 'dealing' && 'Dealing...'}
+                {gameState.status === 'setup' && 'Setup'}
+                {gameState.status === 'partner-selection' && `Winner: ${gameState.players.find(p => p.id === gameState.bidding.winner)?.name || 'Unknown'}`}
+                {gameState.status === 'playing' && `R${gameState.currentRound + 1}`}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ALL PLAYERS LAYOUT - Show all during playing, only current during other phases */}
+      <div className="position-absolute bottom-0 start-50 translate-middle-x w-100" style={{ maxWidth: '1400px', paddingBottom: '1rem' }}>
+        <div className="row g-2 px-2">
+          {orderedPlayers.map((player, index) => {
+            const isViewingPlayer = player.id === viewingPlayerId; // For UI perspective (testing)
+            const isCurrentTurnPlayer = player.id === gameState.currentPlayer; // Whose turn it is
+            const isActivePlayer = player.id === gameState.currentPlayer;
+            
+            // Show all players during playing phase, only current player during other phases
+            const shouldShow = gameState.status === 'playing' || isCurrentTurnPlayer;
+            if (!shouldShow) {
+              return null;
+            }
+            
+            return (
+              <div key={player.id} className={gameState.status === 'playing' ? 'col-3' : 'col-12'}>
+                <div className={`p-2 rounded border ${
+                  isViewingPlayer 
+                    ? 'bg-primary text-white border-primary' 
+                    : isActivePlayer 
+                    ? 'bg-warning text-dark border-warning' 
+                    : 'bg-dark text-white border-secondary'
+                }`} style={{ 
+                  transition: 'all 0.3s ease',
+                  animation: isActivePlayer ? 'pulse 2s infinite' : 'none',
+                  borderWidth: '2px',
+                  backgroundColor: isViewingPlayer ? 'rgba(13, 110, 253, 0.25)' : 
+                                  isActivePlayer ? 'rgba(255, 193, 7, 0.25)' : 
+                                  'rgba(33, 37, 41, 0.5)',
+                  fontSize: '12px'
+                }}>
+                  {/* Player name */}
+                  <div className="text-center mb-2">
+                    <div className="text-white small fw-medium">
+                      {player.name}
+                      {player.isDealer && <span className="ms-1 bg-primary text-white badge">D</span>}
+                      {isViewingPlayer && <span className="ms-1 bg-success text-white badge">You</span>}
+                      {isActivePlayer && <span className="ms-1 bg-warning text-dark badge">Turn</span>}
+                    </div>
+                    <div className="text-white-50 small">{player.cards.length} cards</div>
+                  </div>
+
+                  {/* Player cards */}
+                  <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '60px', overflowX: 'auto' }}>
+                    {gameState.status === 'playing' ? (
+                      // During playing phase - show actual cards for viewing player, face-down for others
+                      isViewingPlayer ? (
+                        // Show viewing player's actual cards (always clickable when it's their turn)
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'row', 
+                          flexWrap: 'nowrap', 
+                          gap: '4px', 
+                          justifyContent: 'center', 
+                          alignItems: 'center' 
+                        }}>
+                          {player.cards.length === 0 ? (
+                            <div className="text-white small">No cards left</div>
+                          ) : (
+                            player.cards.map((card, cardIndex) => (
+                              <div key={card.id} style={{ 
+                                width: '48px', 
+                                flexShrink: 0,
+                                display: 'inline-block'
+                              }}>
+                                <PlayingCard 
+                                  card={card}
+                                  size="small"
+                                  isPlayable={isActivePlayer}
+                                  showDealAnimation={showCardAnimation}
+                                  animationDelay={cardIndex * 100}
+                                  onClick={isActivePlayer ? 
+                                    () => {
+                                      const { playCard } = useGameStore.getState();
+                                      playCard(player.id, card);
+                                    } : undefined
+                                  }
+                                />
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      ) : (
+                        // Show other players' card backs during playing
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'row', 
+                          flexWrap: 'nowrap', 
+                          gap: '4px', 
+                          justifyContent: 'center', 
+                          alignItems: 'center' 
+                        }}>
+                          {player.cards.length === 0 ? (
+                            <div className="text-white small">No cards left</div>
+                          ) : (
+                            player.cards.slice(0, Math.min(6, player.cards.length)).map((card, cardIndex) => (
+                              <div key={`${player.id}-${cardIndex}`} style={{ 
+                                width: '48px', 
+                                flexShrink: 0,
+                                display: 'inline-block'
+                              }}>
+                                <PlayingCard 
+                                  card={card}
+                                  size="small"
+                                  isHidden={true}
+                                  showDealAnimation={showCardAnimation}
+                                  animationDelay={(index * 200) + (cardIndex * 80)}
+                                />
+                              </div>
+                            ))
+                          )}
+                          {player.cards.length > 6 && (
+                            <div className="text-white small bg-dark rounded px-2 py-1 ms-1 d-flex align-items-center" style={{ backgroundColor: 'rgba(33, 37, 41, 0.75)' }}>
+                              +{player.cards.length - 6}
+                            </div>
+                          )}
+                        </div>
+                      )
+                    ) : (
+                      // During other phases - show actual cards for current turn player only
+                      isCurrentTurnPlayer ? (
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'row', 
+                          flexWrap: 'nowrap', 
+                          gap: '4px', 
+                          justifyContent: 'center', 
+                          alignItems: 'center' 
+                        }}>
+                          {player.cards.length === 0 ? (
+                            <div className="text-white small">No cards yet</div>
+                          ) : (
+                            player.cards.map((card, cardIndex) => (
+                              <div key={card.id} style={{ 
+                                width: '48px', 
+                                flexShrink: 0,
+                                display: 'inline-block'
+                              }}>
+                                <PlayingCard 
+                                  card={card}
+                                  size="small"
+                                  isPlayable={false}
+                                  showDealAnimation={showCardAnimation}
+                                  animationDelay={cardIndex * 100}
+                                />
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      ) : (
+                        <div className="text-white-50 small text-center">
+                          <i className="fas fa-eye-slash mb-1"></i>
+                          <br />
+                          Cards Hidden
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+                              display: 'inline-block'
+                            }}>
+                              <PlayingCard 
+                                card={card}
+                                size="small"
+                                isPlayable={gameState.status === 'playing' && isActivePlayer && isViewingPlayer}
+                                showDealAnimation={showCardAnimation}
+                                animationDelay={cardIndex * 100}
+                                onClick={gameState.status === 'playing' && isActivePlayer && isViewingPlayer ? 
+                                  () => {
+                                    const { playCard } = useGameStore.getState();
+                                    playCard(player.id, card);
+                                  } : undefined
+                                }
+                              />
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    ) : (
+                      // For other players, show card backs during playing
+                      <div style={{ 
+                        display: 'flex', 
+                        flexDirection: 'row', 
+                        flexWrap: 'nowrap', 
+                        gap: '4px', 
+                        justifyContent: 'center', 
+                        alignItems: 'center' 
+                      }}>
+                        {player.cards.length === 0 ? (
+                          <div className="text-white small">No cards yet</div>
+                        ) : gameState.status === 'bidding' ? (
+                          // During bidding, hide other players' cards completely
+                          <div className="text-white-50 small text-center">
+                            <i className="fas fa-eye-slash mb-1"></i>
+                            <br />
+                            Cards Hidden
+                            <br />
+                            <small>({player.cards.length} cards)</small>
+                          </div>
+                        ) : (
+                          // During playing, show card backs
+                          player.cards.slice(0, Math.min(6, player.cards.length)).map((card, cardIndex) => (
+                            <div key={`${player.id}-${cardIndex}`} style={{ 
+                              width: '48px', 
+                              flexShrink: 0,
+                              display: 'inline-block'
+                            }}>
+                              <PlayingCard 
+                                card={card}
+                                size="small"
+                                isHidden={true}
+                                showDealAnimation={showCardAnimation}
+                                animationDelay={(index * 200) + (cardIndex * 80)}
+                              />
+                            </div>
+                          ))
+                        )}
+                        {gameState.status === 'playing' && player.cards.length > 6 && (
+                          <div className="text-white small bg-dark rounded px-2 py-1 ms-1 d-flex align-items-center" style={{ backgroundColor: 'rgba(33, 37, 41, 0.75)' }}>
+                            +{player.cards.length - 6}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Game Status Display */}
+      <div className="position-absolute top-0 start-0 m-3 bg-dark bg-opacity-75 text-white p-2 rounded small">
+        <div>Status: <span className="fw-medium text-capitalize">{gameState.status}</span></div>
+        <div>Current Turn: {gameState.players.find(p => p.id === gameState.currentPlayer)?.name || 'Unknown'}</div>
+        {gameState.status === 'playing' && (
+          <>
+            <div>Powerhouse: <span className="text-warning fw-bold">{gameState.settings.powerhouseSuit}</span></div>
+            <div>Tricks Won: {gameState.completedTricks.length}</div>
+            <div>Cards Left: {gameState.players.find(p => p.id === currentPlayerId)?.cards.length || 0}</div>
+          </>
+        )}
+        {gameState.bidding?.isActive && (
+          <div className="text-warning">Bidding Active: {gameState.bidding.currentBid}</div>
+        )}
+      </div>
+
+      {/* Score Display */}
+      <div className="position-absolute top-0 end-0 m-3 bg-dark bg-opacity-75 text-white p-2 rounded small">
+        <div className="fw-medium mb-1">Scores</div>
+        <div>Bid Team: <span className="fw-bold">{gameState.scores.bidWinnerTeam}</span></div>
+        <div>Other Team: <span className="fw-bold">{gameState.scores.opposingTeam}</span></div>
+        
+        {/* Recent Tricks */}
+        {gameState.completedTricks.length > 0 && (
+          <div className="mt-2 pt-2 border-top border-secondary">
+            <div className="fw-medium mb-1">Recent Tricks</div>
+            {gameState.completedTricks.slice(-3).map((trick, index) => (
+              <div key={trick.id} className="small mb-1">
+                <div className="text-success">
+                  {gameState.players.find(p => p.id === trick.winner)?.name || 'Unknown'} 
+                  <span className="text-warning ms-1">({trick.points}pts)</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Deck indicator */}
+      {gameState.deck.length > 0 && (
+        <div className="position-absolute top-50 start-50 translate-middle" style={{ transform: 'translate(-50%, -50%) translate(48px, 48px)' }}>
+          <div className="position-relative" style={{ transform: 'scale(0.75)' }}>
+            <PlayingCard card={gameState.deck[0]} size="small" isHidden={true} />
+            <div className="position-absolute top-100 start-50 translate-middle-x text-white small bg-dark bg-opacity-75 px-2 py-1 rounded mt-1">
+              {gameState.deck.length} left
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default GamePlayArea;
