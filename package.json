@@ -4,11 +4,14 @@
   "description": "Kadi Tiri (Kali Teeri) Card Game - A strategic multiplayer card game",
   "main": "index.js",
   "scripts": {
+    "play": "nvm use 18 && npm run build && npm run dev",
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",
     "test": "jest",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "type-check": "tsc --noEmit"
@@ -30,6 +33,7 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.1.2",
     "eslint": "^8.56.0",

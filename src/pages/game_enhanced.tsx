@@ -8,10 +8,13 @@ import GameFinishedModal from '@/components/game/GameFinishedModal';
 import Layout from '@/components/layout/Layout';
 import { useRouter } from 'next/router';
 
+const DEBUG_TOOLS_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DEBUG_TOOLS === 'true';
+
 const GamePage: React.FC = () => {
-  const { gameState, currentPlayerId, resetGame, createGame, createWaitingRoom, joinGame } = useGameStore();
+  const { gameState, currentPlayerId, resetGame, createGame, createWaitingRoom, joinGame, loadGameSession } = useGameStore();
   const router = useRouter();
   const [viewingPlayerId, setViewingPlayerId] = React.useState<string | undefined>();
+  const activePlayerId = viewingPlayerId || currentPlayerId || '';
 
   // Initialize viewingPlayerId when currentPlayerId is available
   React.useEffect(() => {
@@ -23,12 +26,16 @@ const GamePage: React.FC = () => {
   // Check for join parameter in URL
   React.useEffect(() => {
     if (router.query.join && typeof router.query.join === 'string' && !gameState) {
-      // Try to join the game with the provided ID
       const gameId = router.query.join;
-      const playerName = `Player ${Math.floor(Math.random() * 1000)}`;
-      joinGame(gameId, playerName);
+      void (async () => {
+        const restored = await loadGameSession(gameId);
+        if (!restored) {
+          const playerName = `Player ${Math.floor(Math.random() * 1000)}`;
+          await joinGame(gameId, playerName);
+        }
+      })();
     }
-  }, [router.query.join, gameState, joinGame]);
+  }, [router.query.join, gameState, joinGame, loadGameSession]);
 
   const handleBackToHome = () => {
     resetGame();
@@ -143,21 +150,23 @@ const GamePage: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="col-lg-5 col-md-6">
-                    <div className="card-red rounded-3 p-4 h-100">
-                      <div className="text-center">
-                        <div className="fs-1 mb-3">🚀</div>
-                        <h4 className="fw-bold text-white mb-3">Quick Start</h4>
-                        <p className="text-secondary mb-4">Start immediately with local test players</p>
-                        <button
-                          onClick={quickStartGame}
-                          className="btn btn-red-custom btn-lg w-100"
-                        >
-                          Quick Start (4 Players)
-                        </button>
+                  {DEBUG_TOOLS_ENABLED && (
+                    <div className="col-lg-5 col-md-6">
+                      <div className="card-red rounded-3 p-4 h-100">
+                        <div className="text-center">
+                          <div className="fs-1 mb-3">🛠️</div>
+                          <h4 className="fw-bold text-white mb-3">Debug Quick Start</h4>
+                          <p className="text-secondary mb-4">Start a local 4-player test table with seat-switch controls</p>
+                          <button
+                            onClick={quickStartGame}
+                            className="btn btn-red-custom btn-lg w-100"
+                          >
+                            Start Debug Table
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 
                 <GameSetup />
@@ -481,9 +490,10 @@ const GamePage: React.FC = () => {
         {/* Main Game Area */}
         <GamePlayArea 
           gameState={gameState} 
-          currentPlayerId={currentPlayerId || ''} 
+          currentPlayerId={activePlayerId} 
           viewingPlayerId={viewingPlayerId}
           onViewingPlayerChange={setViewingPlayerId}
+          showDebugTools={DEBUG_TOOLS_ENABLED}
         />
 
         {/* Enhanced Bidding Panel */}
@@ -501,7 +511,7 @@ const GamePage: React.FC = () => {
             <div className="game-ui-overlay rounded-3 p-1">
               <BiddingPanel 
                 gameState={gameState} 
-                currentPlayerId={currentPlayerId || ''} 
+                currentPlayerId={activePlayerId} 
                 viewingPlayerId={viewingPlayerId}
                 onViewingPlayerChange={setViewingPlayerId}
               />
@@ -523,7 +533,7 @@ const GamePage: React.FC = () => {
             }}
           >
             <div className="game-ui-overlay rounded-3 p-1">
-              <PartnerSelectionPanel gameState={gameState} currentPlayerId={currentPlayerId || ''} />
+              <PartnerSelectionPanel gameState={gameState} currentPlayerId={activePlayerId} />
             </div>
           </div>
         )}

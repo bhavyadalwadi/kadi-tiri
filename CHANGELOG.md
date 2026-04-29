@@ -1,5 +1,44 @@
 # Changelog
 
+## V2 E2E Gameplay Coverage
+
+- Added Playwright-based end-to-end coverage for the 4-player prototype flow.
+- Added stable test hooks to room, bidding, card, and trick UI so browser automation can target the real gameplay path reliably.
+- Added regression coverage for:
+  - room create and 4-player join flow
+  - bidding and bid-winner setup
+  - first played card visibility across all joined players
+  - one completed trick and next-turn progression
+  - shared turn-consensus handling before each automated move
+  - follow-suit enforcement
+  - off-turn play rejection
+  - full-hand scoring settlement
+- Added `test:e2e` and `test:e2e:headed` scripts to the repo.
+- Documented the E2E workflow in the README.
+
+## V2 Cross-Browser Prototype
+
+- Added lightweight shared room APIs:
+  - `POST /api/game/create`
+  - `POST /api/game/join`
+  - `GET /api/game/state`
+  - `POST /api/game/state`
+- Added file-backed server storage under `data/games.json` so multiple browsers can read and update the same room state during local development.
+- Refactored the game store so room create, join, save, restore, and sync use the API layer instead of only browser-local storage.
+- Kept local/session storage as a browser cache for quick seat restore in the active browser.
+- Updated the main game pages to:
+  - restore a joined room from the shared server state
+  - poll for room updates every `250ms`
+  - keep cross-browser waiting room and in-game state in sync during local testing
+- Re-enabled stricter turn handling while preserving local seat handoff for single-browser testing.
+- Verified the prototype with:
+  - `tsc --noEmit`
+  - `next build`
+
+Known limitation:
+
+- This is still a polling-based prototype, not real server-authoritative multiplayer. It is suitable for local/manual testing across browsers, but not for production or public play.
+
 ## V2 Repo Hygiene
 
 - Removed empty placeholder test/manual files from the repo root.

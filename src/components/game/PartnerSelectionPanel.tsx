@@ -152,6 +152,7 @@ const PartnerSelectionPanel: React.FC<PartnerSelectionPanelProps> = ({ gameState
                         className={`btn flex-fill py-2 py-sm-3 ${
                           selectedPowerhouse === suit ? 'btn-success' : 'btn-outline-primary'
                         }`}
+                        data-testid={`powerhouse-${suit}`}
                         style={{ 
                           borderRadius: '10px', 
                           fontSize: 'clamp(1.2rem, 4vw, 2rem)', // Responsive font size
@@ -200,6 +201,10 @@ const PartnerSelectionPanel: React.FC<PartnerSelectionPanelProps> = ({ gameState
                               isSelected ? 'border border-success border-2 rounded' : ''
                             }`}
                             style={{ cursor: 'pointer' }}
+                            data-testid="partner-card-option"
+                            data-card-id={card.id}
+                            data-card-rank={card.rank}
+                            data-card-suit={card.suit}
                           >
                             <PlayingCard 
                               card={card}
@@ -229,6 +234,7 @@ const PartnerSelectionPanel: React.FC<PartnerSelectionPanelProps> = ({ gameState
                     onClick={handleSubmitSelections}
                     disabled={selectedPartnerCards.length !== requiredPartners}
                     className="btn btn-success btn-lg fw-semibold"
+                    data-testid="start-game-button"
                     style={{ borderRadius: '10px' }}
                   >
                     🚀 Start Game

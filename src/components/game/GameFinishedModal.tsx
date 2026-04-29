@@ -23,7 +23,7 @@ const GameFinishedModal: React.FC<GameFinishedModalProps> = ({
       size="lg"
       preventClose={true} // User must choose an action
     >
-      <div className="text-center">
+      <div className="text-center" data-testid="game-finished-modal">
         {/* Team Composition */}
         {gameState.settings.partnership && (
           <div className="mb-4">
@@ -108,7 +108,7 @@ const GameFinishedModal: React.FC<GameFinishedModalProps> = ({
                       ? 'text-success' 
                       : 'text-danger'
                   }`}>
-                    {gameState.scores.bidWinnerTeam}
+                    <span data-testid="bid-winner-team-score">{gameState.scores.bidWinnerTeam}</span>
                   </div>
                   <div className="small text-muted">
                     collected points 
@@ -123,7 +123,7 @@ const GameFinishedModal: React.FC<GameFinishedModalProps> = ({
                 <div className="text-center p-3 bg-white rounded shadow-sm">
                   <div className="small text-muted mb-1">Opposing Team</div>
                   <div className="h4 fw-bold text-success mb-0">
-                    {gameState.scores.opposingTeam}
+                    <span data-testid="opposing-team-score">{gameState.scores.opposingTeam}</span>
                   </div>
                   <div className="small text-muted">collected points</div>
                 </div>
@@ -148,7 +148,7 @@ const GameFinishedModal: React.FC<GameFinishedModalProps> = ({
                       isOnBidWinnerTeam 
                         ? 'bg-primary bg-opacity-10 border-primary border-opacity-25' 
                         : 'bg-success bg-opacity-10 border-success border-opacity-25'
-                    }`}>
+                    }`} data-testid="player-round-award" data-player-name={player.name}>
                       <div className="d-flex align-items-center justify-content-between mb-1">
                         <div className="fw-medium text-dark small">{player.name}</div>
                         <div className="d-flex gap-1">
@@ -157,7 +157,7 @@ const GameFinishedModal: React.FC<GameFinishedModalProps> = ({
                         </div>
                       </div>
                       <div className="h5 fw-bold text-dark mb-0">
-                        {gameState.scores.breakdown?.[player.id] || 0}
+                        <span data-testid="player-round-award-score">{gameState.scores.breakdown?.[player.id] || 0}</span>
                       </div>
                       <div className="small text-muted">
                         round award
@@ -178,7 +178,7 @@ const GameFinishedModal: React.FC<GameFinishedModalProps> = ({
               <h4 className="fw-bold text-warning-emphasis h6 mb-0">Winning Team</h4>
             </div>
             <p className="text-warning-emphasis fw-semibold mb-1">
-              {gameState.winner === 'bidWinnerTeam' ? 'Bid Winner Team' : 'Opposing Team'}
+              <span data-testid="winning-team-name">{gameState.winner === 'bidWinnerTeam' ? 'Bid Winner Team' : 'Opposing Team'}</span>
             </p>
             <div className="small text-warning-emphasis">
               {gameState.winner === 'bidWinnerTeam' 
@@ -211,7 +211,7 @@ const GameFinishedModal: React.FC<GameFinishedModalProps> = ({
               <div className="col-6">
                 <div className="fw-medium">Tricks Completed</div>
                 <div className="h6 fw-bold text-dark mb-0">
-                  {gameState.completedTricks.length}
+                  <span data-testid="finished-tricks-count">{gameState.completedTricks.length}</span>
                 </div>
               </div>
               <div className="col-6">

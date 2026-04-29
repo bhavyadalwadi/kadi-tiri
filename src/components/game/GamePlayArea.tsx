@@ -11,18 +11,20 @@ interface GamePlayAreaProps {
   currentPlayerId: string;
   viewingPlayerId?: string; // Optional external control
   onViewingPlayerChange?: (playerId: string) => void; // Optional callback
+  showDebugTools?: boolean;
 }
 
 const GamePlayArea: React.FC<GamePlayAreaProps> = ({ 
   gameState, 
   currentPlayerId, 
   viewingPlayerId: externalViewingPlayerId,
-  onViewingPlayerChange: externalOnViewingPlayerChange 
+  onViewingPlayerChange: externalOnViewingPlayerChange,
+  showDebugTools = false
 }) => {
   const [showDealAnimation, setShowDealAnimation] = useState(false);
   const [showCardAnimation, setShowCardAnimation] = useState(false);
   const [internalViewingPlayerId, setInternalViewingPlayerId] = useState(currentPlayerId);
-  const { playCard } = useGameStore();
+  const { playCard, error } = useGameStore();
 
   // Use external viewing player if provided, otherwise use internal state
   const viewingPlayerId = externalViewingPlayerId || internalViewingPlayerId;
@@ -65,6 +67,7 @@ const GamePlayArea: React.FC<GamePlayAreaProps> = ({
         currentPlayerId={currentPlayerId}
         viewingPlayerId={viewingPlayerId}
         onViewingPlayerChange={setViewingPlayerId}
+        showDebugTools={showDebugTools}
       />
 
       {/* Dealing Animation Overlay */}
@@ -76,10 +79,13 @@ const GamePlayArea: React.FC<GamePlayAreaProps> = ({
       />
 
       {/* Game Table Surface */}
-      <div className="position-absolute w-100 h-100" style={{ zIndex: -1 }}>
+      <div className="position-absolute w-100 h-100" style={{ zIndex: 1 }}>
         {/* Center table circle with current trick display */}
-        <div className="position-absolute top-50 start-50 translate-middle rounded-circle border border-warning bg-success shadow-lg d-flex align-items-center justify-content-center" 
-             style={{ width: '200px', height: '200px', borderWidth: '2px' }}>
+        <div
+          className="position-absolute top-50 start-50 translate-middle rounded-circle border border-warning bg-success shadow-lg d-flex align-items-center justify-content-center"
+          style={{ width: '200px', height: '200px', borderWidth: '2px' }}
+          data-testid="current-trick"
+        >
           
           {/* Current Trick Display */}
           {gameState.currentTrick && gameState.currentTrick.cards.length > 0 ? (
@@ -101,6 +107,10 @@ const GamePlayArea: React.FC<GamePlayAreaProps> = ({
                       height: '70px',
                       zIndex: 10 + index
                     }}
+                    data-testid="played-card"
+                    data-player-id={playedCard.playerId}
+                    data-card-rank={playedCard.card.rank}
+                    data-card-suit={playedCard.card.suit}
                   >
                     <PlayingCard 
                       card={playedCard.card}
@@ -146,8 +156,27 @@ const GamePlayArea: React.FC<GamePlayAreaProps> = ({
         </div>
       </div>
 
+      {error && (
+        <div
+          className="position-absolute top-50 start-50 translate-middle-x mt-5 px-3 py-2 rounded-3 text-white"
+          style={{
+            zIndex: 4,
+            background: 'rgba(220, 53, 69, 0.9)',
+            border: '1px solid rgba(255, 255, 255, 0.25)',
+            backdropFilter: 'blur(8px)',
+            maxWidth: '420px'
+          }}
+          data-testid="game-error"
+        >
+          <strong>Error:</strong> {error}
+        </div>
+      )}
+
       {/* Players Layout - Show ALL players during playing phase */}
-      <div className="position-absolute bottom-0 start-50 translate-middle-x w-100" style={{ maxWidth: '1400px', paddingBottom: '1rem' }}>
+      <div
+        className="position-absolute bottom-0 start-50 translate-middle-x w-100"
+        style={{ maxWidth: '1400px', paddingBottom: '1rem', zIndex: 2 }}
+      >
         <div className="row g-2 px-2">
           {gameState.players.map((player, index) => {
             const isViewingPlayer = player.id === viewingPlayerId;
@@ -163,7 +192,8 @@ const GamePlayArea: React.FC<GamePlayAreaProps> = ({
             
             return (
               <div key={player.id} className="col-12">  {/* Always full width since only current player is shown */}
-                <div className={`p-2 rounded border ${
+              <div
+                className={`p-2 rounded border ${
                   isViewingPlayer 
                     ? 'bg-primary text-white border-primary' 
                     : isCurrentTurnPlayer 
@@ -177,7 +207,12 @@ const GamePlayArea: React.FC<GamePlayAreaProps> = ({
                                   isCurrentTurnPlayer ? 'rgba(255, 193, 7, 0.25)' : 
                                   'rgba(33, 37, 41, 0.5)',
                   fontSize: '12px'
-                }}>
+                }}
+                data-testid={isCurrentTurnPlayer ? 'current-turn-player' : 'player-hand-panel'}
+                data-player-id={player.id}
+                data-is-local-player={isViewingPlayer ? 'true' : 'false'}
+                data-is-current-turn={isCurrentTurnPlayer ? 'true' : 'false'}
+              >
                   
                   {/* Player container with horizontal layout */}
                   <div className="d-flex align-items-center" style={{ minHeight: '60px' }}>

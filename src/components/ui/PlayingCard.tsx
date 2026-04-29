@@ -137,6 +137,12 @@ const PlayingCard: React.FC<PlayingCardProps> = ({
         height: config.height,
         ...dealAnimationStyle
       }}
+      data-testid="playing-card"
+      data-card-id={card.id}
+      data-card-rank={card.rank}
+      data-card-suit={card.suit}
+      data-playable={isPlayable ? 'true' : 'false'}
+      aria-label={`${card.rank} of ${card.suit}`}
       onClick={() => onClick?.(card)}
     >
       <svg width={config.width} height={config.height} viewBox={`0 0 ${config.width} ${config.height}`}>

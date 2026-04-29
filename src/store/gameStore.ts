@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
+import { devtools } from 'zustand/middleware';
 import { GameState, Player, Card, GameSettings, Bid, GameAction, GAME_MODES, GameMode, Difficulty, getDifficultyConfig } from '@/types/game';
 import { 
   createDeck, 
@@ -23,8 +23,10 @@ import {
 
 // Helper functions for shared game state storage
 const GAMES_STORAGE_KEY = 'kadi-tiri-games';
+const LAST_GAME_STORAGE_KEY = 'kadi-tiri-last-game';
+const getPlayerSessionKey = (gameId: string) => `kadi-tiri-player-${gameId}`;
 
-// For testing: also try sessionStorage and URL-based sharing
+// Local cache for quick resume in the active browser.
 const saveGameToStorage = (gameState: GameState) => {
   try {
     const existingGames = JSON.parse(localStorage.getItem(GAMES_STORAGE_KEY) || '{}');
@@ -35,6 +37,98 @@ const saveGameToStorage = (gameState: GameState) => {
     sessionStorage.setItem(`game-${gameState.id}`, JSON.stringify(gameState));
   } catch (error) {
     console.error('Failed to save game to storage:', error);
+  }
+};
+
+const createGameOnServer = async (gameState: GameState): Promise<GameState> => {
+  const response = await fetch('/api/game/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ gameState })
+  });
+
+  const payload = await response.json();
+  if (!response.ok || !payload.success) {
+    throw new Error(payload.error || 'Failed to create game');
+  }
+
+  return payload.data as GameState;
+};
+
+const joinGameOnServer = async (gameId: string, playerName: string): Promise<{ gameState: GameState; currentPlayerId: string }> => {
+  const response = await fetch('/api/game/join', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ gameId, playerName })
+  });
+
+  const payload = await response.json();
+  if (!response.ok || !payload.success) {
+    throw new Error(payload.error || 'Failed to join game');
+  }
+
+  return {
+    gameState: payload.data as GameState,
+    currentPlayerId: payload.currentPlayerId as string
+  };
+};
+
+const fetchGameStateFromServer = async (gameId: string): Promise<GameState | null> => {
+  const response = await fetch(`/api/game/state?gameId=${encodeURIComponent(gameId)}`);
+  const payload = await response.json();
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok || !payload.success) {
+    throw new Error(payload.error || 'Failed to load game');
+  }
+
+  return payload.data as GameState;
+};
+
+const saveGameStateToServer = async (gameState: GameState): Promise<GameState> => {
+  const response = await fetch('/api/game/state', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ gameState })
+  });
+
+  const payload = await response.json();
+  if (!response.ok || !payload.success) {
+    throw new Error(payload.error || 'Failed to save game');
+  }
+
+  return payload.data as GameState;
+};
+
+const persistGameState = async (gameState: GameState): Promise<GameState> => {
+  saveGameToStorage(gameState);
+  return saveGameStateToServer(gameState);
+};
+
+const savePlayerSession = (gameId: string, playerId: string) => {
+  try {
+    sessionStorage.setItem(getPlayerSessionKey(gameId), playerId);
+    localStorage.setItem(LAST_GAME_STORAGE_KEY, gameId);
+  } catch (error) {
+    console.error('Failed to save player session:', error);
+  }
+};
+
+const loadPlayerSession = (gameId: string): string | null => {
+  try {
+    return sessionStorage.getItem(getPlayerSessionKey(gameId));
+  } catch (error) {
+    console.error('Failed to load player session:', error);
+    return null;
   }
 };
 
@@ -87,23 +181,25 @@ interface GameStore {
   error: string | null;
   
   // Actions
-  createGame: (playerNames: string[], gameMode: string, difficulty?: Difficulty, settings?: Partial<GameSettings>) => void;
-  createWaitingRoom: (hostName: string, gameMode: string, difficulty?: Difficulty, settings?: Partial<GameSettings>) => void;
-  joinGame: (gameId: string, playerName: string) => void;
-  startBidding: () => void;
-  placeBid: (playerId: string, amount: number) => void;
-  passBid: (playerId: string) => void;
-  selectPowerhouse: (suit: string) => void;
-  selectPartners: (cards: Card[]) => void;
-  startPlaying: () => void;
-  playCard: (playerId: string, card: Card) => void;
-  endRound: () => void;
-  endGame: () => void;
+  createGame: (playerNames: string[], gameMode: string, difficulty?: Difficulty, settings?: Partial<GameSettings>) => Promise<void>;
+  createWaitingRoom: (hostName: string, gameMode: string, difficulty?: Difficulty, settings?: Partial<GameSettings>) => Promise<void>;
+  joinGame: (gameId: string, playerName: string) => Promise<void>;
+  startBidding: () => Promise<void>;
+  placeBid: (playerId: string, amount: number) => Promise<void>;
+  passBid: (playerId: string) => Promise<void>;
+  selectPowerhouse: (suit: string) => Promise<void>;
+  selectPartners: (cards: Card[]) => Promise<void>;
+  startPlaying: () => Promise<void>;
+  playCard: (playerId: string, card: Card) => Promise<void>;
+  endRound: () => Promise<void>;
+  endGame: () => Promise<void>;
   resetGame: () => void;
   setError: (error: string | null) => void;
   setLoading: (loading: boolean) => void;
   // Helper to save game state to storage
-  saveCurrentGame: () => void;
+  saveCurrentGame: () => Promise<void>;
+  loadGameSession: (gameId: string) => Promise<boolean>;
+  syncGameFromStorage: (gameId: string) => Promise<void>;
 }
 
 export const useGameStore = create<GameStore>()(
@@ -116,7 +212,7 @@ export const useGameStore = create<GameStore>()(
       error: null,
 
       // Create a new game
-      createGame: (playerNames, gameMode, difficulty = 'easy', settings) => {
+      createGame: async (playerNames, gameMode, difficulty = 'easy', settings) => {
         try {
           set({ isLoading: true, error: null });
           
@@ -197,8 +293,10 @@ export const useGameStore = create<GameStore>()(
             currentPlayerId: players[0].id,
             isLoading: false 
           });
+          savePlayerSession(gameId, players[0].id);
 
           // Save game to shared storage
+          await createGameOnServer(newGameState);
           saveGameToStorage(newGameState);
 
           // Auto-start dealing if all players are ready
@@ -219,7 +317,7 @@ export const useGameStore = create<GameStore>()(
       },
 
       // Create a waiting room where players can join before the game starts
-      createWaitingRoom: (hostName, gameMode, difficulty = 'easy', settings) => {
+      createWaitingRoom: async (hostName, gameMode, difficulty = 'easy', settings) => {
         try {
           set({ isLoading: true, error: null });
           
@@ -294,8 +392,10 @@ export const useGameStore = create<GameStore>()(
             currentPlayerId: hostPlayer.id,
             isLoading: false 
           });
+          savePlayerSession(gameId, hostPlayer.id);
 
           // Save game to shared storage
+          await createGameOnServer(newGameState);
           saveGameToStorage(newGameState);
 
         } catch (error) {
@@ -307,41 +407,17 @@ export const useGameStore = create<GameStore>()(
       },
 
       // Join an existing game
-      joinGame: (gameId, playerName) => {
+      joinGame: async (gameId, playerName) => {
         try {
           set({ isLoading: true, error: null });
-          
-          // For testing: always create a simple 4-player game
-          const loadedGame = loadGameFromStorage(gameId);
-          if (!loadedGame) {
-            throw new Error('Game not found');
-          }
 
-          if (loadedGame.players.length >= loadedGame.settings.mode.players) {
-            throw new Error('Game is already full');
-          }
-
-          const joinedState: GameState = {
-            ...loadedGame,
-            players: [
-              ...loadedGame.players,
-              {
-                id: generatePlayerId(),
-                name: playerName,
-                cards: [],
-                score: 0,
-                position: loadedGame.players.length,
-                isDealer: false,
-                isActive: false
-              }
-            ],
-            updatedAt: Date.now()
-          };
+          const { gameState: joinedState, currentPlayerId } = await joinGameOnServer(gameId, playerName);
 
           set({
             gameState: joinedState,
-            currentPlayerId: joinedState.players[joinedState.players.length - 1].id
+            currentPlayerId
           });
+          savePlayerSession(gameId, currentPlayerId);
           saveGameToStorage(joinedState);
 
           if (joinedState.players.length === joinedState.settings.mode.players) {
@@ -365,14 +441,14 @@ export const useGameStore = create<GameStore>()(
       },
 
       // Start the bidding phase
-      startBidding: () => {
+      startBidding: async () => {
         const { gameState } = get();
         if (!gameState) return;
 
         if (isReadyToDeal(gameState)) {
           const dealtGameState = dealCardsAndTransitionState(gameState);
           set({ gameState: dealtGameState });
-          saveGameToStorage(dealtGameState);
+          await persistGameState(dealtGameState);
           
           // Auto-transition to bidding after showing cards for 1 second
           setTimeout(() => {
@@ -380,7 +456,7 @@ export const useGameStore = create<GameStore>()(
             if (currentState && currentState.status === 'dealing') {
               const biddingState = transitionToBidding(currentState);
               set({ gameState: biddingState });
-              saveGameToStorage(biddingState);
+              void persistGameState(biddingState);
             }
           }, 1000);
         } else {
@@ -408,21 +484,23 @@ export const useGameStore = create<GameStore>()(
           // Save updated game state to storage
           const updatedState = get().gameState;
           if (updatedState) {
-            saveGameToStorage(updatedState);
+            await persistGameState(updatedState);
           }
         }
       },
 
       // Place a bid
-      placeBid: (playerId, amount) => {
+      placeBid: async (playerId, amount) => {
         const { gameState } = get();
         if (!gameState || gameState.status !== 'bidding') return;
 
         const player = gameState.players.find(p => p.id === playerId);
         if (!player) return;
 
-        // Remove turn restriction for testing - allow any player to bid
-        // if (playerId !== gameState.currentPlayer) return;
+        if (playerId !== gameState.currentPlayer) {
+          set({ error: 'Not your turn to bid' });
+          return;
+        }
 
         if (!isValidBid(amount, gameState.bidding.currentBid, gameState.settings.mode, gameState.settings.biddingConfig.increments)) {
           set({ error: 'Invalid bid amount' });
@@ -466,7 +544,7 @@ export const useGameStore = create<GameStore>()(
               }
             };
             set({ gameState: finalState });
-            saveGameToStorage(finalState);
+            await persistGameState(finalState);
           } else {
             // All players passed, restart bidding with lower starting bid
             const minimumIncrement = Math.min(...gameState.settings.biddingConfig.increments);
@@ -491,7 +569,7 @@ export const useGameStore = create<GameStore>()(
               gameState: restartState,
               error: 'All players passed. Starting new bidding round with lower starting bid.'
             });
-            saveGameToStorage(restartState);
+            await persistGameState(restartState);
           }
         } else {
           // Continue bidding with next player
@@ -501,18 +579,22 @@ export const useGameStore = create<GameStore>()(
             currentPlayer: nextPlayer || gameState.currentPlayer
           };
           set({ gameState: continueState });
-          saveGameToStorage(continueState);
+          await persistGameState(continueState);
         }
       },
 
       // Pass on bidding
-      passBid: (playerId) => {
+      passBid: async (playerId) => {
         const { gameState } = get();
         if (!gameState || gameState.status !== 'bidding') return;
 
-        // Remove turn restriction for testing - allow any player to pass
         const player = gameState.players.find(p => p.id === playerId);
         if (!player) return;
+
+        if (playerId !== gameState.currentPlayer) {
+          set({ error: 'Not your turn to pass' });
+          return;
+        }
 
         const passBid: Bid = {
           playerId,
@@ -549,7 +631,7 @@ export const useGameStore = create<GameStore>()(
               }
             };
             set({ gameState: finalState });
-            saveGameToStorage(finalState);
+            await persistGameState(finalState);
           } else {
             // All players passed, restart bidding
             const minimumIncrement = Math.min(...gameState.settings.biddingConfig.increments);
@@ -574,7 +656,7 @@ export const useGameStore = create<GameStore>()(
               gameState: restartState,
               error: 'All players passed. Starting new bidding round with lower starting bid.'
             });
-            saveGameToStorage(restartState);
+            await persistGameState(restartState);
           }
         } else {
           // Continue bidding with next player
@@ -584,12 +666,12 @@ export const useGameStore = create<GameStore>()(
             currentPlayer: nextPlayer || gameState.currentPlayer
           };
           set({ gameState: continueState });
-          saveGameToStorage(continueState);
+          await persistGameState(continueState);
         }
       },
 
       // Select powerhouse suit
-      selectPowerhouse: (suit) => {
+      selectPowerhouse: async (suit) => {
         const { gameState } = get();
         if (!gameState || gameState.status !== 'partner-selection') return;
 
@@ -605,11 +687,11 @@ export const useGameStore = create<GameStore>()(
 
 
         set({ gameState: newGameState });
-        saveGameToStorage(newGameState);
+        await persistGameState(newGameState);
       },
 
       // Select partners
-      selectPartners: (cards) => {
+      selectPartners: async (cards) => {
         const { gameState } = get();
         if (!gameState || gameState.status !== 'partner-selection') return;
 
@@ -652,11 +734,11 @@ export const useGameStore = create<GameStore>()(
 
 
         set({ gameState: newGameState });
-        saveGameToStorage(newGameState);
+        await persistGameState(newGameState);
       },
 
       // Play a card
-      playCard: (playerId, card) => {
+      playCard: async (playerId, card) => {
         const { gameState } = get();
         if (!gameState || gameState.status !== 'playing') {
           set({ error: 'Cannot play card - game not in playing state' });
@@ -810,6 +892,7 @@ export const useGameStore = create<GameStore>()(
                 updatedAt: Date.now()
               }
             });
+            await persistGameState(get().gameState!);
             return; // Exit early since we updated the state
           }
         }
@@ -836,6 +919,7 @@ export const useGameStore = create<GameStore>()(
               updatedAt: Date.now()
             }
           });
+          await persistGameState(get().gameState!);
 
           return;
         }
@@ -856,11 +940,11 @@ export const useGameStore = create<GameStore>()(
             updatedAt: Date.now()
           }
         });
-        saveGameToStorage(get().gameState!);
+        await persistGameState(get().gameState!);
       },
 
       // End current round
-      endRound: () => {
+      endRound: async () => {
         const { gameState } = get();
         if (!gameState) return;
 
@@ -917,10 +1001,11 @@ export const useGameStore = create<GameStore>()(
             updatedAt: Date.now()
           }
         });
+        await persistGameState(get().gameState!);
       },
 
       // End the game
-      endGame: () => {
+      endGame: async () => {
         const { gameState } = get();
         if (!gameState) return;
 
@@ -938,6 +1023,7 @@ export const useGameStore = create<GameStore>()(
             updatedAt: Date.now()
           }
         });
+        await persistGameState(get().gameState!);
       },
 
       // Reset game
@@ -961,7 +1047,7 @@ export const useGameStore = create<GameStore>()(
       },
 
       // Start playing phase
-      startPlaying: () => {
+      startPlaying: async () => {
         const { gameState } = get();
         if (!gameState || gameState.status !== 'partner-selection') {
           set({ error: 'Cannot start playing - complete partner selection first' });
@@ -987,14 +1073,87 @@ export const useGameStore = create<GameStore>()(
         };
 
         set({ gameState: newGameState });
-        saveGameToStorage(newGameState);
+        await persistGameState(newGameState);
       },
 
       // Helper to save current game state to storage
-      saveCurrentGame: () => {
+      saveCurrentGame: async () => {
         const currentState = get().gameState;
         if (currentState) {
-          saveGameToStorage(currentState);
+          await persistGameState(currentState);
+        }
+      },
+
+      loadGameSession: async (gameId) => {
+        const existingPlayerSession = loadPlayerSession(gameId);
+        if (!existingPlayerSession) {
+          return false;
+        }
+
+        try {
+          const loadedGame = await fetchGameStateFromServer(gameId);
+          if (!loadedGame) {
+            return false;
+          }
+
+          saveGameToStorage(loadedGame);
+          set({
+            gameState: loadedGame,
+            currentPlayerId: existingPlayerSession,
+            error: null,
+            isLoading: false
+          });
+          return true;
+        } catch (error) {
+          console.error('Failed to load game session from server:', error);
+          const fallbackGame = loadGameFromStorage(gameId);
+          if (!fallbackGame) {
+            return false;
+          }
+
+          set({
+            gameState: fallbackGame,
+            currentPlayerId: existingPlayerSession,
+            error: null,
+            isLoading: false
+          });
+          return true;
+        }
+      },
+
+      syncGameFromStorage: async (gameId) => {
+        try {
+          const loadedGame = await fetchGameStateFromServer(gameId);
+          if (!loadedGame) {
+            return;
+          }
+
+          saveGameToStorage(loadedGame);
+          const currentState = get().gameState;
+          const currentPlayerId = loadPlayerSession(gameId) || get().currentPlayerId || loadedGame.players[0]?.id || null;
+
+          if (!currentState || currentState.updatedAt !== loadedGame.updatedAt) {
+            set({
+              gameState: loadedGame,
+              currentPlayerId
+            });
+          }
+        } catch (error) {
+          console.error('Failed to sync game from server:', error);
+          const loadedGame = loadGameFromStorage(gameId);
+          if (!loadedGame) {
+            return;
+          }
+
+          const currentState = get().gameState;
+          const currentPlayerId = loadPlayerSession(gameId) || get().currentPlayerId || loadedGame.players[0]?.id || null;
+
+          if (!currentState || currentState.updatedAt !== loadedGame.updatedAt) {
+            set({
+              gameState: loadedGame,
+              currentPlayerId
+            });
+          }
         }
       }
     }),

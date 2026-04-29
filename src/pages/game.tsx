@@ -9,10 +9,13 @@ import TopGameControls from '@/components/game/TopGameControls';
 import Layout from '@/components/layout/Layout';
 import { useRouter } from 'next/router';
 
+const DEBUG_TOOLS_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DEBUG_TOOLS === 'true';
+
 const GamePage: React.FC = () => {
-  const { gameState, currentPlayerId, resetGame, createGame, createWaitingRoom, joinGame } = useGameStore();
+  const { gameState, currentPlayerId, resetGame, createGame, createWaitingRoom, joinGame, loadGameSession, syncGameFromStorage } = useGameStore();
   const router = useRouter();
   const [viewingPlayerId, setViewingPlayerId] = React.useState<string | undefined>();
+  const activePlayerId = viewingPlayerId || currentPlayerId || '';
 
   // Initialize viewingPlayerId when currentPlayerId is available
   React.useEffect(() => {
@@ -24,12 +27,43 @@ const GamePage: React.FC = () => {
   // Check for join parameter in URL
   React.useEffect(() => {
     if (router.query.join && typeof router.query.join === 'string' && !gameState) {
-      // Try to join the game with the provided ID
       const gameId = router.query.join;
-      const playerName = `Player ${Math.floor(Math.random() * 1000)}`;
-      joinGame(gameId, playerName);
+
+      void (async () => {
+        const restored = await loadGameSession(gameId);
+        if (!restored) {
+          const playerName = `Player ${Math.floor(Math.random() * 1000)}`;
+          await joinGame(gameId, playerName);
+        }
+      })();
     }
-  }, [router.query.join, gameState, joinGame]);
+  }, [router.query.join, gameState, joinGame, loadGameSession]);
+
+  React.useEffect(() => {
+    if (!gameState?.id) {
+      return;
+    }
+
+    const syncCurrentGame = async () => {
+      await syncGameFromStorage(gameState.id);
+    };
+
+    const onStorage = (event: StorageEvent) => {
+      if (!event.key || event.key === 'kadi-tiri-games') {
+        void syncCurrentGame();
+      }
+    };
+
+    window.addEventListener('storage', onStorage);
+    const intervalId = window.setInterval(() => {
+      void syncCurrentGame();
+    }, 250);
+
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.clearInterval(intervalId);
+    };
+  }, [gameState?.id, syncGameFromStorage]);
 
   const handleBackToHome = () => {
     resetGame();
@@ -144,26 +178,29 @@ const GamePage: React.FC = () => {
                         <button
                           onClick={createNewWaitingRoom}
                           className="btn btn-red-custom btn-lg w-100 fw-bold"
+                          data-testid="create-room-button"
                         >
                           Create Room
                         </button>
                       </div>
                     </div>
-                    <div className="col-lg-5 col-md-6">
-                      <div className="card-red glass-effect-red p-4 h-100">
-                        <div className="mb-3">
-                          <div className="fs-1 mb-3">🚀</div>
-                          <h3 className="text-white fw-bold mb-3">Quick Start</h3>
-                          <p className="text-light mb-4">Start immediately with local test players</p>
+                    {DEBUG_TOOLS_ENABLED && (
+                      <div className="col-lg-5 col-md-6">
+                        <div className="card-red glass-effect-red p-4 h-100">
+                          <div className="mb-3">
+                            <div className="fs-1 mb-3">🛠️</div>
+                            <h3 className="text-white fw-bold mb-3">Debug Quick Start</h3>
+                            <p className="text-light mb-4">Start a local 4-player test table with seat-switch controls</p>
+                          </div>
+                          <button
+                            onClick={quickStartGame}
+                            className="btn btn-red-custom btn-lg w-100 fw-bold"
+                          >
+                            Start Debug Table
+                          </button>
                         </div>
-                        <button
-                          onClick={quickStartGame}
-                          className="btn btn-red-custom btn-lg w-100 fw-bold"
-                        >
-                          Play Now (4 Players)
-                        </button>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
                 
@@ -207,12 +244,12 @@ const GamePage: React.FC = () => {
                 </div>
                 
                 <div className="glass-effect-red rounded-4 shadow-lg mx-auto p-5" style={{ maxWidth: '800px' }}>
-                  <div className="text-center mb-4">
+                  <div className="text-center mb-4" data-testid="waiting-room" data-game-id={gameState.id}>
                     <h2 className="text-white fw-bold mb-3">
                       {isHost ? '🎮 Your Game Room' : '🎯 Joined Game Room'}
                     </h2>
                     <div className="badge bg-red-custom px-4 py-2 rounded-pill mb-3 fs-6">
-                      Game ID: <span className="font-monospace fw-bold">{gameState.id.slice(-6)}</span>
+                      Game ID: <span className="font-monospace fw-bold" data-testid="game-id-short">{gameState.id.slice(-6)}</span>
                     </div>
                   </div>
 
@@ -225,6 +262,7 @@ const GamePage: React.FC = () => {
                       </div>
                       <button 
                         className="btn btn-red-custom"
+                        data-testid="copy-link-button"
                         onClick={() => {
                           const gameUrl = `${window.location.origin}/game?join=${gameState.id}`;
                           navigator.clipboard.writeText(gameUrl);
@@ -243,7 +281,7 @@ const GamePage: React.FC = () => {
                     </h5>
                     <div className="row g-3">
                       {gameState.players.map((player, index) => (
-                        <div key={player.id} className="col-lg-6">
+                        <div key={player.id} className="col-lg-6" data-testid="waiting-room-player">
                           <div className={`card-red p-3 rounded-3 ${player.id === currentPlayerId ? 'border border-success border-2' : ''}`}>
                             <div className="d-flex align-items-center">
                               <div className="me-3 fs-4">
@@ -393,9 +431,10 @@ const GamePage: React.FC = () => {
         {/* Main Game Area */}
         <GamePlayArea 
           gameState={gameState} 
-          currentPlayerId={currentPlayerId || ''} 
+          currentPlayerId={activePlayerId} 
           viewingPlayerId={viewingPlayerId}
           onViewingPlayerChange={setViewingPlayerId}
+          showDebugTools={DEBUG_TOOLS_ENABLED}
         />
 
         {/* Bidding Panel - Takes top position when TopGameControls is hidden */}
@@ -413,7 +452,7 @@ const GamePage: React.FC = () => {
             <div className="glass-effect-red rounded-3 p-1">
               <BiddingPanel 
                 gameState={gameState} 
-                currentPlayerId={currentPlayerId || ''} 
+                currentPlayerId={activePlayerId} 
                 onExit={handleBackToHome}
                 viewingPlayerId={viewingPlayerId}
                 onViewingPlayerChange={setViewingPlayerId}
@@ -436,7 +475,7 @@ const GamePage: React.FC = () => {
             }}
           >
             <div className="glass-effect-red rounded-3 p-1">
-              <PartnerSelectionPanel gameState={gameState} currentPlayerId={currentPlayerId || ''} />
+              <PartnerSelectionPanel gameState={gameState} currentPlayerId={activePlayerId} />
             </div>
           </div>
         )}

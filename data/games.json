@@ -1,0 +1,3651 @@
+{
+  "game_1777504401013_vcdatjcfn": {
+    "id": "game_1777504401013_vcdatjcfn",
+    "status": "playing",
+    "players": [
+      {
+        "id": "player_1777504401013_ul4ze1f6a",
+        "name": "Host 144",
+        "cards": [
+          {
+            "id": "K♠_0",
+            "rank": "K",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♠_0",
+            "rank": "Q",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♠_0",
+            "rank": "10",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♠_0",
+            "rank": "9",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♥_0",
+            "rank": "A",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♥_0",
+            "rank": "K",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♥_0",
+            "rank": "Q",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♦_0",
+            "rank": "A",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♦_0",
+            "rank": "Q",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♦_0",
+            "rank": "5",
+            "suit": "♦",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♦_0",
+            "rank": "4",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♣_0",
+            "rank": "K",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♣_0",
+            "rank": "3",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 0,
+        "isDealer": true,
+        "isActive": true
+      },
+      {
+        "id": "player_1777504401724_4ah9iu61m",
+        "name": "Player 888",
+        "cards": [
+          {
+            "id": "8♠_0",
+            "rank": "8",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♠_0",
+            "rank": "5",
+            "suit": "♠",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♥_0",
+            "rank": "J",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♥_0",
+            "rank": "10",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♥_0",
+            "rank": "8",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♥_0",
+            "rank": "7",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♥_0",
+            "rank": "6",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♥_0",
+            "rank": "5",
+            "suit": "♥",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♦_0",
+            "rank": "7",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♦_0",
+            "rank": "3",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♣_0",
+            "rank": "A",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♣_0",
+            "rank": "9",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♣_0",
+            "rank": "4",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 1,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504402459_ktaq89eqe",
+        "name": "Player 522",
+        "cards": [
+          {
+            "id": "J♠_0",
+            "rank": "J",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♠_0",
+            "rank": "7",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♠_0",
+            "rank": "4",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♥_0",
+            "rank": "9",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♥_0",
+            "rank": "4",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♥_0",
+            "rank": "3",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♥_0",
+            "rank": "2",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♦_0",
+            "rank": "K",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♦_0",
+            "rank": "9",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♣_0",
+            "rank": "Q",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♣_0",
+            "rank": "J",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♣_0",
+            "rank": "10",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♣_0",
+            "rank": "2",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 2,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504403317_7rg4faw4m",
+        "name": "Player 939",
+        "cards": [
+          {
+            "id": "A♠_0",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♠_0",
+            "rank": "6",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♠_0",
+            "rank": "3",
+            "suit": "♠",
+            "points": 30,
+            "isKaliTiri": true
+          },
+          {
+            "id": "2♠_0",
+            "rank": "2",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♦_0",
+            "rank": "J",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♦_0",
+            "rank": "10",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♦_0",
+            "rank": "8",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♦_0",
+            "rank": "6",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♦_0",
+            "rank": "2",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♣_0",
+            "rank": "8",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♣_0",
+            "rank": "7",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♣_0",
+            "rank": "6",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♣_0",
+            "rank": "5",
+            "suit": "♣",
+            "points": 5,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 3,
+        "isDealer": false,
+        "isActive": false
+      }
+    ],
+    "currentPlayer": "player_1777504401013_ul4ze1f6a",
+    "deck": [],
+    "discardPile": [],
+    "settings": {
+      "mode": {
+        "key": "4_players",
+        "label": "4 Players",
+        "players": 4,
+        "decks": 1,
+        "cardsPerPlayer": 13,
+        "totalPoints": 250,
+        "rounds": 13,
+        "supportedDifficulties": [
+          "easy"
+        ]
+      },
+      "difficulty": "easy",
+      "difficultyConfig": {
+        "difficulty": "easy",
+        "bidderTeamSize": 2,
+        "partnerCount": 1,
+        "bidding": {
+          "startBid": 125,
+          "maxBid": 250,
+          "increments": [
+            5,
+            10
+          ]
+        }
+      },
+      "biddingConfig": {
+        "startBid": 125,
+        "maxBid": 250,
+        "increments": [
+          5,
+          10
+        ]
+      },
+      "powerhouseSuit": "♠",
+      "partnership": {
+        "bidWinner": "player_1777504401013_ul4ze1f6a",
+        "partners": [
+          "player_1777504403317_7rg4faw4m"
+        ],
+        "partnerCards": [
+          {
+            "id": "A_♠",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "revealed": false
+      },
+      "allowSecretPartners": true,
+      "enableRedeal": false,
+      "gameSpeed": "normal"
+    },
+    "bidding": {
+      "bids": [
+        {
+          "playerId": "player_1777504401013_ul4ze1f6a",
+          "amount": 125,
+          "timestamp": 1777504405512,
+          "passed": false
+        },
+        {
+          "playerId": "player_1777504401724_4ah9iu61m",
+          "amount": 0,
+          "timestamp": 1777504405974,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504402459_ktaq89eqe",
+          "amount": 0,
+          "timestamp": 1777504406440,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504403317_7rg4faw4m",
+          "amount": 0,
+          "timestamp": 1777504406897,
+          "passed": true
+        }
+      ],
+      "currentBid": 125,
+      "winner": "player_1777504401013_ul4ze1f6a",
+      "isActive": false
+    },
+    "currentTrick": null,
+    "completedTricks": [],
+    "rounds": [],
+    "currentRound": 0,
+    "scores": {
+      "bidWinnerTeam": 0,
+      "opposingTeam": 0,
+      "breakdown": {}
+    },
+    "winner": null,
+    "createdAt": 1777504401013,
+    "updatedAt": 1777504407976
+  },
+  "game_1777504408742_2e1za5csx": {
+    "id": "game_1777504408742_2e1za5csx",
+    "status": "playing",
+    "players": [
+      {
+        "id": "player_1777504408742_vsxz0hcri",
+        "name": "Host 263",
+        "cards": [
+          {
+            "id": "8♠_0",
+            "rank": "8",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♠_0",
+            "rank": "5",
+            "suit": "♠",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♠_0",
+            "rank": "4",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♠_0",
+            "rank": "2",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♥_0",
+            "rank": "A",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♥_0",
+            "rank": "8",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♥_0",
+            "rank": "3",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♦_0",
+            "rank": "5",
+            "suit": "♦",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♦_0",
+            "rank": "4",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♣_0",
+            "rank": "10",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♣_0",
+            "rank": "8",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♣_0",
+            "rank": "6",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 0,
+        "isDealer": true,
+        "isActive": true
+      },
+      {
+        "id": "player_1777504409432_jaz5p7i5j",
+        "name": "Player 808",
+        "cards": [
+          {
+            "id": "Q♠_0",
+            "rank": "Q",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♠_0",
+            "rank": "10",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♠_0",
+            "rank": "9",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♠_0",
+            "rank": "7",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♥_0",
+            "rank": "K",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♥_0",
+            "rank": "Q",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♥_0",
+            "rank": "9",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♥_0",
+            "rank": "6",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♥_0",
+            "rank": "5",
+            "suit": "♥",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♥_0",
+            "rank": "4",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♦_0",
+            "rank": "Q",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♦_0",
+            "rank": "10",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♣_0",
+            "rank": "4",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 1,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504410171_p07zhpojk",
+        "name": "Player 506",
+        "cards": [
+          {
+            "id": "A♠_0",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♠_0",
+            "rank": "3",
+            "suit": "♠",
+            "points": 30,
+            "isKaliTiri": true
+          },
+          {
+            "id": "J♥_0",
+            "rank": "J",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♥_0",
+            "rank": "7",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♥_0",
+            "rank": "2",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♦_0",
+            "rank": "A",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♦_0",
+            "rank": "J",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♦_0",
+            "rank": "9",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♦_0",
+            "rank": "7",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♦_0",
+            "rank": "2",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♣_0",
+            "rank": "J",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♣_0",
+            "rank": "9",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♣_0",
+            "rank": "3",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 2,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504410986_akoc4vcx1",
+        "name": "Player 419",
+        "cards": [
+          {
+            "id": "K♠_0",
+            "rank": "K",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♠_0",
+            "rank": "6",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♥_0",
+            "rank": "10",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♦_0",
+            "rank": "K",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♦_0",
+            "rank": "8",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♦_0",
+            "rank": "6",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♦_0",
+            "rank": "3",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♣_0",
+            "rank": "A",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♣_0",
+            "rank": "K",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♣_0",
+            "rank": "Q",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♣_0",
+            "rank": "7",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♣_0",
+            "rank": "5",
+            "suit": "♣",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♣_0",
+            "rank": "2",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 3,
+        "isDealer": false,
+        "isActive": false
+      }
+    ],
+    "currentPlayer": "player_1777504409432_jaz5p7i5j",
+    "deck": [],
+    "discardPile": [],
+    "settings": {
+      "mode": {
+        "key": "4_players",
+        "label": "4 Players",
+        "players": 4,
+        "decks": 1,
+        "cardsPerPlayer": 13,
+        "totalPoints": 250,
+        "rounds": 13,
+        "supportedDifficulties": [
+          "easy"
+        ]
+      },
+      "difficulty": "easy",
+      "difficultyConfig": {
+        "difficulty": "easy",
+        "bidderTeamSize": 2,
+        "partnerCount": 1,
+        "bidding": {
+          "startBid": 125,
+          "maxBid": 250,
+          "increments": [
+            5,
+            10
+          ]
+        }
+      },
+      "biddingConfig": {
+        "startBid": 125,
+        "maxBid": 250,
+        "increments": [
+          5,
+          10
+        ]
+      },
+      "powerhouseSuit": "♠",
+      "partnership": {
+        "bidWinner": "player_1777504408742_vsxz0hcri",
+        "partners": [
+          "player_1777504410171_p07zhpojk"
+        ],
+        "partnerCards": [
+          {
+            "id": "A_♠",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "revealed": false
+      },
+      "allowSecretPartners": true,
+      "enableRedeal": false,
+      "gameSpeed": "normal"
+    },
+    "bidding": {
+      "bids": [
+        {
+          "playerId": "player_1777504408742_vsxz0hcri",
+          "amount": 125,
+          "timestamp": 1777504413367,
+          "passed": false
+        },
+        {
+          "playerId": "player_1777504409432_jaz5p7i5j",
+          "amount": 0,
+          "timestamp": 1777504413596,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504410171_p07zhpojk",
+          "amount": 0,
+          "timestamp": 1777504413791,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504410986_akoc4vcx1",
+          "amount": 0,
+          "timestamp": 1777504414252,
+          "passed": true
+        }
+      ],
+      "currentBid": 125,
+      "winner": "player_1777504408742_vsxz0hcri",
+      "isActive": false
+    },
+    "currentTrick": {
+      "id": "trick-1777504415708",
+      "cards": [
+        {
+          "playerId": "player_1777504408742_vsxz0hcri",
+          "playerName": "Host 263",
+          "card": {
+            "id": "J♠_0",
+            "rank": "J",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          "playOrder": 0
+        }
+      ],
+      "leadSuit": "♠",
+      "winner": null,
+      "points": 0,
+      "completed": false
+    },
+    "completedTricks": [],
+    "rounds": [],
+    "currentRound": 0,
+    "scores": {
+      "bidWinnerTeam": 0,
+      "opposingTeam": 0,
+      "breakdown": {}
+    },
+    "winner": null,
+    "createdAt": 1777504408742,
+    "updatedAt": 1777504415712
+  },
+  "game_1777504680326_5y03h0mdm": {
+    "id": "game_1777504680326_5y03h0mdm",
+    "status": "playing",
+    "players": [
+      {
+        "id": "player_1777504680326_4qi1cvd8r",
+        "name": "Host 377",
+        "cards": [
+          {
+            "id": "K♥_0",
+            "rank": "K",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♥_0",
+            "rank": "9",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♥_0",
+            "rank": "8",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♦_0",
+            "rank": "J",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♦_0",
+            "rank": "10",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♦_0",
+            "rank": "7",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♦_0",
+            "rank": "6",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♦_0",
+            "rank": "4",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♣_0",
+            "rank": "K",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♣_0",
+            "rank": "7",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♣_0",
+            "rank": "6",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♣_0",
+            "rank": "4",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 0,
+        "isDealer": true,
+        "isActive": true
+      },
+      {
+        "id": "player_1777504680990_x7zru37ry",
+        "name": "Player 459",
+        "cards": [
+          {
+            "id": "A♠_0",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♠_0",
+            "rank": "K",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♠_0",
+            "rank": "6",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♠_0",
+            "rank": "2",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♥_0",
+            "rank": "A",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♥_0",
+            "rank": "J",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♥_0",
+            "rank": "7",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♦_0",
+            "rank": "A",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♦_0",
+            "rank": "9",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♦_0",
+            "rank": "3",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♣_0",
+            "rank": "J",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♣_0",
+            "rank": "9",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♣_0",
+            "rank": "2",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 1,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504681861_64ehvmq3h",
+        "name": "Player 555",
+        "cards": [
+          {
+            "id": "Q♠_0",
+            "rank": "Q",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♠_0",
+            "rank": "10",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♠_0",
+            "rank": "4",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♥_0",
+            "rank": "10",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♥_0",
+            "rank": "6",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♥_0",
+            "rank": "5",
+            "suit": "♥",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♥_0",
+            "rank": "3",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♦_0",
+            "rank": "2",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♣_0",
+            "rank": "A",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♣_0",
+            "rank": "Q",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♣_0",
+            "rank": "10",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♣_0",
+            "rank": "8",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♣_0",
+            "rank": "3",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 2,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504682954_8qu5loax8",
+        "name": "Player 149",
+        "cards": [
+          {
+            "id": "J♠_0",
+            "rank": "J",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♠_0",
+            "rank": "9",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♠_0",
+            "rank": "8",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♠_0",
+            "rank": "7",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♠_0",
+            "rank": "5",
+            "suit": "♠",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♥_0",
+            "rank": "Q",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♥_0",
+            "rank": "4",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♥_0",
+            "rank": "2",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♦_0",
+            "rank": "K",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♦_0",
+            "rank": "Q",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♦_0",
+            "rank": "8",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♦_0",
+            "rank": "5",
+            "suit": "♦",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♣_0",
+            "rank": "5",
+            "suit": "♣",
+            "points": 5,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 3,
+        "isDealer": false,
+        "isActive": false
+      }
+    ],
+    "currentPlayer": "player_1777504680990_x7zru37ry",
+    "deck": [],
+    "discardPile": [],
+    "settings": {
+      "mode": {
+        "key": "4_players",
+        "label": "4 Players",
+        "players": 4,
+        "decks": 1,
+        "cardsPerPlayer": 13,
+        "totalPoints": 250,
+        "rounds": 13,
+        "supportedDifficulties": [
+          "easy"
+        ]
+      },
+      "difficulty": "easy",
+      "difficultyConfig": {
+        "difficulty": "easy",
+        "bidderTeamSize": 2,
+        "partnerCount": 1,
+        "bidding": {
+          "startBid": 125,
+          "maxBid": 250,
+          "increments": [
+            5,
+            10
+          ]
+        }
+      },
+      "biddingConfig": {
+        "startBid": 125,
+        "maxBid": 250,
+        "increments": [
+          5,
+          10
+        ]
+      },
+      "powerhouseSuit": "♠",
+      "partnership": {
+        "bidWinner": "player_1777504680326_4qi1cvd8r",
+        "partners": [
+          "player_1777504680990_x7zru37ry"
+        ],
+        "partnerCards": [
+          {
+            "id": "A_♠",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "revealed": false
+      },
+      "allowSecretPartners": true,
+      "enableRedeal": false,
+      "gameSpeed": "normal"
+    },
+    "bidding": {
+      "bids": [
+        {
+          "playerId": "player_1777504680326_4qi1cvd8r",
+          "amount": 125,
+          "timestamp": 1777504685164,
+          "passed": false
+        },
+        {
+          "playerId": "player_1777504680990_x7zru37ry",
+          "amount": 0,
+          "timestamp": 1777504685637,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504681861_64ehvmq3h",
+          "amount": 0,
+          "timestamp": 1777504686128,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504682954_8qu5loax8",
+          "amount": 0,
+          "timestamp": 1777504686598,
+          "passed": true
+        }
+      ],
+      "currentBid": 125,
+      "winner": "player_1777504680326_4qi1cvd8r",
+      "isActive": false
+    },
+    "currentTrick": {
+      "id": "trick-1777504688254",
+      "cards": [
+        {
+          "playerId": "player_1777504680326_4qi1cvd8r",
+          "playerName": "Host 377",
+          "card": {
+            "id": "3♠_0",
+            "rank": "3",
+            "suit": "♠",
+            "points": 30,
+            "isKaliTiri": true
+          },
+          "playOrder": 0
+        }
+      ],
+      "leadSuit": "♠",
+      "winner": null,
+      "points": 0,
+      "completed": false
+    },
+    "completedTricks": [],
+    "rounds": [],
+    "currentRound": 0,
+    "scores": {
+      "bidWinnerTeam": 0,
+      "opposingTeam": 0,
+      "breakdown": {}
+    },
+    "winner": null,
+    "createdAt": 1777504680326,
+    "updatedAt": 1777504688260
+  },
+  "game_1777504771272_p15oonyw1": {
+    "id": "game_1777504771272_p15oonyw1",
+    "status": "playing",
+    "players": [
+      {
+        "id": "player_1777504771272_bengyvs8n",
+        "name": "Host 966",
+        "cards": [
+          {
+            "id": "Q♠_0",
+            "rank": "Q",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♠_0",
+            "rank": "10",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♥_0",
+            "rank": "Q",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♥_0",
+            "rank": "6",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♦_0",
+            "rank": "9",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♦_0",
+            "rank": "7",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♦_0",
+            "rank": "3",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♣_0",
+            "rank": "K",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♣_0",
+            "rank": "Q",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♣_0",
+            "rank": "9",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♣_0",
+            "rank": "6",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♣_0",
+            "rank": "5",
+            "suit": "♣",
+            "points": 5,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 0,
+        "isDealer": true,
+        "isActive": true
+      },
+      {
+        "id": "player_1777504771919_9t3mllizc",
+        "name": "Player 832",
+        "cards": [
+          {
+            "id": "A♠_0",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♠_0",
+            "rank": "6",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♠_0",
+            "rank": "2",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♥_0",
+            "rank": "10",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♥_0",
+            "rank": "9",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♥_0",
+            "rank": "7",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♥_0",
+            "rank": "4",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♦_0",
+            "rank": "10",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♦_0",
+            "rank": "8",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♦_0",
+            "rank": "6",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♦_0",
+            "rank": "2",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♣_0",
+            "rank": "8",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♣_0",
+            "rank": "7",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 1,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504772779_aahklbxyp",
+        "name": "Player 377",
+        "cards": [
+          {
+            "id": "4♠_0",
+            "rank": "4",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♠_0",
+            "rank": "3",
+            "suit": "♠",
+            "points": 30,
+            "isKaliTiri": true
+          },
+          {
+            "id": "A♥_0",
+            "rank": "A",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♥_0",
+            "rank": "J",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♥_0",
+            "rank": "8",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♥_0",
+            "rank": "3",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♥_0",
+            "rank": "2",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♦_0",
+            "rank": "A",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♦_0",
+            "rank": "5",
+            "suit": "♦",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♦_0",
+            "rank": "4",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♣_0",
+            "rank": "A",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♣_0",
+            "rank": "4",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♣_0",
+            "rank": "3",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 2,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504773508_fbh76p6j2",
+        "name": "Player 255",
+        "cards": [
+          {
+            "id": "J♠_0",
+            "rank": "J",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♠_0",
+            "rank": "9",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♠_0",
+            "rank": "8",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♠_0",
+            "rank": "7",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♠_0",
+            "rank": "5",
+            "suit": "♠",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♥_0",
+            "rank": "K",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♥_0",
+            "rank": "5",
+            "suit": "♥",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♦_0",
+            "rank": "K",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♦_0",
+            "rank": "Q",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♦_0",
+            "rank": "J",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♣_0",
+            "rank": "J",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♣_0",
+            "rank": "10",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♣_0",
+            "rank": "2",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 3,
+        "isDealer": false,
+        "isActive": false
+      }
+    ],
+    "currentPlayer": "player_1777504771919_9t3mllizc",
+    "deck": [],
+    "discardPile": [],
+    "settings": {
+      "mode": {
+        "key": "4_players",
+        "label": "4 Players",
+        "players": 4,
+        "decks": 1,
+        "cardsPerPlayer": 13,
+        "totalPoints": 250,
+        "rounds": 13,
+        "supportedDifficulties": [
+          "easy"
+        ]
+      },
+      "difficulty": "easy",
+      "difficultyConfig": {
+        "difficulty": "easy",
+        "bidderTeamSize": 2,
+        "partnerCount": 1,
+        "bidding": {
+          "startBid": 125,
+          "maxBid": 250,
+          "increments": [
+            5,
+            10
+          ]
+        }
+      },
+      "biddingConfig": {
+        "startBid": 125,
+        "maxBid": 250,
+        "increments": [
+          5,
+          10
+        ]
+      },
+      "powerhouseSuit": "♠",
+      "partnership": {
+        "bidWinner": "player_1777504771272_bengyvs8n",
+        "partners": [
+          "player_1777504771919_9t3mllizc"
+        ],
+        "partnerCards": [
+          {
+            "id": "A_♠",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "revealed": false
+      },
+      "allowSecretPartners": true,
+      "enableRedeal": false,
+      "gameSpeed": "normal"
+    },
+    "bidding": {
+      "bids": [
+        {
+          "playerId": "player_1777504771272_bengyvs8n",
+          "amount": 125,
+          "timestamp": 1777504775955,
+          "passed": false
+        },
+        {
+          "playerId": "player_1777504771919_9t3mllizc",
+          "amount": 0,
+          "timestamp": 1777504776467,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504772779_aahklbxyp",
+          "amount": 0,
+          "timestamp": 1777504776761,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504773508_fbh76p6j2",
+          "amount": 0,
+          "timestamp": 1777504777288,
+          "passed": true
+        }
+      ],
+      "currentBid": 125,
+      "winner": "player_1777504771272_bengyvs8n",
+      "isActive": false
+    },
+    "currentTrick": {
+      "id": "trick-1777504778778",
+      "cards": [
+        {
+          "playerId": "player_1777504771272_bengyvs8n",
+          "playerName": "Host 966",
+          "card": {
+            "id": "K♠_0",
+            "rank": "K",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          "playOrder": 0
+        }
+      ],
+      "leadSuit": "♠",
+      "winner": null,
+      "points": 0,
+      "completed": false
+    },
+    "completedTricks": [],
+    "rounds": [],
+    "currentRound": 0,
+    "scores": {
+      "bidWinnerTeam": 0,
+      "opposingTeam": 0,
+      "breakdown": {}
+    },
+    "winner": null,
+    "createdAt": 1777504771272,
+    "updatedAt": 1777504778783
+  },
+  "game_1777504862432_67jacuomu": {
+    "id": "game_1777504862432_67jacuomu",
+    "status": "playing",
+    "players": [
+      {
+        "id": "player_1777504862432_amglnf5nr",
+        "name": "Host 984",
+        "cards": [
+          {
+            "id": "K♥_0",
+            "rank": "K",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♥_0",
+            "rank": "10",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♥_0",
+            "rank": "7",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♦_0",
+            "rank": "6",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♦_0",
+            "rank": "5",
+            "suit": "♦",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♦_0",
+            "rank": "3",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♣_0",
+            "rank": "A",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♣_0",
+            "rank": "Q",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♣_0",
+            "rank": "J",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♣_0",
+            "rank": "9",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♣_0",
+            "rank": "5",
+            "suit": "♣",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♣_0",
+            "rank": "2",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 0,
+        "isDealer": true,
+        "isActive": true
+      },
+      {
+        "id": "player_1777504863162_pithdkegt",
+        "name": "Player 584",
+        "cards": [
+          {
+            "id": "K♠_0",
+            "rank": "K",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♠_0",
+            "rank": "10",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♠_0",
+            "rank": "9",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♠_0",
+            "rank": "7",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♠_0",
+            "rank": "5",
+            "suit": "♠",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♥_0",
+            "rank": "6",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♥_0",
+            "rank": "5",
+            "suit": "♥",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♥_0",
+            "rank": "4",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♦_0",
+            "rank": "A",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♦_0",
+            "rank": "K",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♦_0",
+            "rank": "9",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♦_0",
+            "rank": "8",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♦_0",
+            "rank": "7",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 1,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504863921_j6e63l9xd",
+        "name": "Player 944",
+        "cards": [
+          {
+            "id": "Q♠_0",
+            "rank": "Q",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♠_0",
+            "rank": "2",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♥_0",
+            "rank": "A",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♥_0",
+            "rank": "Q",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♥_0",
+            "rank": "9",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♥_0",
+            "rank": "2",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♦_0",
+            "rank": "10",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♣_0",
+            "rank": "K",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♣_0",
+            "rank": "8",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♣_0",
+            "rank": "7",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♣_0",
+            "rank": "6",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♣_0",
+            "rank": "4",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♣_0",
+            "rank": "3",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 2,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504864607_fxa4a8arw",
+        "name": "Player 854",
+        "cards": [
+          {
+            "id": "A♠_0",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♠_0",
+            "rank": "8",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♠_0",
+            "rank": "6",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♠_0",
+            "rank": "4",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♠_0",
+            "rank": "3",
+            "suit": "♠",
+            "points": 30,
+            "isKaliTiri": true
+          },
+          {
+            "id": "J♥_0",
+            "rank": "J",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♥_0",
+            "rank": "8",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♥_0",
+            "rank": "3",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♦_0",
+            "rank": "Q",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♦_0",
+            "rank": "J",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♦_0",
+            "rank": "4",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♦_0",
+            "rank": "2",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♣_0",
+            "rank": "10",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 3,
+        "isDealer": false,
+        "isActive": false
+      }
+    ],
+    "currentPlayer": "player_1777504863162_pithdkegt",
+    "deck": [],
+    "discardPile": [],
+    "settings": {
+      "mode": {
+        "key": "4_players",
+        "label": "4 Players",
+        "players": 4,
+        "decks": 1,
+        "cardsPerPlayer": 13,
+        "totalPoints": 250,
+        "rounds": 13,
+        "supportedDifficulties": [
+          "easy"
+        ]
+      },
+      "difficulty": "easy",
+      "difficultyConfig": {
+        "difficulty": "easy",
+        "bidderTeamSize": 2,
+        "partnerCount": 1,
+        "bidding": {
+          "startBid": 125,
+          "maxBid": 250,
+          "increments": [
+            5,
+            10
+          ]
+        }
+      },
+      "biddingConfig": {
+        "startBid": 125,
+        "maxBid": 250,
+        "increments": [
+          5,
+          10
+        ]
+      },
+      "powerhouseSuit": "♠",
+      "partnership": {
+        "bidWinner": "player_1777504862432_amglnf5nr",
+        "partners": [
+          "player_1777504864607_fxa4a8arw"
+        ],
+        "partnerCards": [
+          {
+            "id": "A_♠",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "revealed": false
+      },
+      "allowSecretPartners": true,
+      "enableRedeal": false,
+      "gameSpeed": "normal"
+    },
+    "bidding": {
+      "bids": [
+        {
+          "playerId": "player_1777504862432_amglnf5nr",
+          "amount": 125,
+          "timestamp": 1777504866721,
+          "passed": false
+        },
+        {
+          "playerId": "player_1777504863162_pithdkegt",
+          "amount": 0,
+          "timestamp": 1777504867193,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504863921_j6e63l9xd",
+          "amount": 0,
+          "timestamp": 1777504867663,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504864607_fxa4a8arw",
+          "amount": 0,
+          "timestamp": 1777504868130,
+          "passed": true
+        }
+      ],
+      "currentBid": 125,
+      "winner": "player_1777504862432_amglnf5nr",
+      "isActive": false
+    },
+    "currentTrick": {
+      "id": "trick-1777504869310",
+      "cards": [
+        {
+          "playerId": "player_1777504862432_amglnf5nr",
+          "playerName": "Host 984",
+          "card": {
+            "id": "J♠_0",
+            "rank": "J",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          "playOrder": 0
+        }
+      ],
+      "leadSuit": "♠",
+      "winner": null,
+      "points": 0,
+      "completed": false
+    },
+    "completedTricks": [],
+    "rounds": [],
+    "currentRound": 0,
+    "scores": {
+      "bidWinnerTeam": 0,
+      "opposingTeam": 0,
+      "breakdown": {}
+    },
+    "winner": null,
+    "createdAt": 1777504862432,
+    "updatedAt": 1777504869314
+  },
+  "game_1777504953483_caru3axcp": {
+    "id": "game_1777504953483_caru3axcp",
+    "status": "playing",
+    "players": [
+      {
+        "id": "player_1777504953483_5jcqfh0t5",
+        "name": "Host 847",
+        "cards": [
+          {
+            "id": "10♠_0",
+            "rank": "10",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♠_0",
+            "rank": "8",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♠_0",
+            "rank": "5",
+            "suit": "♠",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♥_0",
+            "rank": "10",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♥_0",
+            "rank": "7",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♦_0",
+            "rank": "J",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♦_0",
+            "rank": "7",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♦_0",
+            "rank": "5",
+            "suit": "♦",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♦_0",
+            "rank": "2",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♣_0",
+            "rank": "K",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♣_0",
+            "rank": "9",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♣_0",
+            "rank": "8",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♣_0",
+            "rank": "2",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 0,
+        "isDealer": true,
+        "isActive": true
+      },
+      {
+        "id": "player_1777504954142_oxn2ypbpr",
+        "name": "Player 47",
+        "cards": [
+          {
+            "id": "A♠_0",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♠_0",
+            "rank": "6",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♠_0",
+            "rank": "4",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♥_0",
+            "rank": "Q",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♥_0",
+            "rank": "9",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♥_0",
+            "rank": "4",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♦_0",
+            "rank": "A",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♦_0",
+            "rank": "10",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♦_0",
+            "rank": "8",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♦_0",
+            "rank": "4",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♣_0",
+            "rank": "A",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♣_0",
+            "rank": "Q",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♣_0",
+            "rank": "6",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 1,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504954975_hy5m95us0",
+        "name": "Player 279",
+        "cards": [
+          {
+            "id": "K♠_0",
+            "rank": "K",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♠_0",
+            "rank": "9",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♠_0",
+            "rank": "7",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♠_0",
+            "rank": "2",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♥_0",
+            "rank": "K",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♥_0",
+            "rank": "J",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♥_0",
+            "rank": "6",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♥_0",
+            "rank": "3",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♦_0",
+            "rank": "K",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♦_0",
+            "rank": "Q",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♣_0",
+            "rank": "10",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♣_0",
+            "rank": "4",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♣_0",
+            "rank": "3",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 2,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504955903_0m14yniyd",
+        "name": "Player 630",
+        "cards": [
+          {
+            "id": "Q♠_0",
+            "rank": "Q",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♠_0",
+            "rank": "J",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♠_0",
+            "rank": "3",
+            "suit": "♠",
+            "points": 30,
+            "isKaliTiri": true
+          },
+          {
+            "id": "A♥_0",
+            "rank": "A",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♥_0",
+            "rank": "8",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♥_0",
+            "rank": "5",
+            "suit": "♥",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♥_0",
+            "rank": "2",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♦_0",
+            "rank": "9",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♦_0",
+            "rank": "6",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♦_0",
+            "rank": "3",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♣_0",
+            "rank": "J",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♣_0",
+            "rank": "7",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♣_0",
+            "rank": "5",
+            "suit": "♣",
+            "points": 5,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 3,
+        "isDealer": false,
+        "isActive": false
+      }
+    ],
+    "currentPlayer": "player_1777504953483_5jcqfh0t5",
+    "deck": [],
+    "discardPile": [],
+    "settings": {
+      "mode": {
+        "key": "4_players",
+        "label": "4 Players",
+        "players": 4,
+        "decks": 1,
+        "cardsPerPlayer": 13,
+        "totalPoints": 250,
+        "rounds": 13,
+        "supportedDifficulties": [
+          "easy"
+        ]
+      },
+      "difficulty": "easy",
+      "difficultyConfig": {
+        "difficulty": "easy",
+        "bidderTeamSize": 2,
+        "partnerCount": 1,
+        "bidding": {
+          "startBid": 125,
+          "maxBid": 250,
+          "increments": [
+            5,
+            10
+          ]
+        }
+      },
+      "biddingConfig": {
+        "startBid": 125,
+        "maxBid": 250,
+        "increments": [
+          5,
+          10
+        ]
+      },
+      "powerhouseSuit": "♠",
+      "partnership": {
+        "bidWinner": "player_1777504953483_5jcqfh0t5",
+        "partners": [
+          "player_1777504954142_oxn2ypbpr"
+        ],
+        "partnerCards": [
+          {
+            "id": "A_♠",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "revealed": false
+      },
+      "allowSecretPartners": true,
+      "enableRedeal": false,
+      "gameSpeed": "normal"
+    },
+    "bidding": {
+      "bids": [
+        {
+          "playerId": "player_1777504953483_5jcqfh0t5",
+          "amount": 125,
+          "timestamp": 1777504958381,
+          "passed": false
+        },
+        {
+          "playerId": "player_1777504954142_oxn2ypbpr",
+          "amount": 0,
+          "timestamp": 1777504958563,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504954975_hy5m95us0",
+          "amount": 0,
+          "timestamp": 1777504959034,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504955903_0m14yniyd",
+          "amount": 0,
+          "timestamp": 1777504959487,
+          "passed": true
+        }
+      ],
+      "currentBid": 125,
+      "winner": "player_1777504953483_5jcqfh0t5",
+      "isActive": false
+    },
+    "currentTrick": null,
+    "completedTricks": [],
+    "rounds": [],
+    "currentRound": 0,
+    "scores": {
+      "bidWinnerTeam": 0,
+      "opposingTeam": 0,
+      "breakdown": {}
+    },
+    "winner": null,
+    "createdAt": 1777504953483,
+    "updatedAt": 1777504960575
+  },
+  "game_1777504962215_qpq5s4rjj": {
+    "id": "game_1777504962215_qpq5s4rjj",
+    "status": "playing",
+    "players": [
+      {
+        "id": "player_1777504962215_cmn74si9u",
+        "name": "Host 90",
+        "cards": [
+          {
+            "id": "4♠_0",
+            "rank": "4",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♥_0",
+            "rank": "A",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♥_0",
+            "rank": "Q",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♥_0",
+            "rank": "J",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♥_0",
+            "rank": "9",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♥_0",
+            "rank": "2",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♦_0",
+            "rank": "6",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♦_0",
+            "rank": "4",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♦_0",
+            "rank": "2",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♣_0",
+            "rank": "K",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♣_0",
+            "rank": "7",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♣_0",
+            "rank": "6",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 0,
+        "isDealer": true,
+        "isActive": true
+      },
+      {
+        "id": "player_1777504962856_jm9ecl9eb",
+        "name": "Player 27",
+        "cards": [
+          {
+            "id": "Q♠_0",
+            "rank": "Q",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♠_0",
+            "rank": "8",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♠_0",
+            "rank": "6",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♠_0",
+            "rank": "5",
+            "suit": "♠",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "6♥_0",
+            "rank": "6",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♦_0",
+            "rank": "K",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♦_0",
+            "rank": "Q",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♦_0",
+            "rank": "J",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♦_0",
+            "rank": "10",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♦_0",
+            "rank": "8",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "J♣_0",
+            "rank": "J",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♣_0",
+            "rank": "9",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♣_0",
+            "rank": "4",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 1,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504964319_yns57o70d",
+        "name": "Player 218",
+        "cards": [
+          {
+            "id": "A♠_0",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "K♠_0",
+            "rank": "K",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♠_0",
+            "rank": "3",
+            "suit": "♠",
+            "points": 30,
+            "isKaliTiri": true
+          },
+          {
+            "id": "K♥_0",
+            "rank": "K",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♥_0",
+            "rank": "8",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♦_0",
+            "rank": "A",
+            "suit": "♦",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♦_0",
+            "rank": "9",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♦_0",
+            "rank": "5",
+            "suit": "♦",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♦_0",
+            "rank": "3",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "A♣_0",
+            "rank": "A",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♣_0",
+            "rank": "10",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♣_0",
+            "rank": "3",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♣_0",
+            "rank": "2",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 2,
+        "isDealer": false,
+        "isActive": false
+      },
+      {
+        "id": "player_1777504965354_haz688br8",
+        "name": "Player 436",
+        "cards": [
+          {
+            "id": "J♠_0",
+            "rank": "J",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "9♠_0",
+            "rank": "9",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♠_0",
+            "rank": "7",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "2♠_0",
+            "rank": "2",
+            "suit": "♠",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "10♥_0",
+            "rank": "10",
+            "suit": "♥",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♥_0",
+            "rank": "7",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♥_0",
+            "rank": "5",
+            "suit": "♥",
+            "points": 5,
+            "isKaliTiri": false
+          },
+          {
+            "id": "4♥_0",
+            "rank": "4",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "3♥_0",
+            "rank": "3",
+            "suit": "♥",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "7♦_0",
+            "rank": "7",
+            "suit": "♦",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "Q♣_0",
+            "rank": "Q",
+            "suit": "♣",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          {
+            "id": "8♣_0",
+            "rank": "8",
+            "suit": "♣",
+            "points": 0,
+            "isKaliTiri": false
+          },
+          {
+            "id": "5♣_0",
+            "rank": "5",
+            "suit": "♣",
+            "points": 5,
+            "isKaliTiri": false
+          }
+        ],
+        "score": 0,
+        "position": 3,
+        "isDealer": false,
+        "isActive": false
+      }
+    ],
+    "currentPlayer": "player_1777504962856_jm9ecl9eb",
+    "deck": [],
+    "discardPile": [],
+    "settings": {
+      "mode": {
+        "key": "4_players",
+        "label": "4 Players",
+        "players": 4,
+        "decks": 1,
+        "cardsPerPlayer": 13,
+        "totalPoints": 250,
+        "rounds": 13,
+        "supportedDifficulties": [
+          "easy"
+        ]
+      },
+      "difficulty": "easy",
+      "difficultyConfig": {
+        "difficulty": "easy",
+        "bidderTeamSize": 2,
+        "partnerCount": 1,
+        "bidding": {
+          "startBid": 125,
+          "maxBid": 250,
+          "increments": [
+            5,
+            10
+          ]
+        }
+      },
+      "biddingConfig": {
+        "startBid": 125,
+        "maxBid": 250,
+        "increments": [
+          5,
+          10
+        ]
+      },
+      "powerhouseSuit": "♠",
+      "partnership": {
+        "bidWinner": "player_1777504962215_cmn74si9u",
+        "partners": [
+          "player_1777504964319_yns57o70d"
+        ],
+        "partnerCards": [
+          {
+            "id": "A_♠",
+            "rank": "A",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          }
+        ],
+        "revealed": false
+      },
+      "allowSecretPartners": true,
+      "enableRedeal": false,
+      "gameSpeed": "normal"
+    },
+    "bidding": {
+      "bids": [
+        {
+          "playerId": "player_1777504962215_cmn74si9u",
+          "amount": 125,
+          "timestamp": 1777504967704,
+          "passed": false
+        },
+        {
+          "playerId": "player_1777504962856_jm9ecl9eb",
+          "amount": 0,
+          "timestamp": 1777504968183,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504964319_yns57o70d",
+          "amount": 0,
+          "timestamp": 1777504968658,
+          "passed": true
+        },
+        {
+          "playerId": "player_1777504965354_haz688br8",
+          "amount": 0,
+          "timestamp": 1777504969133,
+          "passed": true
+        }
+      ],
+      "currentBid": 125,
+      "winner": "player_1777504962215_cmn74si9u",
+      "isActive": false
+    },
+    "currentTrick": {
+      "id": "trick-1777504970301",
+      "cards": [
+        {
+          "playerId": "player_1777504962215_cmn74si9u",
+          "playerName": "Host 90",
+          "card": {
+            "id": "10♠_0",
+            "rank": "10",
+            "suit": "♠",
+            "points": 10,
+            "isKaliTiri": false
+          },
+          "playOrder": 0
+        }
+      ],
+      "leadSuit": "♠",
+      "winner": null,
+      "points": 0,
+      "completed": false
+    },
+    "completedTricks": [],
+    "rounds": [],
+    "currentRound": 0,
+    "scores": {
+      "bidWinnerTeam": 0,
+      "opposingTeam": 0,
+      "breakdown": {}
+    },
+    "winner": null,
+    "createdAt": 1777504962215,
+    "updatedAt": 1777504970305
+  }
+}

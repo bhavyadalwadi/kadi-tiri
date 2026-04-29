@@ -16,6 +16,7 @@ What is working now:
 - partner card selection
 - trick play with follow-suit enforcement
 - bid-based result settlement
+- Playwright E2E coverage for the 4-player prototype flow
 - production build and TypeScript check
 
 What is still prototype-level:
@@ -68,6 +69,37 @@ http://localhost:3000
 npm run type-check
 npm run build
 npm run test
+npm run test:e2e
+npm run test:e2e:headed
+```
+
+### End-to-end tests
+
+The project now includes Playwright coverage for the local 4-player prototype flow.
+
+Current E2E coverage:
+- 4 players create/join a room, complete bidding and setup, and verify the first played card appears for every player
+- 4 players complete one full trick and verify the trick closes and the next turn advances consistently
+- long gameplay waits for turn consensus across all four browser pages before each automated move
+- follow-suit enforcement when a player has the led suit
+- rejection of off-turn card plays
+- one full 4-player hand through finished-state scoring settlement
+
+Important:
+- Playwright must run on Node `18+`
+- if your shell is still on Node `14`, switch first with `nvm use 18`
+- local cross-browser room sync currently uses a `250ms` polling loop against the shared Next.js API
+
+Run in headless mode:
+
+```bash
+npm run test:e2e
+```
+
+Run in headed mode:
+
+```bash
+npm run test:e2e:headed
 ```
 
 ## Game Rules
@@ -180,10 +212,10 @@ kadi-tiri-game/
 The next major steps are:
 
 - proper round-to-round score tracking
-- real multiplayer backend
+- real multiplayer backend with server-authoritative actions
 - removal of remaining prototype shortcuts
 - mobile-oriented polish
-- tests for rules and settlement
+- deeper tests for rules, trick resolution, and settlement
 
 ## Changelog
 

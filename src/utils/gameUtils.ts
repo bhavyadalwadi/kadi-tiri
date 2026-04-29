@@ -389,8 +389,8 @@ export function dealCardsAndTransitionState(gameState: GameState): GameState {
     playersWithSortedCards[0].isDealer = true;
   }
 
-  // Set the first bidder (player to the left of dealer)
-  const firstBidderIndex = (dealerIndex + 1) % playersWithSortedCards.length;
+  // The flagged player is the opening bidder for this prototype flow.
+  const firstBidderIndex = dealerIndex % playersWithSortedCards.length;
   const currentPlayer = playersWithSortedCards[firstBidderIndex].id;
 
   // First transition to dealing state to show cards
@@ -414,9 +414,9 @@ export function transitionToBidding(gameState: GameState): GameState {
     return gameState;
   }
 
-  // Find the dealer and set first bidder (player to the left of dealer)
+  // Find the opening bidder.
   const dealerIndex = gameState.players.findIndex(p => p.isDealer);
-  const firstBidderIndex = (dealerIndex + 1) % gameState.players.length;
+  const firstBidderIndex = dealerIndex % gameState.players.length;
   const firstBidder = gameState.players[firstBidderIndex].id;
 
   const result: GameState = {
@@ -508,9 +508,9 @@ export function getNextBidder(gameState: GameState): string | null {
   const totalPlayers = gameState.players.length;
   
   if (bids.length === 0) {
-    // Start with the player after the dealer (correct)
+    // Start with the flagged opening bidder.
     const dealerIndex = gameState.players.findIndex(p => p.isDealer);
-    const firstBidderIndex = (dealerIndex + 1) % totalPlayers;
+    const firstBidderIndex = dealerIndex % totalPlayers;
     const firstBidder = gameState.players[firstBidderIndex];
     return firstBidder.id;
   }

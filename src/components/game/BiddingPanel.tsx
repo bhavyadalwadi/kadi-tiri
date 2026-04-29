@@ -213,6 +213,7 @@ const BiddingPanel: React.FC<BiddingPanelProps> = ({
                         key={increment}
                         onClick={() => handleQuickRaise(increment)}
                         className="btn btn-outline-warning fw-semibold rounded-3 flex-fill"
+                        data-testid={`quick-raise-${increment}`}
                       >
                         +{increment}
                       </button>
@@ -221,6 +222,7 @@ const BiddingPanel: React.FC<BiddingPanelProps> = ({
                   <button
                     onClick={handleBidMore}
                     className="btn btn-lg fw-semibold rounded-3"
+                    data-testid="bid-more-button"
                     style={{ 
                       background: 'linear-gradient(45deg, #dc2626, #b91c1c)',
                       border: 'none',
@@ -241,6 +243,7 @@ const BiddingPanel: React.FC<BiddingPanelProps> = ({
                   <button
                     onClick={handlePass}
                     className="btn btn-outline-light fw-semibold rounded-3"
+                    data-testid="pass-bid-button"
                     disabled={!canPass}
                     title={!canPass ? 'Cannot pass - someone must place the first bid!' : 'Pass your turn'}
                     style={{ 
