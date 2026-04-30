@@ -1,25 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { GameState, Player, Card, GameSettings, Bid, GameAction, GAME_MODES, GameMode, Difficulty, getDifficultyConfig } from '@/types/game';
-import { 
-  createDeck, 
-  dealCards, 
-  generateGameId, 
-  generatePlayerId,
-  removeCardsFromDeck,
-  canPlayCard,
-  determineRoundWinner,
-  calculateRoundPoints,
-  isValidBid,
-  calculateFinalScores,
-  dealCardsAndTransitionState,
-  transitionToBidding,
-  isReadyToDeal,
-  sortCards,
-  checkBiddingRoundComplete,
-  getNextBidder,
-  determineTrickWinner
-} from '@/utils/gameUtils';
+import { GameState, Card, GameSettings, GAME_MODES, Difficulty, Player } from '@/types/game';
+import { determineRoundWinner, calculateRoundPoints, calculateFinalScores } from '@/utils/gameUtils';
 
 // Helper functions for shared game state storage
 const GAMES_STORAGE_KEY = 'kadi-tiri-games';
@@ -40,21 +22,31 @@ const saveGameToStorage = (gameState: GameState) => {
   }
 };
 
-const createGameOnServer = async (gameState: GameState): Promise<GameState> => {
+const createGameOnServer = async (requestBody: {
+  hostName?: string;
+  playerNames?: string[];
+  gameMode: keyof typeof GAME_MODES;
+  difficulty?: Difficulty;
+  settings?: Partial<GameSettings>;
+  autostart?: boolean;
+}): Promise<{ gameState: GameState; currentPlayerId: string }> => {
   const response = await fetch('/api/game/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ gameState })
+    body: JSON.stringify(requestBody)
   });
 
-  const payload = await response.json();
-  if (!response.ok || !payload.success) {
-    throw new Error(payload.error || 'Failed to create game');
+  const responseBody = await response.json();
+  if (!response.ok || !responseBody.success) {
+    throw new Error(responseBody.error || 'Failed to create game');
   }
 
-  return payload.data as GameState;
+  return {
+    gameState: responseBody.data as GameState,
+    currentPlayerId: responseBody.currentPlayerId as string
+  };
 };
 
 const joinGameOnServer = async (gameId: string, playerName: string): Promise<{ gameState: GameState; currentPlayerId: string }> => {
@@ -91,8 +83,7 @@ const fetchGameStateFromServer = async (gameId: string): Promise<GameState | nul
 
   return payload.data as GameState;
 };
-
-import type { GameActionType, GameActionRequest } from '@/pages/api/game/action';
+import type { GameActionRequest } from '@/pages/api/game/action';
 
 /**
  * Send a lightweight action to the server.  The server validates the action
@@ -219,98 +210,21 @@ export const useGameStore = create<GameStore>()(
       createGame: async (playerNames, gameMode, difficulty = 'easy', settings) => {
         try {
           set({ isLoading: true, error: null });
-          
-          const gameId = generateGameId();
-          const players: Player[] = playerNames.map((name, index) => ({
-            id: generatePlayerId(),
-            name,
-            cards: [],
-            score: 0,
-            position: index,
-            isDealer: index === 0,
-            isActive: index === 0
-          }));
-
-          // Get game mode configuration from GAME_MODES
-          const modeConfig = (settings?.mode || GAME_MODES[gameMode as keyof typeof GAME_MODES]) as unknown as GameMode;
-          const selectedDifficulty = modeConfig.supportedDifficulties.includes(difficulty) ? difficulty : modeConfig.supportedDifficulties[0];
-          const difficultyConfig = getDifficultyConfig(modeConfig.players, selectedDifficulty);
-          const maxBid = modeConfig.totalPoints;
-
-          // Create and prepare deck
-          let deck = createDeck(modeConfig.decks);
-          if (modeConfig.removeCards) {
-            deck = removeCardsFromDeck(deck, [...modeConfig.removeCards]);
-          }
-
-          const gameSettings: GameSettings = {
-            mode: modeConfig,
-            difficulty: selectedDifficulty,
-            difficultyConfig: {
-              ...difficultyConfig,
-              bidding: {
-                ...difficultyConfig.bidding,
-                maxBid
-              }
-            },
-            biddingConfig: {
-              ...difficultyConfig.bidding,
-              maxBid
-            },
-            powerhouseSuit: null,
-            partnership: null,
-            allowSecretPartners: settings?.allowSecretPartners ?? true,
-            enableRedeal: settings?.enableRedeal ?? false,
-            gameSpeed: settings?.gameSpeed ?? 'normal'
-          };
-
-          const newGameState: GameState = {
-            id: gameId,
-            status: 'setup',
-            players,
-            currentPlayer: players[0].id,
-            deck,
-            discardPile: [],
-            settings: gameSettings,
-            bidding: {
-              bids: [],
-              currentBid: gameSettings.biddingConfig.startBid - Math.min(...gameSettings.biddingConfig.increments),
-              winner: null,
-              isActive: false
-            },
-            currentTrick: null,
-            completedTricks: [],
-            rounds: [],
-            currentRound: 0,
-            scores: {
-              bidWinnerTeam: 0,
-              opposingTeam: 0,
-              breakdown: {}
-            },
-            winner: null,
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-          };
-
-          set({ 
-            gameState: newGameState, 
-            currentPlayerId: players[0].id,
-            isLoading: false 
+          const { gameState: createdState, currentPlayerId } = await createGameOnServer({
+            playerNames,
+            gameMode: gameMode as keyof typeof GAME_MODES,
+            difficulty,
+            settings,
+            autostart: true
           });
-          savePlayerSession(gameId, players[0].id);
 
-          // Save game to shared storage
-          await createGameOnServer(newGameState);
-          saveGameToStorage(newGameState);
-
-          // Auto-start dealing if all players are ready
-          setTimeout(() => {
-            const currentState = get().gameState;
-            if (currentState && currentState.status === 'setup' && 
-                currentState.players.length === currentState.settings.mode.players) {
-              get().startBidding();
-            }
-          }, 1000); // Short delay to ensure UI is updated
+          set({
+            gameState: createdState,
+            currentPlayerId,
+            isLoading: false
+          });
+          savePlayerSession(createdState.id, currentPlayerId);
+          saveGameToStorage(createdState);
 
         } catch (error) {
           set({ 
@@ -324,83 +238,20 @@ export const useGameStore = create<GameStore>()(
       createWaitingRoom: async (hostName, gameMode, difficulty = 'easy', settings) => {
         try {
           set({ isLoading: true, error: null });
-          
-          const gameId = generateGameId();
-          const hostPlayer: Player = {
-            id: generatePlayerId(),
-            name: hostName,
-            cards: [],
-            score: 0,
-            position: 0,
-            isDealer: true,
-            isActive: true
-          };
-
-          // Get game mode configuration
-          const modeConfig = (settings?.mode || GAME_MODES[gameMode as keyof typeof GAME_MODES]) as unknown as GameMode;
-          const selectedDifficulty = modeConfig.supportedDifficulties.includes(difficulty) ? difficulty : modeConfig.supportedDifficulties[0];
-          const difficultyConfig = getDifficultyConfig(modeConfig.players, selectedDifficulty);
-          const maxBid = modeConfig.totalPoints;
-
-          const gameSettings: GameSettings = {
-            mode: modeConfig,
-            difficulty: selectedDifficulty,
-            difficultyConfig: {
-              ...difficultyConfig,
-              bidding: {
-                ...difficultyConfig.bidding,
-                maxBid
-              }
-            },
-            biddingConfig: {
-              ...difficultyConfig.bidding,
-              maxBid
-            },
-            powerhouseSuit: null,
-            partnership: null,
-            allowSecretPartners: settings?.allowSecretPartners ?? true,
-            enableRedeal: settings?.enableRedeal ?? false,
-            gameSpeed: settings?.gameSpeed ?? 'normal'
-          };
-
-          const newGameState: GameState = {
-            id: gameId,
-            status: 'waiting', // New status for waiting room
-            players: [hostPlayer], // Start with just the host
-            currentPlayer: hostPlayer.id,
-            deck: [],
-            discardPile: [],
-            settings: gameSettings,
-            bidding: {
-              bids: [],
-              currentBid: gameSettings.biddingConfig.startBid - Math.min(...gameSettings.biddingConfig.increments),
-              winner: null,
-              isActive: false
-            },
-            currentTrick: null,
-            completedTricks: [],
-            rounds: [],
-            currentRound: 0,
-            scores: {
-              bidWinnerTeam: 0,
-              opposingTeam: 0,
-              breakdown: {}
-            },
-            winner: null,
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-          };
-
-          set({ 
-            gameState: newGameState, 
-            currentPlayerId: hostPlayer.id,
-            isLoading: false 
+          const { gameState: createdState, currentPlayerId } = await createGameOnServer({
+            hostName,
+            gameMode: gameMode as keyof typeof GAME_MODES,
+            difficulty,
+            settings
           });
-          savePlayerSession(gameId, hostPlayer.id);
 
-          // Save game to shared storage
-          await createGameOnServer(newGameState);
-          saveGameToStorage(newGameState);
+          set({
+            gameState: createdState,
+            currentPlayerId,
+            isLoading: false
+          });
+          savePlayerSession(createdState.id, currentPlayerId);
+          saveGameToStorage(createdState);
 
         } catch (error) {
           set({ 
@@ -423,15 +274,6 @@ export const useGameStore = create<GameStore>()(
           });
           savePlayerSession(gameId, currentPlayerId);
           saveGameToStorage(joinedState);
-
-          if (joinedState.players.length === joinedState.settings.mode.players) {
-            setTimeout(() => {
-              const currentState = get().gameState;
-              if (currentState && currentState.status === 'waiting') {
-                get().startBidding();
-              }
-            }, 500);
-          }
 
           set({ isLoading: false });
           

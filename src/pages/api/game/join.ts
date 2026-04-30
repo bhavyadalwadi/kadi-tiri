@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Player } from '@/types/game';
-import { getGame, saveGame } from '@/lib/server/gameStorage';
+import { applyStartBidding } from '@/lib/gameActions';
+import { atomicUpdate } from '@/lib/server/gameStorage';
 import { generatePlayerId } from '@/utils/gameUtils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -17,49 +18,73 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const gameState = await getGame(gameId);
-    if (!gameState) {
+    let resolvedPlayerId: string | null = null;
+
+    const savedState = await atomicUpdate(gameId, currentState => {
+      const existingPlayer = currentState.players.find(
+        player => player.name.trim().toLowerCase() === playerName.trim().toLowerCase()
+      );
+      if (existingPlayer) {
+        resolvedPlayerId = existingPlayer.id;
+        return currentState;
+      }
+
+      if (currentState.players.length >= currentState.settings.mode.players) {
+        throw new Error('Game is already full');
+      }
+
+      const joinedPlayer: Player = {
+        id: generatePlayerId(),
+        name: playerName.trim(),
+        cards: [],
+        score: 0,
+        position: currentState.players.length,
+        isDealer: false,
+        isActive: false
+      };
+      resolvedPlayerId = joinedPlayer.id;
+
+      const joinedState = {
+        ...currentState,
+        players: [...currentState.players, joinedPlayer],
+        updatedAt: Date.now()
+      };
+
+      if (
+        joinedState.status === 'waiting' &&
+        joinedState.players.length === joinedState.settings.mode.players
+      ) {
+        const result = applyStartBidding({
+          ...joinedState,
+          deck: joinedState.deck.length ? joinedState.deck : joinedState.deck
+        });
+        if ('error' in result) {
+          throw new Error(result.error);
+        }
+        return result.state;
+      }
+
+      return joinedState;
+    }).catch(error => {
+      if (error instanceof Error && error.message === `Game ${gameId} not found`) {
+        return null;
+      }
+      throw error;
+    });
+
+    if (!savedState) {
       return res.status(404).json({ success: false, error: 'Game not found' });
     }
 
-    const existingPlayer = gameState.players.find(
-      player => player.name.trim().toLowerCase() === playerName.trim().toLowerCase()
-    );
-    if (existingPlayer) {
-      return res.status(200).json({
-        success: true,
-        data: gameState,
-        currentPlayerId: existingPlayer.id
-      });
-    }
-
-    if (gameState.players.length >= gameState.settings.mode.players) {
-      return res.status(409).json({ success: false, error: 'Game is already full' });
-    }
-
-    const joinedPlayer: Player = {
-      id: generatePlayerId(),
-      name: playerName.trim(),
-      cards: [],
-      score: 0,
-      position: gameState.players.length,
-      isDealer: false,
-      isActive: false
-    };
-
-    const joinedState = {
-      ...gameState,
-      players: [...gameState.players, joinedPlayer],
-      updatedAt: Date.now()
-    };
-
-    const savedState = await saveGame(joinedState);
     return res.status(200).json({
       success: true,
       data: savedState,
-      currentPlayerId: joinedPlayer.id
+      currentPlayerId: resolvedPlayerId
     });
   } catch (error) {
+    if (error instanceof Error && error.message === 'Game is already full') {
+      return res.status(409).json({ success: false, error: error.message });
+    }
     return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to join game'

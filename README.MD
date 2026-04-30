@@ -18,10 +18,11 @@ What is working now:
 - bid-based result settlement
 - Playwright E2E coverage for the 4-player prototype flow
 - production build and TypeScript check
+- server-owned room creation, join, and gameplay mutations
 
 What is still prototype-level:
-- multiplayer still uses local browser storage instead of a real backend
-- API routes exist but are not a real game server yet
+- browsers still sync by polling the Next.js API instead of real-time sockets
+- the backend is still a Next.js prototype API, not a dedicated multiplayer game server
 - long-term score history across multiple rounds is still limited
 
 ## Tech Stack
@@ -89,6 +90,11 @@ Important:
 - Playwright must run on Node `18+`
 - if your shell is still on Node `14`, switch first with `nvm use 18`
 - local cross-browser room sync currently uses a `250ms` polling loop against the shared Next.js API
+
+Backend note:
+- room creation and room joins are now created on the server
+- when the final player joins a waiting room, the server transitions directly into bidding
+- bids, passes, powerhouse selection, partner selection, start-play, and card-play are all applied server-side
 
 Run in headless mode:
 

@@ -16,6 +16,14 @@
 - Added `test:e2e` and `test:e2e:headed` scripts to the repo.
 - Documented the E2E workflow in the README.
 
+## V2 Backend-Driven Room Flow
+
+- Moved room creation onto the server so the browser no longer constructs the initial game state locally.
+- Moved waiting-room join handling behind an atomic server update, including duplicate-name reuse and full-room validation.
+- Added a server-side room bootstrap helper so debug quick-start and normal waiting rooms are created from the same backend path.
+- When the final player joins a waiting room, the server now transitions the game straight into bidding instead of relying on a client timer.
+- Kept the browser store as a view/cache layer while server endpoints now own room bootstrap and gameplay mutations.
+
 ## V2 Cross-Browser Prototype
 
 - Added lightweight shared room APIs:

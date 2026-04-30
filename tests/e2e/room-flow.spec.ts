@@ -35,35 +35,42 @@ async function waitForExactPlayerCount(page: Page, expectedCount: number) {
   });
 }
 
+async function waitForJoinPageToLoad(page: Page) {
+  await expect
+    .poll(
+      async () => {
+        if (await page.getByTestId('waiting-room').isVisible().catch(() => false)) {
+          return true;
+        }
+
+        if (await page.getByText('Bidding Round').isVisible().catch(() => false)) {
+          return true;
+        }
+
+        if (await page.getByText('Game Setup Complete').isVisible().catch(() => false)) {
+          return true;
+        }
+
+        return false;
+      },
+      { timeout: 15_000 }
+    )
+    .toBe(true);
+}
+
 async function activeBidPage(pages: Page[]): Promise<Page> {
   let activeIndex = -1;
 
   await expect
     .poll(
       async () => {
-        const snapshots = await Promise.all(
-          pages.map(async page => ({
-            currentUser: (await page.getByTestId('current-user-name').textContent().catch(() => null))?.trim() || null,
-            currentTurn: (await page.getByTestId('current-turn-name').textContent().catch(() => null))?.trim() || null,
-            hasBidControls:
-              (await page.getByTestId('quick-raise-5').isVisible().catch(() => false)) ||
-              (await page.getByTestId('bid-more-button').isVisible().catch(() => false))
-          }))
-        );
-
-        const distinctTurnNames = Array.from(
-          new Set(snapshots.map(snapshot => snapshot.currentTurn).filter(Boolean))
-        );
-
-        if (distinctTurnNames.length !== 1) {
-          return -1;
-        }
-
-        const sharedTurnName = distinctTurnNames[0];
-
         for (let index = 0; index < pages.length; index += 1) {
-          const snapshot = snapshots[index];
-          if (snapshot.hasBidControls && snapshot.currentUser === sharedTurnName) {
+          const page = pages[index];
+          const hasBidControls =
+            (await page.getByTestId('quick-raise-5').isVisible().catch(() => false)) ||
+            (await page.getByTestId('bid-more-button').isVisible().catch(() => false));
+
+          if (hasBidControls) {
             activeIndex = index;
             return index;
           }
@@ -76,6 +83,59 @@ async function activeBidPage(pages: Page[]): Promise<Page> {
     .not.toBe(-1);
 
   return pages[activeIndex];
+}
+
+async function activePassPage(pages: Page[]): Promise<Page> {
+  let activeIndex = -1;
+
+  await expect
+    .poll(
+      async () => {
+        for (let index = 0; index < pages.length; index += 1) {
+          const page = pages[index];
+          const passButton = page.getByTestId('pass-bid-button');
+          const canPass =
+            (await passButton.isVisible().catch(() => false)) &&
+            (await passButton.isEnabled().catch(() => false));
+
+          if (canPass) {
+            activeIndex = index;
+            return index;
+          }
+        }
+
+        return -1;
+      },
+      { timeout: 15_000 }
+    )
+    .not.toBe(-1);
+
+  return pages[activeIndex];
+}
+
+async function passBidAndWait(page: Page) {
+  const previousTurn = (await page.getByTestId('current-turn-name').textContent().catch(() => null))?.trim() || '';
+  await page.getByTestId('pass-bid-button').click();
+
+  await expect
+    .poll(
+      async () => {
+        if (await page.getByText('Bidding Winner Setup').isVisible().catch(() => false)) {
+          return true;
+        }
+
+        const currentTurn = (await page.getByTestId('current-turn-name').textContent().catch(() => null))?.trim() || '';
+        const passButton = page.getByTestId('pass-bid-button');
+        const stillOwnsTurn =
+          currentTurn === previousTurn &&
+          (await passButton.isVisible().catch(() => false)) &&
+          (await passButton.isEnabled().catch(() => false));
+
+        return !stillOwnsTurn;
+      },
+      { timeout: 15_000 }
+    )
+    .toBe(true);
 }
 
 async function activeTurnPage(pages: Page[]): Promise<Page> {
@@ -140,7 +200,7 @@ async function createFourPlayerFlow(browser: Browser) {
     const player = await newPlayerPage(browser);
     players.push(player);
     await player.page.goto(`/game?join=${gameId}`);
-    await expect(player.page.getByTestId('waiting-room')).toBeVisible();
+    await waitForJoinPageToLoad(player.page);
 
     if (i < 2) {
       await waitForExactPlayerCount(host.page, i + 2);
@@ -158,8 +218,8 @@ async function createFourPlayerFlow(browser: Browser) {
   await openingPage.getByTestId('quick-raise-5').click();
 
   for (let i = 0; i < 3; i += 1) {
-    const page = await activeBidPage(pages);
-    await page.getByTestId('pass-bid-button').click();
+    const page = await activePassPage(pages);
+    await passBidAndWait(page);
   }
 
   await expect(openingPage.getByText('Bidding Winner Setup')).toBeVisible({ timeout: 15_000 });
@@ -254,19 +314,10 @@ test('four players can create a room, join, bid, choose setup, and see the first
   try {
     const flow = await createFourPlayerFlow(browser);
     players = flow.players;
-    const { pages, openingPage: leadPage } = flow;
+    const { pages } = flow;
 
-    await expect
-      .poll(
-        async () => {
-          const currentUser = await leadPage.getByTestId('current-user-name').textContent();
-          const currentTurn = await leadPage.getByTestId('current-turn-name').textContent();
-          return currentUser?.trim() === currentTurn?.trim();
-        },
-        { timeout: 15_000 }
-      )
-      .toBe(true);
-
+    await waitForPagesToSync(pages);
+    const leadPage = await activeTurnPage(pages);
     await playFirstPlayableCard(leadPage);
 
     for (const page of pages) {
@@ -284,12 +335,11 @@ test('four players can complete one full trick and advance the winner to the nex
   try {
     const flow = await createFourPlayerFlow(browser);
     players = flow.players;
-    const { pages, openingPage } = flow;
-
-    const trickLeader = openingPage;
+    const { pages } = flow;
+    await waitForPagesToSync(pages);
 
     for (let i = 0; i < 4; i += 1) {
-      const actingPage = i === 0 ? trickLeader : await activeTurnPage(pages);
+      const actingPage = await activeTurnPage(pages);
       const currentTurnName = (await actingPage.getByTestId('current-turn-name').textContent())?.trim();
       await playFirstPlayableCard(actingPage);
       await waitForPagesToSync(pages);
@@ -322,9 +372,10 @@ test('follow-suit is enforced when a player has the led suit in hand', async ({ 
   try {
     const flow = await createFourPlayerFlow(browser);
     players = flow.players;
-    const { pages, openingPage } = flow;
+    const { pages } = flow;
 
-    await playFirstPlayableCard(openingPage);
+    const openingPlayPage = await activeTurnPage(pages);
+    await playFirstPlayableCard(openingPlayPage);
     await waitForPagesToSync(pages);
 
     let enforced = false;
