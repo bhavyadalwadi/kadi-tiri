@@ -92,26 +92,30 @@ const fetchGameStateFromServer = async (gameId: string): Promise<GameState | nul
   return payload.data as GameState;
 };
 
-const saveGameStateToServer = async (gameState: GameState): Promise<GameState> => {
-  const response = await fetch('/api/game/state', {
+import type { GameActionType, GameActionRequest } from '@/pages/api/game/action';
+
+/**
+ * Send a lightweight action to the server.  The server validates the action
+ * against the authoritative state and returns the resulting state.
+ * Only action-specific fields are sent – the full state is never uploaded.
+ */
+const executeAction = async (
+  payload: Omit<GameActionRequest, never>
+): Promise<GameState> => {
+  const response = await fetch('/api/game/action', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ gameState })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
   });
 
-  const payload = await response.json();
-  if (!response.ok || !payload.success) {
-    throw new Error(payload.error || 'Failed to save game');
+  const data = await response.json();
+  if (!response.ok || !data.success) {
+    throw new Error(data.error || 'Action failed');
   }
 
-  return payload.data as GameState;
-};
-
-const persistGameState = async (gameState: GameState): Promise<GameState> => {
-  saveGameToStorage(gameState);
-  return saveGameStateToServer(gameState);
+  const state = data.data as GameState;
+  saveGameToStorage(state);
+  return state;
 };
 
 const savePlayerSession = (gameId: string, playerId: string) => {
@@ -445,228 +449,37 @@ export const useGameStore = create<GameStore>()(
         const { gameState } = get();
         if (!gameState) return;
 
-        if (isReadyToDeal(gameState)) {
-          const dealtGameState = dealCardsAndTransitionState(gameState);
-          set({ gameState: dealtGameState });
-          await persistGameState(dealtGameState);
-          
-          // Auto-transition to bidding after showing cards for 1 second
-          setTimeout(() => {
-            const currentState = get().gameState;
-            if (currentState && currentState.status === 'dealing') {
-              const biddingState = transitionToBidding(currentState);
-              set({ gameState: biddingState });
-              void persistGameState(biddingState);
-            }
-          }, 1000);
-        } else {
-          // Fallback to original logic if conditions aren't met
-          const { players: dealtPlayers, remainingDeck } = dealCards(
-            gameState.deck,
-            gameState.players,
-            gameState.settings.mode.cardsPerPlayer
-          );
-
-          set({
-            gameState: {
-              ...gameState,
-              status: 'bidding',
-              players: dealtPlayers,
-              deck: remainingDeck,
-              bidding: {
-                ...gameState.bidding,
-                isActive: true
-              },
-              updatedAt: Date.now()
-            }
-          });
-
-          // Save updated game state to storage
-          const updatedState = get().gameState;
-          if (updatedState) {
-            await persistGameState(updatedState);
-          }
+        try {
+          const newState = await executeAction({ gameId: gameState.id, type: 'startBidding' });
+          set({ gameState: newState });
+        } catch (error) {
+          set({ error: error instanceof Error ? error.message : 'Failed to start bidding' });
         }
       },
 
       // Place a bid
       placeBid: async (playerId, amount) => {
         const { gameState } = get();
-        if (!gameState || gameState.status !== 'bidding') return;
+        if (!gameState) return;
 
-        const player = gameState.players.find(p => p.id === playerId);
-        if (!player) return;
-
-        if (playerId !== gameState.currentPlayer) {
-          set({ error: 'Not your turn to bid' });
-          return;
-        }
-
-        if (!isValidBid(amount, gameState.bidding.currentBid, gameState.settings.mode, gameState.settings.biddingConfig.increments)) {
-          set({ error: 'Invalid bid amount' });
-          return;
-        }
-
-        const newBid: Bid = {
-          playerId,
-          amount,
-          timestamp: Date.now(),
-          passed: false
-        };
-
-        const updatedBids = [...gameState.bidding.bids, newBid];
-        
-        // Create updated game state
-        const updatedGameState = {
-          ...gameState,
-          bidding: {
-            ...gameState.bidding,
-            bids: updatedBids,
-            currentBid: amount,
-            winner: playerId
-          },
-          updatedAt: Date.now()
-        };
-
-        // Check if bidding round is complete
-        const biddingStatus = checkBiddingRoundComplete(updatedGameState);
-        
-        if (biddingStatus.isComplete) {
-          if (biddingStatus.canAdvance && biddingStatus.winner) {
-            // Bidding is complete, move to partner selection
-            const finalState = {
-              ...updatedGameState,
-              status: 'partner-selection' as const,
-              bidding: {
-                ...updatedGameState.bidding,
-                winner: biddingStatus.winner,
-                isActive: false
-              }
-            };
-            set({ gameState: finalState });
-            await persistGameState(finalState);
-          } else {
-            // All players passed, restart bidding with lower starting bid
-            const minimumIncrement = Math.min(...gameState.settings.biddingConfig.increments);
-            const newStartBid = Math.max(
-              gameState.settings.biddingConfig.startBid - minimumIncrement,
-              Math.floor(gameState.settings.biddingConfig.startBid * 0.8)
-            );
-            
-            const restartState = {
-              ...gameState,
-              bidding: {
-                bids: [],
-                currentBid: newStartBid,
-                winner: null,
-                isActive: true
-              },
-              currentPlayer: gameState.players.find(p => p.isDealer)?.id || gameState.players[0].id,
-              updatedAt: Date.now()
-            };
-            
-            set({
-              gameState: restartState,
-              error: 'All players passed. Starting new bidding round with lower starting bid.'
-            });
-            await persistGameState(restartState);
-          }
-        } else {
-          // Continue bidding with next player
-          const nextPlayer = getNextBidder(updatedGameState);
-          const continueState = {
-            ...updatedGameState,
-            currentPlayer: nextPlayer || gameState.currentPlayer
-          };
-          set({ gameState: continueState });
-          await persistGameState(continueState);
+        try {
+          const newState = await executeAction({ gameId: gameState.id, type: 'placeBid', playerId, amount });
+          set({ gameState: newState });
+        } catch (error) {
+          set({ error: error instanceof Error ? error.message : 'Failed to place bid' });
         }
       },
 
       // Pass on bidding
       passBid: async (playerId) => {
         const { gameState } = get();
-        if (!gameState || gameState.status !== 'bidding') return;
+        if (!gameState) return;
 
-        const player = gameState.players.find(p => p.id === playerId);
-        if (!player) return;
-
-        if (playerId !== gameState.currentPlayer) {
-          set({ error: 'Not your turn to pass' });
-          return;
-        }
-
-        const passBid: Bid = {
-          playerId,
-          amount: 0,
-          timestamp: Date.now(),
-          passed: true
-        };
-
-        const updatedBids = [...gameState.bidding.bids, passBid];
-        
-        // Create updated game state
-        const updatedGameState = {
-          ...gameState,
-          bidding: {
-            ...gameState.bidding,
-            bids: updatedBids
-          },
-          updatedAt: Date.now()
-        };
-
-        // Check if bidding round is complete
-        const biddingStatus = checkBiddingRoundComplete(updatedGameState);
-        
-        if (biddingStatus.isComplete) {
-          if (biddingStatus.canAdvance && biddingStatus.winner) {
-            // Bidding is complete, move to partner selection
-            const finalState = {
-              ...updatedGameState,
-              status: 'partner-selection' as const,
-              bidding: {
-                ...updatedGameState.bidding,
-                winner: biddingStatus.winner,
-                isActive: false
-              }
-            };
-            set({ gameState: finalState });
-            await persistGameState(finalState);
-          } else {
-            // All players passed, restart bidding
-            const minimumIncrement = Math.min(...gameState.settings.biddingConfig.increments);
-            const newStartBid = Math.max(
-              gameState.settings.biddingConfig.startBid - minimumIncrement,
-              Math.floor(gameState.settings.biddingConfig.startBid * 0.8)
-            );
-            
-            const restartState = {
-              ...gameState,
-              bidding: {
-                bids: [],
-                currentBid: newStartBid,
-                winner: null,
-                isActive: true
-              },
-              currentPlayer: gameState.players.find(p => p.isDealer)?.id || gameState.players[0].id,
-              updatedAt: Date.now()
-            };
-            
-            set({
-              gameState: restartState,
-              error: 'All players passed. Starting new bidding round with lower starting bid.'
-            });
-            await persistGameState(restartState);
-          }
-        } else {
-          // Continue bidding with next player
-          const nextPlayer = getNextBidder(updatedGameState);
-          const continueState = {
-            ...updatedGameState,
-            currentPlayer: nextPlayer || gameState.currentPlayer
-          };
-          set({ gameState: continueState });
-          await persistGameState(continueState);
+        try {
+          const newState = await executeAction({ gameId: gameState.id, type: 'passBid', playerId });
+          set({ gameState: newState });
+        } catch (error) {
+          set({ error: error instanceof Error ? error.message : 'Failed to pass bid' });
         }
       },
 
@@ -676,271 +489,56 @@ export const useGameStore = create<GameStore>()(
         if (!gameState || gameState.status !== 'partner-selection') return;
 
 
-        const newGameState: GameState = {
-          ...gameState,
-          settings: {
-            ...gameState.settings,
-            powerhouseSuit: suit as any
-          },
-          updatedAt: Date.now()
-        };
-
-
-        set({ gameState: newGameState });
-        await persistGameState(newGameState);
+        try {
+          const newState = await executeAction({ gameId: gameState.id, type: 'selectPowerhouse', suit });
+          set({ gameState: newState });
+        } catch (error) {
+          set({ error: error instanceof Error ? error.message : 'Failed to select powerhouse' });
+        }
       },
 
       // Select partners
       selectPartners: async (cards) => {
         const { gameState } = get();
-        if (!gameState || gameState.status !== 'partner-selection') return;
+        if (!gameState) return;
 
-
-        // Find which players have the selected partner cards in their hands
-        const partnerPlayerIds: string[] = [];
-        
-        cards.forEach(partnerCard => {
-          gameState.players.forEach(player => {
-            // Skip the bid winner (they can't be their own partner)
-            if (player.id === gameState.bidding.winner) return;
-            
-            // Check if this player has the partner card
-            const hasPartnerCard = player.cards.some(card => 
-              card.rank === partnerCard.rank && card.suit === partnerCard.suit
-            );
-            
-            if (hasPartnerCard && !partnerPlayerIds.includes(player.id)) {
-              partnerPlayerIds.push(player.id);
-            }
-          });
-        });
-
-
-        const partnership = {
-          bidWinner: gameState.bidding.winner!,
-          partners: partnerPlayerIds, // Now contains actual partner player IDs
-          partnerCards: cards,
-          revealed: false
-        };
-
-        const newGameState: GameState = {
-          ...gameState,
-          settings: {
-            ...gameState.settings,
-            partnership
-          },
-          updatedAt: Date.now()
-        };
-
-
-        set({ gameState: newGameState });
-        await persistGameState(newGameState);
+        try {
+          const newState = await executeAction({ gameId: gameState.id, type: 'selectPartners', cards });
+          set({ gameState: newState });
+        } catch (error) {
+          set({ error: error instanceof Error ? error.message : 'Failed to select partners' });
+        }
       },
 
       // Play a card
       playCard: async (playerId, card) => {
         const { gameState } = get();
-        if (!gameState || gameState.status !== 'playing') {
-          set({ error: 'Cannot play card - game not in playing state' });
-          return;
-        }
+        if (!gameState) return;
 
+        // Optimistic local validation for immediate error feedback.
         if (gameState.currentPlayer !== playerId) {
           set({ error: 'Not your turn to play' });
           return;
         }
-
-        // Check lead suit following rule
-        const player = gameState.players.find(p => p.id === playerId);
-        if (!player) {
-          set({ error: 'Player not found' });
-          return;
-        }
-
-        // If there's a current trick with a lead suit, check if player must follow suit
-        if (gameState.currentTrick && gameState.currentTrick.leadSuit && gameState.currentTrick.cards.length > 0) {
+        if (
+          gameState.currentTrick &&
+          gameState.currentTrick.leadSuit &&
+          gameState.currentTrick.cards.length > 0
+        ) {
+          const player = gameState.players.find(p => p.id === playerId);
           const leadSuit = gameState.currentTrick.leadSuit;
-          const hasLeadSuit = player.cards.some(c => c.suit === leadSuit);
-          
-          if (hasLeadSuit && card.suit !== leadSuit) {
+          if (player?.cards.some(c => c.suit === leadSuit) && card.suit !== leadSuit) {
             set({ error: `You must play a ${leadSuit} card if you have one!` });
             return;
           }
         }
 
-
-        // Remove card from player's hand
-        const updatedPlayers = gameState.players.map(player => {
-          if (player.id === playerId) {
-            return {
-              ...player,
-              cards: player.cards.filter(c => c.id !== card.id)
-            };
-          }
-          return player;
-        });
-
-        // Add card to current trick
-        let currentTrick = gameState.currentTrick;
-        if (!currentTrick) {
-          // Start new trick
-          currentTrick = {
-            id: `trick-${Date.now()}`,
-            cards: [],
-            leadSuit: card.suit,
-            winner: null,
-            points: 0,
-            completed: false
-          };
+        try {
+          const newState = await executeAction({ gameId: gameState.id, type: 'playCard', playerId, card });
+          set({ gameState: newState });
+        } catch (error) {
+          set({ error: error instanceof Error ? error.message : 'Failed to play card' });
         }
-
-        const playedCard = {
-          playerId,
-          playerName: gameState.players.find(p => p.id === playerId)?.name || 'Unknown',
-          card,
-          playOrder: currentTrick.cards.length
-        };
-
-        currentTrick.cards.push(playedCard);
-
-        // If this is the first card, set lead suit
-        if (currentTrick.cards.length === 1) {
-          currentTrick.leadSuit = card.suit;
-        }
-
-        // Check if trick is complete (all players played)
-        const trickComplete = currentTrick.cards.length === gameState.players.length;
-        let nextPlayer = playerId;
-        let updatedCompletedTricks = gameState.completedTricks;
-
-        if (trickComplete) {
-          
-          const powerhouseSuit = gameState.settings.powerhouseSuit;
-          
-          if (powerhouseSuit && currentTrick.leadSuit) {
-            const winnerId = determineTrickWinner(currentTrick.cards, currentTrick.leadSuit, powerhouseSuit);
-            
-            if (winnerId) {
-              currentTrick.winner = winnerId;
-              currentTrick.completed = true;
-              
-              // Calculate trick points
-              currentTrick.points = currentTrick.cards.reduce((sum, playedCard) => sum + playedCard.card.points, 0);
-              
-              
-              // Winner leads next trick
-              nextPlayer = winnerId;
-              
-              // Move trick to completed tricks
-              updatedCompletedTricks = [...gameState.completedTricks, currentTrick];
-              currentTrick = null; // Clear current trick for next one
-            } else {
-            }
-          } else {
-          }
-        } else {
-          // Next player's turn
-          const currentPlayerIndex = gameState.players.findIndex(p => p.id === playerId);
-          const nextPlayerIndex = (currentPlayerIndex + 1) % gameState.players.length;
-          nextPlayer = gameState.players[nextPlayerIndex].id;
-        }
-
-        // Calculate updated team scores from completed tricks
-        let updatedBidWinnerTeamScore = gameState.scores.bidWinnerTeam;
-        let updatedOpposingTeamScore = gameState.scores.opposingTeam;
-
-        // Check if all hands are empty (round complete)
-        const allCardsPlayed = updatedPlayers.every(player => player.cards.length === 0);
-        
-        // Add points from the latest completed trick if there was one
-        if (updatedCompletedTricks.length > gameState.completedTricks.length) {
-          const latestTrick = updatedCompletedTricks[updatedCompletedTricks.length - 1];
-          if (latestTrick.winner && latestTrick.points > 0) {
-            // Track individual player contribution
-            const currentBreakdown = { ...gameState.scores.breakdown };
-            if (!currentBreakdown[latestTrick.winner]) {
-              currentBreakdown[latestTrick.winner] = 0;
-            }
-            currentBreakdown[latestTrick.winner] += latestTrick.points;
-            
-            if (gameState.settings.partnership) {
-              const teamMembers = [
-                gameState.settings.partnership.bidWinner,
-                ...gameState.settings.partnership.partners
-              ];
-              
-              if (teamMembers.includes(latestTrick.winner)) {
-                updatedBidWinnerTeamScore += latestTrick.points;
-              } else {
-                updatedOpposingTeamScore += latestTrick.points;
-              }
-            }
-            
-            // Update the gameState with individual contributions
-            set({
-              gameState: {
-                ...gameState,
-                players: updatedPlayers,
-                currentTrick,
-                completedTricks: updatedCompletedTricks,
-                currentPlayer: nextPlayer,
-                scores: {
-                  bidWinnerTeam: updatedBidWinnerTeamScore,
-                  opposingTeam: updatedOpposingTeamScore,
-                  breakdown: currentBreakdown
-                },
-                updatedAt: Date.now()
-              }
-            });
-            await persistGameState(get().gameState!);
-            return; // Exit early since we updated the state
-          }
-        }
-
-        if (allCardsPlayed) {
-          const tempGameState = {
-            ...gameState,
-            players: updatedPlayers,
-            completedTricks: updatedCompletedTricks
-          };
-
-          const finalScores = calculateFinalScores(tempGameState);
-
-          set({
-            gameState: {
-              ...tempGameState,
-              status: 'finished',
-              winner: finalScores.winner,
-              scores: {
-                bidWinnerTeam: finalScores.bidWinnerTeamScore,
-                opposingTeam: finalScores.opposingTeamScore,
-                breakdown: finalScores.individualScores
-              },
-              updatedAt: Date.now()
-            }
-          });
-          await persistGameState(get().gameState!);
-
-          return;
-        }
-
-        // Update game state (when no new tricks completed)
-        set({
-          gameState: {
-            ...gameState,
-            players: updatedPlayers,
-            currentPlayer: nextPlayer,
-            currentTrick,
-            completedTricks: updatedCompletedTricks,
-            scores: {
-              ...gameState.scores,
-              bidWinnerTeam: updatedBidWinnerTeamScore,
-              opposingTeam: updatedOpposingTeamScore
-            },
-            updatedAt: Date.now()
-          }
-        });
-        await persistGameState(get().gameState!);
       },
 
       // End current round
@@ -987,21 +585,20 @@ export const useGameStore = create<GameStore>()(
           }
         }
 
-        set({
-          gameState: {
-            ...gameState,
-            rounds,
-            currentRound: gameState.currentRound + 1,
-            currentPlayer: winner, // Winner leads next round
-            scores: {
-              ...gameState.scores,
-              bidWinnerTeam: bidWinnerTeamScore,
-              opposingTeam: opposingTeamScore
-            },
-            updatedAt: Date.now()
-          }
-        });
-        await persistGameState(get().gameState!);
+        const endRoundState: GameState = {
+          ...gameState,
+          rounds,
+          currentRound: gameState.currentRound + 1,
+          currentPlayer: winner,
+          scores: {
+            ...gameState.scores,
+            bidWinnerTeam: bidWinnerTeamScore,
+            opposingTeam: opposingTeamScore
+          },
+          updatedAt: Date.now()
+        };
+        set({ gameState: endRoundState });
+        saveGameToStorage(endRoundState);
       },
 
       // End the game
@@ -1011,19 +608,18 @@ export const useGameStore = create<GameStore>()(
 
         const finalScores = calculateFinalScores(gameState);
 
-        set({
-          gameState: {
-            ...gameState,
-            status: 'finished',
-            winner: finalScores.winner,
-            scores: {
-              ...gameState.scores,
-              breakdown: finalScores.individualScores
-            },
-            updatedAt: Date.now()
-          }
-        });
-        await persistGameState(get().gameState!);
+        const endGameState: GameState = {
+          ...gameState,
+          status: 'finished',
+          winner: finalScores.winner,
+          scores: {
+            ...gameState.scores,
+            breakdown: finalScores.individualScores
+          },
+          updatedAt: Date.now()
+        };
+        set({ gameState: endGameState });
+        saveGameToStorage(endGameState);
       },
 
       // Reset game
@@ -1049,39 +645,19 @@ export const useGameStore = create<GameStore>()(
       // Start playing phase
       startPlaying: async () => {
         const { gameState } = get();
-        if (!gameState || gameState.status !== 'partner-selection') {
-          set({ error: 'Cannot start playing - complete partner selection first' });
-          return;
+        if (!gameState) return;
+
+        try {
+          const newState = await executeAction({ gameId: gameState.id, type: 'startPlaying' });
+          set({ gameState: newState });
+        } catch (error) {
+          set({ error: error instanceof Error ? error.message : 'Failed to start playing' });
         }
-
-        if (!gameState.settings.powerhouseSuit || !gameState.settings.partnership) {
-          set({ error: 'Cannot start playing - powerhouse suit and partners not selected' });
-          return;
-        }
-
-        
-        // Bid winner leads the first trick in V2.
-        const bidWinnerId = gameState.bidding.winner;
-
-        const newGameState: GameState = {
-          ...gameState,
-          status: 'playing',
-          currentPlayer: bidWinnerId || gameState.currentPlayer,
-          currentTrick: null,
-          completedTricks: [],
-          updatedAt: Date.now()
-        };
-
-        set({ gameState: newGameState });
-        await persistGameState(newGameState);
       },
 
-      // Helper to save current game state to storage
+      // Helper to save current game state to storage (no-op – state is now managed server-side)
       saveCurrentGame: async () => {
-        const currentState = get().gameState;
-        if (currentState) {
-          await persistGameState(currentState);
-        }
+        // Actions are persisted atomically via the action endpoint; nothing to do here.
       },
 
       loadGameSession: async (gameId) => {
