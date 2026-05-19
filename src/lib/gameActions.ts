@@ -15,7 +15,8 @@ import {
   transitionToBidding,
   isReadyToDeal,
   dealCards,
-  sortCards
+  sortCards,
+  nextUpdatedAt
 } from '@/utils/gameUtils';
 
 export type ActionResult = { state: GameState } | { error: string };
@@ -35,7 +36,7 @@ export function applyStartBidding(state: GameState): ActionResult {
   if (isReadyToDeal(state)) {
     const dealingState = dealCardsAndTransitionState(state);
     const biddingState = transitionToBidding({ ...dealingState, status: 'dealing' });
-    return ok({ ...biddingState, updatedAt: Date.now() });
+    return ok({ ...biddingState, updatedAt: nextUpdatedAt(biddingState.updatedAt) });
   }
 
   // Fallback path: already past setup, just transition to bidding.
@@ -51,7 +52,7 @@ export function applyStartBidding(state: GameState): ActionResult {
     players: dealtPlayers,
     deck: remainingDeck,
     bidding: { ...state.bidding, isActive: true },
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(state.updatedAt)
   });
 }
 
@@ -77,7 +78,7 @@ export function applyPlaceBid(state: GameState, playerId: string, amount: number
   const updated: GameState = {
     ...state,
     bidding: { ...state.bidding, bids: updatedBids, currentBid: amount, winner: playerId },
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(state.updatedAt)
   };
 
   return _resolveBiddingRound(state, updated);
@@ -95,7 +96,7 @@ export function applyPassBid(state: GameState, playerId: string): ActionResult {
   const updated: GameState = {
     ...state,
     bidding: { ...state.bidding, bids: updatedBids },
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(state.updatedAt)
   };
 
   return _resolveBiddingRound(state, updated);
@@ -131,7 +132,7 @@ function _resolveBiddingRound(original: GameState, updated: GameState): ActionRe
       },
       currentPlayer:
         original.players.find(p => p.isDealer)?.id || original.players[0].id,
-      updatedAt: Date.now()
+      updatedAt: nextUpdatedAt(original.updatedAt)
     });
   }
 
@@ -150,7 +151,7 @@ export function applySelectPowerhouse(state: GameState, suit: string): ActionRes
   return ok({
     ...state,
     settings: { ...state.settings, powerhouseSuit: suit as Suit },
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(state.updatedAt)
   });
 }
 
@@ -182,7 +183,7 @@ export function applySelectPartners(state: GameState, cards: Card[]): ActionResu
   return ok({
     ...state,
     settings: { ...state.settings, partnership },
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(state.updatedAt)
   });
 }
 
@@ -200,7 +201,7 @@ export function applyStartPlaying(state: GameState): ActionResult {
     currentPlayer: state.bidding.winner ?? state.currentPlayer,
     currentTrick: null,
     completedTricks: [],
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(state.updatedAt)
   });
 }
 
@@ -327,7 +328,7 @@ export function applyPlayCard(state: GameState, playerId: string, card: Card): A
         opposingTeam: finalScores.opposingTeamScore,
         breakdown: finalScores.individualScores
       },
-      updatedAt: Date.now()
+      updatedAt: nextUpdatedAt(state.updatedAt)
     });
   }
 
@@ -338,6 +339,6 @@ export function applyPlayCard(state: GameState, playerId: string, card: Card): A
     currentTrick: currentTrick ?? null,
     completedTricks: updatedCompletedTricks,
     scores: { bidWinnerTeam: bidWinnerTeamScore, opposingTeam: opposingTeamScore, breakdown },
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(state.updatedAt)
   });
 }

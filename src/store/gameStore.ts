@@ -3,23 +3,38 @@ import { devtools } from 'zustand/middleware';
 import { GameState, Card, GameSettings, GAME_MODES, Difficulty, Player } from '@/types/game';
 import { determineRoundWinner, calculateRoundPoints, calculateFinalScores } from '@/utils/gameUtils';
 
-// Helper functions for shared game state storage
-const GAMES_STORAGE_KEY = 'kadi-tiri-games';
 const LAST_GAME_STORAGE_KEY = 'kadi-tiri-last-game';
+const GAME_UPDATE_SIGNAL_KEY = 'kadi-tiri-game-update';
 const getPlayerSessionKey = (gameId: string) => `kadi-tiri-player-${gameId}`;
 
-// Local cache for quick resume in the active browser.
-const saveGameToStorage = (gameState: GameState) => {
-  try {
-    const existingGames = JSON.parse(localStorage.getItem(GAMES_STORAGE_KEY) || '{}');
-    existingGames[gameState.id] = gameState;
-    localStorage.setItem(GAMES_STORAGE_KEY, JSON.stringify(existingGames));
-    
-    // Also save to sessionStorage as fallback
-    sessionStorage.setItem(`game-${gameState.id}`, JSON.stringify(gameState));
-  } catch (error) {
-    console.error('Failed to save game to storage:', error);
+let gameUpdatesChannel: BroadcastChannel | null = null;
+
+const getGameUpdatesChannel = () => {
+  if (typeof window === 'undefined' || typeof BroadcastChannel === 'undefined') {
+    return null;
   }
+
+  if (!gameUpdatesChannel) {
+    gameUpdatesChannel = new BroadcastChannel('kadi-tiri-game-updates');
+  }
+
+  return gameUpdatesChannel;
+};
+
+const broadcastGameUpdate = (gameState: GameState) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const payload = JSON.stringify({ gameId: gameState.id, updatedAt: gameState.updatedAt });
+
+  try {
+    localStorage.setItem(GAME_UPDATE_SIGNAL_KEY, payload);
+  } catch (error) {
+    console.error('Failed to broadcast game update via localStorage:', error);
+  }
+
+  getGameUpdatesChannel()?.postMessage(payload);
 };
 
 const createGameOnServer = async (requestBody: {
@@ -70,7 +85,12 @@ const joinGameOnServer = async (gameId: string, playerName: string): Promise<{ g
 };
 
 const fetchGameStateFromServer = async (gameId: string): Promise<GameState | null> => {
-  const response = await fetch(`/api/game/state?gameId=${encodeURIComponent(gameId)}`);
+  const response = await fetch(`/api/game/state?gameId=${encodeURIComponent(gameId)}&t=${Date.now()}`, {
+    cache: 'no-store',
+    headers: {
+      'Cache-Control': 'no-cache'
+    }
+  });
   const payload = await response.json();
 
   if (response.status === 404) {
@@ -105,7 +125,7 @@ const executeAction = async (
   }
 
   const state = data.data as GameState;
-  saveGameToStorage(state);
+  broadcastGameUpdate(state);
   return state;
 };
 
@@ -124,47 +144,6 @@ const loadPlayerSession = (gameId: string): string | null => {
   } catch (error) {
     console.error('Failed to load player session:', error);
     return null;
-  }
-};
-
-const loadGameFromStorage = (gameId: string): GameState | null => {
-  try {
-    // First try localStorage
-    const existingGames = JSON.parse(localStorage.getItem(GAMES_STORAGE_KEY) || '{}');
-    
-    let game = existingGames[gameId];
-    
-    // If not found in localStorage, try sessionStorage
-    if (!game) {
-      const sessionGame = sessionStorage.getItem(`game-${gameId}`);
-      if (sessionGame) {
-        game = JSON.parse(sessionGame);
-      }
-    }
-    
-    return game || null;
-  } catch (error) {
-    console.error('Failed to load game from storage:', error);
-    return null;
-  }
-};
-
-const getAllGamesFromStorage = (): Record<string, GameState> => {
-  try {
-    return JSON.parse(localStorage.getItem(GAMES_STORAGE_KEY) || '{}');
-  } catch (error) {
-    console.error('Failed to load games from storage:', error);
-    return {};
-  }
-};
-
-const removeGameFromStorage = (gameId: string) => {
-  try {
-    const existingGames = JSON.parse(localStorage.getItem(GAMES_STORAGE_KEY) || '{}');
-    delete existingGames[gameId];
-    localStorage.setItem(GAMES_STORAGE_KEY, JSON.stringify(existingGames));
-  } catch (error) {
-    console.error('Failed to remove game from storage:', error);
   }
 };
 
@@ -195,6 +174,7 @@ interface GameStore {
   saveCurrentGame: () => Promise<void>;
   loadGameSession: (gameId: string) => Promise<boolean>;
   syncGameFromStorage: (gameId: string) => Promise<void>;
+  applyServerGameState: (gameState: GameState) => void;
 }
 
 export const useGameStore = create<GameStore>()(
@@ -224,8 +204,7 @@ export const useGameStore = create<GameStore>()(
             isLoading: false
           });
           savePlayerSession(createdState.id, currentPlayerId);
-          saveGameToStorage(createdState);
-
+          broadcastGameUpdate(createdState);
         } catch (error) {
           set({ 
             error: error instanceof Error ? error.message : 'Failed to create game',
@@ -251,8 +230,7 @@ export const useGameStore = create<GameStore>()(
             isLoading: false
           });
           savePlayerSession(createdState.id, currentPlayerId);
-          saveGameToStorage(createdState);
-
+          broadcastGameUpdate(createdState);
         } catch (error) {
           set({ 
             error: error instanceof Error ? error.message : 'Failed to create waiting room',
@@ -273,8 +251,7 @@ export const useGameStore = create<GameStore>()(
             currentPlayerId
           });
           savePlayerSession(gameId, currentPlayerId);
-          saveGameToStorage(joinedState);
-
+          broadcastGameUpdate(joinedState);
           set({ isLoading: false });
           
         } catch (error) {
@@ -294,6 +271,7 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'startBidding' });
           set({ gameState: newState });
+          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to start bidding' });
         }
@@ -307,6 +285,7 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'placeBid', playerId, amount });
           set({ gameState: newState });
+          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to place bid' });
         }
@@ -320,6 +299,7 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'passBid', playerId });
           set({ gameState: newState });
+          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to pass bid' });
         }
@@ -334,6 +314,7 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'selectPowerhouse', suit });
           set({ gameState: newState });
+          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to select powerhouse' });
         }
@@ -347,6 +328,7 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'selectPartners', cards });
           set({ gameState: newState });
+          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to select partners' });
         }
@@ -378,6 +360,7 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'playCard', playerId, card });
           set({ gameState: newState });
+          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to play card' });
         }
@@ -440,7 +423,6 @@ export const useGameStore = create<GameStore>()(
           updatedAt: Date.now()
         };
         set({ gameState: endRoundState });
-        saveGameToStorage(endRoundState);
       },
 
       // End the game
@@ -461,7 +443,6 @@ export const useGameStore = create<GameStore>()(
           updatedAt: Date.now()
         };
         set({ gameState: endGameState });
-        saveGameToStorage(endGameState);
       },
 
       // Reset game
@@ -492,6 +473,7 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'startPlaying' });
           set({ gameState: newState });
+          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to start playing' });
         }
@@ -514,7 +496,6 @@ export const useGameStore = create<GameStore>()(
             return false;
           }
 
-          saveGameToStorage(loadedGame);
           set({
             gameState: loadedGame,
             currentPlayerId: existingPlayerSession,
@@ -524,18 +505,7 @@ export const useGameStore = create<GameStore>()(
           return true;
         } catch (error) {
           console.error('Failed to load game session from server:', error);
-          const fallbackGame = loadGameFromStorage(gameId);
-          if (!fallbackGame) {
-            return false;
-          }
-
-          set({
-            gameState: fallbackGame,
-            currentPlayerId: existingPlayerSession,
-            error: null,
-            isLoading: false
-          });
-          return true;
+          return false;
         }
       },
 
@@ -546,11 +516,10 @@ export const useGameStore = create<GameStore>()(
             return;
           }
 
-          saveGameToStorage(loadedGame);
           const currentState = get().gameState;
           const currentPlayerId = loadPlayerSession(gameId) || get().currentPlayerId || loadedGame.players[0]?.id || null;
 
-          if (!currentState || currentState.updatedAt !== loadedGame.updatedAt) {
+          if (!currentState || loadedGame.updatedAt > currentState.updatedAt) {
             set({
               gameState: loadedGame,
               currentPlayerId
@@ -558,21 +527,25 @@ export const useGameStore = create<GameStore>()(
           }
         } catch (error) {
           console.error('Failed to sync game from server:', error);
-          const loadedGame = loadGameFromStorage(gameId);
-          if (!loadedGame) {
-            return;
-          }
-
-          const currentState = get().gameState;
-          const currentPlayerId = loadPlayerSession(gameId) || get().currentPlayerId || loadedGame.players[0]?.id || null;
-
-          if (!currentState || currentState.updatedAt !== loadedGame.updatedAt) {
-            set({
-              gameState: loadedGame,
-              currentPlayerId
-            });
-          }
         }
+      },
+
+      applyServerGameState: (gameState) => {
+        const currentState = get().gameState;
+        if (currentState && gameState.updatedAt < currentState.updatedAt) {
+          return;
+        }
+
+        const currentPlayerId =
+          loadPlayerSession(gameState.id) ||
+          get().currentPlayerId ||
+          gameState.players[0]?.id ||
+          null;
+
+        set({
+          gameState,
+          currentPlayerId
+        });
       }
     }),
     {

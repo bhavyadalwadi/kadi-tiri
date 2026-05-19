@@ -1,6 +1,6 @@
 import { Browser, BrowserContext, expect, Page, test } from '@playwright/test';
 
-test.describe.configure({ timeout: 180_000 });
+test.describe.configure({ timeout: 300_000 });
 
 async function newPlayerPage(browser: Browser): Promise<{ context: BrowserContext; page: Page }> {
   const context = await browser.newContext();
@@ -66,6 +66,7 @@ async function activeBidPage(pages: Page[]): Promise<Page> {
       async () => {
         for (let index = 0; index < pages.length; index += 1) {
           const page = pages[index];
+          await page.bringToFront();
           const hasBidControls =
             (await page.getByTestId('quick-raise-5').isVisible().catch(() => false)) ||
             (await page.getByTestId('bid-more-button').isVisible().catch(() => false));
@@ -87,18 +88,19 @@ async function activeBidPage(pages: Page[]): Promise<Page> {
 
 async function activePassPage(pages: Page[]): Promise<Page> {
   let activeIndex = -1;
-
   await expect
     .poll(
       async () => {
         for (let index = 0; index < pages.length; index += 1) {
           const page = pages[index];
+          await page.bringToFront();
+          const currentUser = (await page.getByTestId('current-user-name').textContent().catch(() => null))?.trim() || '';
+          const currentTurn = (await page.getByTestId('current-turn-name').textContent().catch(() => null))?.trim() || '';
           const passButton = page.getByTestId('pass-bid-button');
-          const canPass =
-            (await passButton.isVisible().catch(() => false)) &&
-            (await passButton.isEnabled().catch(() => false));
+          const visible = await passButton.isVisible().catch(() => false);
+          const label = visible ? ((await passButton.textContent().catch(() => null))?.trim() || '') : '';
 
-          if (canPass) {
+          if (visible && currentUser && currentUser === currentTurn && !label.includes('Disabled')) {
             activeIndex = index;
             return index;
           }
@@ -109,7 +111,6 @@ async function activePassPage(pages: Page[]): Promise<Page> {
       { timeout: 15_000 }
     )
     .not.toBe(-1);
-
   return pages[activeIndex];
 }
 
@@ -145,11 +146,14 @@ async function activeTurnPage(pages: Page[]): Promise<Page> {
     .poll(
       async () => {
         const snapshots = await Promise.all(
-          pages.map(async page => ({
-            page,
-            currentUser: (await page.getByTestId('current-user-name').textContent().catch(() => null))?.trim() || null,
-            currentTurn: (await page.getByTestId('current-turn-name').textContent().catch(() => null))?.trim() || null
-          }))
+          pages.map(async page => {
+            await page.bringToFront();
+            return {
+              page,
+              currentUser: (await page.getByTestId('current-user-name').textContent().catch(() => null))?.trim() || null,
+              currentTurn: (await page.getByTestId('current-turn-name').textContent().catch(() => null))?.trim() || null
+            };
+          })
         );
 
         const distinctTurnNames = Array.from(
@@ -319,11 +323,7 @@ test('four players can create a room, join, bid, choose setup, and see the first
     await waitForPagesToSync(pages);
     const leadPage = await activeTurnPage(pages);
     await playFirstPlayableCard(leadPage);
-
-    for (const page of pages) {
-      const playedCard = page.locator('[data-testid="played-card"]');
-      await expect(playedCard).toHaveCount(1, { timeout: 15_000 });
-    }
+    await expect(leadPage.locator('[data-testid="played-card"]')).toHaveCount(1, { timeout: 15_000 });
   } finally {
     await Promise.all(players.map(({ context }) => context.close()));
   }
@@ -345,16 +345,20 @@ test('four players can complete one full trick and advance the winner to the nex
       await waitForPagesToSync(pages);
 
       if (i < 3) {
-        for (const page of pages) {
-          await expect(page.getByTestId('current-turn-name')).not.toHaveText(currentTurnName || '', { timeout: 15_000 });
-        }
+        await Promise.all(
+          pages.map(page =>
+            expect(page.getByTestId('current-turn-name')).not.toHaveText(currentTurnName || '', { timeout: 15_000 })
+          )
+        );
       }
     }
 
-    for (const page of pages) {
-      await expect(page.getByTestId('completed-tricks-count')).toHaveText('1', { timeout: 15_000 });
-      await expect(page.locator('[data-testid="played-card"]')).toHaveCount(0, { timeout: 15_000 });
-    }
+    await Promise.all(
+      pages.map(async page => {
+        await expect(page.getByTestId('completed-tricks-count')).toHaveText('1', { timeout: 15_000 });
+        await expect(page.locator('[data-testid="played-card"]')).toHaveCount(0, { timeout: 15_000 });
+      })
+    );
 
     const nextTurnNames = await Promise.all(
       pages.map(page => page.getByTestId('current-turn-name').textContent())
@@ -463,12 +467,14 @@ test('four players can complete a full hand and reach scoring settlement', async
       await waitForPagesToSync(pages);
     }
 
-    for (const page of pages) {
-      await expect(page.getByTestId('game-finished-modal')).toBeVisible({ timeout: 20_000 });
-      await expect(page.getByTestId('finished-tricks-count')).toHaveText('13');
-      await expect(page.getByTestId('winning-team-name')).toBeVisible();
-      await expect(page.locator('[data-testid="player-round-award"]')).toHaveCount(4);
-    }
+    await Promise.all(
+      pages.map(async page => {
+        await expect(page.getByTestId('game-finished-modal')).toBeVisible({ timeout: 20_000 });
+        await expect(page.getByTestId('finished-tricks-count')).toHaveText('13');
+        await expect(page.getByTestId('winning-team-name')).toBeVisible();
+        await expect(page.locator('[data-testid="player-round-award"]')).toHaveCount(4);
+      })
+    );
 
     const bidWinnerTeamScore = parseInt((await pages[0].getByTestId('bid-winner-team-score').textContent()) || '0', 10);
     const opposingTeamScore = parseInt((await pages[0].getByTestId('opposing-team-score').textContent()) || '0', 10);

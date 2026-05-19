@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { Player } from '@/types/game';
 import { applyStartBidding } from '@/lib/gameActions';
 import { atomicUpdate } from '@/lib/server/gameStorage';
+import { nextUpdatedAt } from '@/utils/gameUtils';
 import { generatePlayerId } from '@/utils/gameUtils';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -47,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const joinedState = {
         ...currentState,
         players: [...currentState.players, joinedPlayer],
-        updatedAt: Date.now()
+        updatedAt: nextUpdatedAt(currentState.updatedAt)
       };
 
       if (

@@ -37,9 +37,14 @@ const BiddingPanel: React.FC<BiddingPanelProps> = ({
   const increments = gameState.settings.biddingConfig.increments;
   const minRaise = Math.min(...increments);
   const minBid = currentBid + minRaise;
+  const openingBid = gameState.settings.biddingConfig.startBid - minRaise;
   
-  // Check if any actual bids have been placed (not just passes)
-  const hasAnyBids = gameState.bidding.bids.some(bid => !bid.passed && bid.amount > 0);
+  // Treat the server-reported winner/current bid as authoritative even if a
+  // client briefly lags the full bid history.
+  const hasAnyBids =
+    gameState.bidding.bids.some(bid => !bid.passed && bid.amount > 0) ||
+    gameState.bidding.winner !== null ||
+    currentBid > openingBid;
   const canPass = hasAnyBids; // Can only pass if someone has already placed a bid
 
   const handlePass = () => {

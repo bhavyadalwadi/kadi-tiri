@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 const DEBUG_TOOLS_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DEBUG_TOOLS === 'true';
 
 const GamePage: React.FC = () => {
-  const { gameState, currentPlayerId, resetGame, createGame, createWaitingRoom, joinGame, loadGameSession, syncGameFromStorage } = useGameStore();
+  const { gameState, currentPlayerId, resetGame, createGame, createWaitingRoom, joinGame, loadGameSession, syncGameFromStorage, applyServerGameState } = useGameStore();
   const router = useRouter();
   const [viewingPlayerId, setViewingPlayerId] = React.useState<string | undefined>();
   const activePlayerId = viewingPlayerId || currentPlayerId || '';
@@ -44,26 +44,40 @@ const GamePage: React.FC = () => {
       return;
     }
 
+    let isActive = true;
     const syncCurrentGame = async () => {
       await syncGameFromStorage(gameState.id);
     };
 
-    const onStorage = (event: StorageEvent) => {
-      if (!event.key || event.key === 'kadi-tiri-games') {
-        void syncCurrentGame();
-      }
+    const handleWindowRefresh = () => {
+      void syncCurrentGame();
     };
 
-    window.addEventListener('storage', onStorage);
-    const intervalId = window.setInterval(() => {
+    const eventSource = new EventSource(`/api/game/stream?gameId=${encodeURIComponent(gameState.id)}`);
+    eventSource.addEventListener('gameState', event => {
+      if (!isActive) {
+        return;
+      }
+      const nextState = JSON.parse((event as MessageEvent).data);
+      applyServerGameState(nextState);
+    });
+    eventSource.onerror = () => {
+      if (!isActive) {
+        return;
+      }
       void syncCurrentGame();
-    }, 250);
+    };
+
+    window.addEventListener('focus', handleWindowRefresh);
+    document.addEventListener('visibilitychange', handleWindowRefresh);
 
     return () => {
-      window.removeEventListener('storage', onStorage);
-      window.clearInterval(intervalId);
+      isActive = false;
+      eventSource.close();
+      window.removeEventListener('focus', handleWindowRefresh);
+      document.removeEventListener('visibilitychange', handleWindowRefresh);
     };
-  }, [gameState?.id, syncGameFromStorage]);
+  }, [gameState?.id, syncGameFromStorage, applyServerGameState]);
 
   const handleBackToHome = () => {
     resetGame();

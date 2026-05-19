@@ -1,5 +1,9 @@
 import { Card, Suit, Rank, Player, GameState, GameMode, CARD_POINTS } from '@/types/game';
 
+export function nextUpdatedAt(previous = 0): number {
+  return Math.max(Date.now(), previous + 1);
+}
+
 /**
  * Creates a standard deck of cards
  */
@@ -400,7 +404,7 @@ export function dealCardsAndTransitionState(gameState: GameState): GameState {
     players: playersWithSortedCards,
     deck: remainingDeck,
     currentPlayer,
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(gameState.updatedAt)
   };
 
   return dealingState;
@@ -429,7 +433,7 @@ export function transitionToBidding(gameState: GameState): GameState {
       winner: null,
       isActive: true
     },
-    updatedAt: Date.now()
+    updatedAt: nextUpdatedAt(gameState.updatedAt)
   };
   
   return result;
