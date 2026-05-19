@@ -4,6 +4,12 @@ Kadi Tiri is a digital version of the traditional trick-taking card game also kn
 
 This project is currently a web-based Next.js implementation with a playable game flow, room setup, bidding, partner selection, trick play, and end-of-round scoring.
 
+## Screenshots
+
+![Landing page](./screenshots/hero.png)
+![Room setup](./screenshots/feature-1.png)
+![Bidding round](./screenshots/feature-2.png)
+
 ## Current Status
 
 The project now follows the V2 rules model documented in [CHANGELOG.md](./CHANGELOG.md).
@@ -226,3 +232,21 @@ The next major steps are:
 ## Changelog
 
 See [CHANGELOG.md](./CHANGELOG.md) for V2 rules and repo updates.
+
+## Quick Repo Summary
+
+- Purpose: Kadi Tiri is a digital version of the traditional trick-taking card game also known as Kali Teeri.
+- Stack: Node.js, Next.js, React, TypeScript, PHP, JavaScript, Bootstrap
+- Status confidence: high
+- Pending: Remove client full-state persistence and fallback writes; Keep browser storage only for `playerId` and last joined `gameId`; Remove any endpoint that accepts full `gameState` writes from the client
+
+## LLM Start Here
+- `README.md`
+- `graphify-out/GRAPH_REPORT.md`
+- `Plan.md`
+- `PLAN.md`
+- `graphify-out/repo-semantic-summary.md`
+
+## License
+
+This repository is proprietary and released under [All Rights Reserved](LICENSE).

@@ -1,0 +1,85 @@
+{
+  "repo": "kadi-tiri-game",
+  "title": "Kadi Tiri Game",
+  "purpose": "Kadi Tiri is a web-based multiplayer implementation of a traditional trick-taking card game with server-owned room state, bidding, partner selection, trick play, and score settlement.",
+  "domains": [
+    "game",
+    "web app"
+  ],
+  "tech_stack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Zustand",
+    "Bootstrap"
+  ],
+  "features": [
+    "Playable room flow with setup, bidding, sir selection, partner selection, trick play, and end-of-round scoring",
+    "Support for 4, 6, and 8 player modes with easy and hard rule variants where applicable",
+    "Server-owned room creation, joins, and gameplay mutations in the current Next.js implementation",
+    "Playwright end-to-end coverage for local multiplayer prototype flows and follow-suit enforcement",
+    "Documented rules model and changelog aligned to the current V2 rules implementation"
+  ],
+  "pending_state": "documented",
+  "pending_items": [
+    "Remove client full-state persistence and fallback writes",
+    "Keep browser storage only for `playerId` and last joined `gameId`",
+    "Remove any endpoint that accepts full `gameState` writes from the client",
+    "Add SSE endpoint for per-game updates",
+    "Replace 250ms polling with SSE subscription"
+  ],
+  "status_confidence": "high",
+  "main_modules": [
+    "src",
+    "data",
+    "node_modules",
+    "screenshots",
+    "store"
+  ],
+  "key_flows": [
+    "graphify-out/GRAPH_REPORT.md",
+    "Plan.md",
+    "PLAN.md"
+  ],
+  "known_outputs": [
+    "graphify-out/graph.json",
+    "graphify-out/graph.html",
+    "graphify-out/GRAPH_REPORT.md"
+  ],
+  "current_work_guess": "The current engineering focus is hardening the game into a server-authoritative multiplayer model with live sync.",
+  "likely_entrypoints": [
+    "README.md",
+    "PLAN.md",
+    "src/store/gameStore.ts",
+    "src/utils/gameUtils.ts"
+  ],
+  "notable_docs": [
+    "README.md",
+    "PLAN.md",
+    "CHANGELOG.md"
+  ],
+  "graph_stats": "351 nodes \u00b7 574 edges \u00b7 28 communities (25 shown, 3 thin omitted)",
+  "god_nodes": [
+    "GameState",
+    "dependencies",
+    "compilerOptions",
+    "useGameStore",
+    "nextUpdatedAt()"
+  ],
+  "llm_start_here": [
+    "README.md",
+    "PLAN.md",
+    "src/types/game.ts",
+    "src/utils/gameUtils.ts"
+  ],
+  "suggested_next_steps": [
+    "Finish the server-authoritative state transition work",
+    "Replace polling with SSE-based live updates",
+    "Prepare persistence hardening after the live-sync model is stable"
+  ],
+  "evidence_files": [
+    "README.md",
+    "PLAN.md",
+    "CHANGELOG.md"
+  ]
+}
