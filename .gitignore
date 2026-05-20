@@ -19,3 +19,6 @@ graphify-out/cache/
 graphify-out/manifest.json
 graphify-out/cost.json
 data/games.json
+data/game-events.jsonl
+data/webhook-deliveries.json
+data/kadi-tiri.sqlite

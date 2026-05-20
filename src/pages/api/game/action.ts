@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Card } from '@/types/game';
+import { createGameEvent, GameEventType, publishGameEvent } from '@/lib/server/gameEvents';
 import { atomicUpdate } from '@/lib/server/gameStorage';
 import {
   applyStartBidding,
@@ -34,6 +35,16 @@ export interface GameActionRequest {
   /** playCard */
   card?: Card;
 }
+
+const actionEventTypes: Record<GameActionType, GameEventType> = {
+  startBidding: 'game.startBidding',
+  placeBid: 'game.placeBid',
+  passBid: 'game.passBid',
+  selectPowerhouse: 'game.selectPowerhouse',
+  selectPartners: 'game.selectPartners',
+  startPlaying: 'game.startPlaying',
+  playCard: 'game.playCard'
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -100,6 +111,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (actionError) {
       return res.status(422).json({ success: false, error: actionError });
     }
+
+    publishGameEvent(createGameEvent(actionEventTypes[body.type], saved));
 
     return res.status(200).json({ success: true, data: saved });
   } catch (error) {

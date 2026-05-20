@@ -8,6 +8,7 @@ import GameFinishedModal from '@/components/game/GameFinishedModal';
 import TopGameControls from '@/components/game/TopGameControls';
 import Layout from '@/components/layout/Layout';
 import { useRouter } from 'next/router';
+import { GameState } from '@/types/game';
 
 const DEBUG_TOOLS_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DEBUG_TOOLS === 'true';
 
@@ -54,12 +55,14 @@ const GamePage: React.FC = () => {
     };
 
     const eventSource = new EventSource(`/api/game/stream?gameId=${encodeURIComponent(gameState.id)}`);
-    eventSource.addEventListener('gameState', event => {
+    eventSource.addEventListener('gameEvent', event => {
       if (!isActive) {
         return;
       }
-      const nextState = JSON.parse((event as MessageEvent).data);
-      applyServerGameState(nextState);
+      const payload = JSON.parse((event as MessageEvent).data) as { state?: GameState };
+      if (payload?.state) {
+        applyServerGameState(payload.state);
+      }
     });
     eventSource.onerror = () => {
       if (!isActive) {

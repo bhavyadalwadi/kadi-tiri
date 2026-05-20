@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { createGameEvent, subscribeToGameEvents } from '@/lib/server/gameEvents';
 import { getGame } from '@/lib/server/gameStorage';
 
 type StreamingResponse = NextApiResponse & {
@@ -37,38 +38,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   res.flushHeaders?.();
   res.socket?.setNoDelay(true);
 
-  const send = (state = gameState) => {
-    res.write(`event: gameState\n`);
-    res.write(`data: ${JSON.stringify(state)}\n\n`);
+  const send = (payload: ReturnType<typeof createGameEvent>) => {
+    res.write(`id: ${payload.id}\n`);
+    res.write(`event: gameEvent\n`);
+    res.write(`data: ${JSON.stringify(payload)}\n\n`);
     stream.flush?.();
   };
 
-  send();
-  let lastUpdatedAt = gameState.updatedAt;
+  send(createGameEvent('snapshot', gameState));
   const heartbeat = setInterval(() => {
     res.write(`event: ping\ndata: ${Date.now()}\n\n`);
     stream.flush?.();
   }, 15000);
-
-  const pollId = setInterval(async () => {
-    try {
-      const nextState = await getGame(gameId);
-      if (!nextState) {
-        return;
-      }
-
-      if (nextState.updatedAt > lastUpdatedAt) {
-        lastUpdatedAt = nextState.updatedAt;
-        send(nextState);
-      }
-    } catch {
-      // Ignore polling errors; connection stays open and client can retry.
-    }
-  }, 250);
+  const unsubscribe = subscribeToGameEvents(gameId, send);
 
   req.on('close', () => {
     clearInterval(heartbeat);
-    clearInterval(pollId);
+    unsubscribe();
     res.end();
   });
 }

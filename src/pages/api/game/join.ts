@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Player } from '@/types/game';
 import { applyStartBidding } from '@/lib/gameActions';
+import { createGameEvent, publishGameEvent } from '@/lib/server/gameEvents';
 import { atomicUpdate } from '@/lib/server/gameStorage';
 import { nextUpdatedAt } from '@/utils/gameUtils';
 import { generatePlayerId } from '@/utils/gameUtils';
@@ -20,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     let resolvedPlayerId: string | null = null;
+    let joinedExistingPlayer = false;
 
     const savedState = await atomicUpdate(gameId, currentState => {
       const existingPlayer = currentState.players.find(
@@ -27,6 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       );
       if (existingPlayer) {
         resolvedPlayerId = existingPlayer.id;
+        joinedExistingPlayer = true;
         return currentState;
       }
 
@@ -75,6 +78,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!savedState) {
       return res.status(404).json({ success: false, error: 'Game not found' });
+    }
+
+    if (!joinedExistingPlayer) {
+      publishGameEvent(createGameEvent('player.joined', savedState));
     }
 
     return res.status(200).json({

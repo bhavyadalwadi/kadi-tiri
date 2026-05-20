@@ -4,38 +4,7 @@ import { GameState, Card, GameSettings, GAME_MODES, Difficulty, Player } from '@
 import { determineRoundWinner, calculateRoundPoints, calculateFinalScores } from '@/utils/gameUtils';
 
 const LAST_GAME_STORAGE_KEY = 'kadi-tiri-last-game';
-const GAME_UPDATE_SIGNAL_KEY = 'kadi-tiri-game-update';
 const getPlayerSessionKey = (gameId: string) => `kadi-tiri-player-${gameId}`;
-
-let gameUpdatesChannel: BroadcastChannel | null = null;
-
-const getGameUpdatesChannel = () => {
-  if (typeof window === 'undefined' || typeof BroadcastChannel === 'undefined') {
-    return null;
-  }
-
-  if (!gameUpdatesChannel) {
-    gameUpdatesChannel = new BroadcastChannel('kadi-tiri-game-updates');
-  }
-
-  return gameUpdatesChannel;
-};
-
-const broadcastGameUpdate = (gameState: GameState) => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  const payload = JSON.stringify({ gameId: gameState.id, updatedAt: gameState.updatedAt });
-
-  try {
-    localStorage.setItem(GAME_UPDATE_SIGNAL_KEY, payload);
-  } catch (error) {
-    console.error('Failed to broadcast game update via localStorage:', error);
-  }
-
-  getGameUpdatesChannel()?.postMessage(payload);
-};
 
 const createGameOnServer = async (requestBody: {
   hostName?: string;
@@ -124,9 +93,7 @@ const executeAction = async (
     throw new Error(data.error || 'Action failed');
   }
 
-  const state = data.data as GameState;
-  broadcastGameUpdate(state);
-  return state;
+  return data.data as GameState;
 };
 
 const savePlayerSession = (gameId: string, playerId: string) => {
@@ -170,8 +137,6 @@ interface GameStore {
   resetGame: () => void;
   setError: (error: string | null) => void;
   setLoading: (loading: boolean) => void;
-  // Helper to save game state to storage
-  saveCurrentGame: () => Promise<void>;
   loadGameSession: (gameId: string) => Promise<boolean>;
   syncGameFromStorage: (gameId: string) => Promise<void>;
   applyServerGameState: (gameState: GameState) => void;
@@ -204,7 +169,6 @@ export const useGameStore = create<GameStore>()(
             isLoading: false
           });
           savePlayerSession(createdState.id, currentPlayerId);
-          broadcastGameUpdate(createdState);
         } catch (error) {
           set({ 
             error: error instanceof Error ? error.message : 'Failed to create game',
@@ -230,7 +194,6 @@ export const useGameStore = create<GameStore>()(
             isLoading: false
           });
           savePlayerSession(createdState.id, currentPlayerId);
-          broadcastGameUpdate(createdState);
         } catch (error) {
           set({ 
             error: error instanceof Error ? error.message : 'Failed to create waiting room',
@@ -251,7 +214,6 @@ export const useGameStore = create<GameStore>()(
             currentPlayerId
           });
           savePlayerSession(gameId, currentPlayerId);
-          broadcastGameUpdate(joinedState);
           set({ isLoading: false });
           
         } catch (error) {
@@ -271,7 +233,6 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'startBidding' });
           set({ gameState: newState });
-          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to start bidding' });
         }
@@ -285,7 +246,6 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'placeBid', playerId, amount });
           set({ gameState: newState });
-          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to place bid' });
         }
@@ -299,7 +259,6 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'passBid', playerId });
           set({ gameState: newState });
-          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to pass bid' });
         }
@@ -314,7 +273,6 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'selectPowerhouse', suit });
           set({ gameState: newState });
-          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to select powerhouse' });
         }
@@ -328,7 +286,6 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'selectPartners', cards });
           set({ gameState: newState });
-          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to select partners' });
         }
@@ -360,7 +317,6 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'playCard', playerId, card });
           set({ gameState: newState });
-          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to play card' });
         }
@@ -473,15 +429,9 @@ export const useGameStore = create<GameStore>()(
         try {
           const newState = await executeAction({ gameId: gameState.id, type: 'startPlaying' });
           set({ gameState: newState });
-          await get().syncGameFromStorage(gameState.id);
         } catch (error) {
           set({ error: error instanceof Error ? error.message : 'Failed to start playing' });
         }
-      },
-
-      // Helper to save current game state to storage (no-op – state is now managed server-side)
-      saveCurrentGame: async () => {
-        // Actions are persisted atomically via the action endpoint; nothing to do here.
       },
 
       loadGameSession: async (gameId) => {

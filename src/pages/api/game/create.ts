@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { Difficulty, GAME_MODES, GameSettings } from '@/types/game';
 import { createInitialGameState } from '@/lib/server/gameFactory';
 import { saveGame } from '@/lib/server/gameStorage';
+import { createGameEvent, publishGameEvent } from '@/lib/server/gameEvents';
 import { applyStartBidding } from '@/lib/gameActions';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -43,6 +44,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         : gameState;
 
     const savedGame = await saveGame(initialState);
+    publishGameEvent(createGameEvent('game.created', savedGame));
+
     return res.status(200).json({
       success: true,
       data: savedGame,
