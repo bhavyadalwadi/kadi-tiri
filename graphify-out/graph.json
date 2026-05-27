@@ -243,7 +243,7 @@
       "source_file": "package.json",
       "source_location": "L19",
       "id": "kadi_tiri_game_package_dependencies",
-      "community": 9,
+      "community": 1,
       "norm_label": "dependencies"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "package.json",
       "source_location": "L20",
       "id": "kadi_tiri_game_package_dependencies_types_node",
-      "community": 9,
+      "community": 1,
       "norm_label": "@types/node"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "package.json",
       "source_location": "L21",
       "id": "kadi_tiri_game_package_dependencies_types_react",
-      "community": 9,
+      "community": 1,
       "norm_label": "@types/react"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "package.json",
       "source_location": "L22",
       "id": "kadi_tiri_game_package_dependencies_types_react_dom",
-      "community": 9,
+      "community": 1,
       "norm_label": "@types/react-dom"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "package.json",
       "source_location": "L23",
       "id": "kadi_tiri_game_package_dependencies_bootstrap",
-      "community": 9,
+      "community": 1,
       "norm_label": "bootstrap"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "package.json",
       "source_location": "L24",
       "id": "kadi_tiri_game_package_dependencies_class_variance_authority",
-      "community": 9,
+      "community": 1,
       "norm_label": "class-variance-authority"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "package.json",
       "source_location": "L25",
       "id": "kadi_tiri_game_package_dependencies_clsx",
-      "community": 9,
+      "community": 1,
       "norm_label": "clsx"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "package.json",
       "source_location": "L26",
       "id": "kadi_tiri_game_package_dependencies_framer_motion",
-      "community": 9,
+      "community": 1,
       "norm_label": "framer-motion"
     },
     {
@@ -315,7 +315,7 @@
       "source_file": "package.json",
       "source_location": "L27",
       "id": "kadi_tiri_game_package_dependencies_lucide_react",
-      "community": 9,
+      "community": 1,
       "norm_label": "lucide-react"
     },
     {
@@ -324,7 +324,7 @@
       "source_file": "package.json",
       "source_location": "L28",
       "id": "kadi_tiri_game_package_dependencies_next",
-      "community": 9,
+      "community": 1,
       "norm_label": "next"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "package.json",
       "source_location": "L29",
       "id": "kadi_tiri_game_package_dependencies_react",
-      "community": 9,
+      "community": 1,
       "norm_label": "react"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "package.json",
       "source_location": "L30",
       "id": "kadi_tiri_game_package_dependencies_react_dom",
-      "community": 9,
+      "community": 1,
       "norm_label": "react-dom"
     },
     {
@@ -351,7 +351,7 @@
       "source_file": "package.json",
       "source_location": "L31",
       "id": "kadi_tiri_game_package_dependencies_sql_js",
-      "community": 9,
+      "community": 1,
       "norm_label": "sql.js"
     },
     {
@@ -360,7 +360,7 @@
       "source_file": "package.json",
       "source_location": "L32",
       "id": "kadi_tiri_game_package_dependencies_tailwind_merge",
-      "community": 9,
+      "community": 1,
       "norm_label": "tailwind-merge"
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "package.json",
       "source_location": "L33",
       "id": "kadi_tiri_game_package_dependencies_typescript",
-      "community": 9,
+      "community": 1,
       "norm_label": "typescript"
     },
     {
@@ -378,7 +378,7 @@
       "source_file": "package.json",
       "source_location": "L34",
       "id": "kadi_tiri_game_package_dependencies_zustand",
-      "community": 9,
+      "community": 1,
       "norm_label": "zustand"
     },
     {
@@ -1152,7 +1152,7 @@
       "source_file": "src/types/ui.ts",
       "source_location": "L27",
       "id": "types_ui_gametableprops",
-      "community": 6,
+      "community": 9,
       "norm_label": "gametableprops"
     },
     {
@@ -1314,7 +1314,7 @@
       "source_file": "src/types/game.ts",
       "source_location": "L3",
       "id": "types_game_suit",
-      "community": 3,
+      "community": 36,
       "norm_label": "suit"
     },
     {
@@ -1350,7 +1350,7 @@
       "source_file": "src/types/game.ts",
       "source_location": "L8",
       "id": "types_game_card",
-      "community": 0,
+      "community": 9,
       "norm_label": "card"
     },
     {
@@ -1359,7 +1359,7 @@
       "source_file": "src/types/game.ts",
       "source_location": "L16",
       "id": "types_game_player",
-      "community": 3,
+      "community": 40,
       "norm_label": "player"
     },
     {
@@ -1368,7 +1368,7 @@
       "source_file": "src/types/game.ts",
       "source_location": "L27",
       "id": "types_game_gamemode",
-      "community": 3,
+      "community": 0,
       "norm_label": "gamemode"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_file": "src/types/game.ts",
       "source_location": "L103",
       "id": "types_game_gamestate",
-      "community": 0,
+      "community": 29,
       "norm_label": "gamestate"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_file": "src/types/game.ts",
       "source_location": "L286",
       "id": "types_game_powerhouse_suits",
-      "community": 0,
+      "community": 36,
       "norm_label": "powerhouse_suits"
     },
     {
@@ -1638,7 +1638,7 @@
       "source_file": "src/utils/gameUtils.ts",
       "source_location": "L112",
       "id": "utils_gameutils_canplaycard",
-      "community": 3,
+      "community": 40,
       "norm_label": "canplaycard()"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "src/utils/gameUtils.ts",
       "source_location": "L140",
       "id": "utils_gameutils_determineroundwinner",
-      "community": 0,
+      "community": 34,
       "norm_label": "determineroundwinner()"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "src/utils/gameUtils.ts",
       "source_location": "L219",
       "id": "utils_gameutils_calculateroundpoints",
-      "community": 0,
+      "community": 34,
       "norm_label": "calculateroundpoints()"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "src/utils/gameUtils.ts",
       "source_location": "L251",
       "id": "utils_gameutils_generategameid",
-      "community": 3,
+      "community": 0,
       "norm_label": "generategameid()"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "src/utils/gameUtils.ts",
       "source_location": "L258",
       "id": "utils_gameutils_generateplayerid",
-      "community": 3,
+      "community": 0,
       "norm_label": "generateplayerid()"
     },
     {
@@ -1827,7 +1827,7 @@
       "source_file": "src/components/ui/PlayingCard.tsx",
       "source_location": "L1",
       "id": "src_components_ui_playingcard_tsx",
-      "community": 0,
+      "community": 9,
       "norm_label": "playingcard.tsx"
     },
     {
@@ -1836,7 +1836,7 @@
       "source_file": "src/components/ui/PlayingCard.tsx",
       "source_location": "L5",
       "id": "ui_playingcard_playingcardprops",
-      "community": 0,
+      "community": 9,
       "norm_label": "playingcardprops"
     },
     {
@@ -1845,7 +1845,7 @@
       "source_file": "src/components/ui/PlayingCard.tsx",
       "source_location": "L16",
       "id": "ui_playingcard_playingcard",
-      "community": 0,
+      "community": 9,
       "norm_label": "playingcard()"
     },
     {
@@ -1971,7 +1971,7 @@
       "source_file": "src/components/game/GamePlayArea.tsx",
       "source_location": "L1",
       "id": "src_components_game_gameplayarea_tsx",
-      "community": 0,
+      "community": 40,
       "norm_label": "gameplayarea.tsx"
     },
     {
@@ -1980,7 +1980,7 @@
       "source_file": "src/components/game/GamePlayArea.tsx",
       "source_location": "L9",
       "id": "game_gameplayarea_gameplayareaprops",
-      "community": 0,
+      "community": 40,
       "norm_label": "gameplayareaprops"
     },
     {
@@ -1989,7 +1989,7 @@
       "source_file": "src/components/game/GamePlayArea.tsx",
       "source_location": "L17",
       "id": "game_gameplayarea_gameplayarea",
-      "community": 0,
+      "community": 40,
       "norm_label": "gameplayarea()"
     },
     {
@@ -1998,7 +1998,7 @@
       "source_file": "src/components/game/GameBoard.tsx",
       "source_location": "L1",
       "id": "src_components_game_gameboard_tsx",
-      "community": 0,
+      "community": 36,
       "norm_label": "gameboard.tsx"
     },
     {
@@ -2007,7 +2007,7 @@
       "source_file": "src/components/game/GameBoard.tsx",
       "source_location": "L6",
       "id": "game_gameboard_gameboard",
-      "community": 0,
+      "community": 36,
       "norm_label": "gameboard()"
     },
     {
@@ -2016,7 +2016,7 @@
       "source_file": "src/components/game/GameFinishedModal.tsx",
       "source_location": "L1",
       "id": "src_components_game_gamefinishedmodal_tsx",
-      "community": 0,
+      "community": 29,
       "norm_label": "gamefinishedmodal.tsx"
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "src/components/game/GameFinishedModal.tsx",
       "source_location": "L5",
       "id": "game_gamefinishedmodal_gamefinishedmodalprops",
-      "community": 0,
+      "community": 29,
       "norm_label": "gamefinishedmodalprops"
     },
     {
@@ -2034,7 +2034,7 @@
       "source_file": "src/components/game/GameFinishedModal.tsx",
       "source_location": "L12",
       "id": "game_gamefinishedmodal_gamefinishedmodal",
-      "community": 0,
+      "community": 29,
       "norm_label": "gamefinishedmodal()"
     },
     {
@@ -2043,7 +2043,7 @@
       "source_file": "src/components/game/PartnerSelectionPanel.tsx",
       "source_location": "L1",
       "id": "src_components_game_partnerselectionpanel_tsx",
-      "community": 0,
+      "community": 36,
       "norm_label": "partnerselectionpanel.tsx"
     },
     {
@@ -2052,7 +2052,7 @@
       "source_file": "src/components/game/PartnerSelectionPanel.tsx",
       "source_location": "L8",
       "id": "game_partnerselectionpanel_partnerselectionpanelprops",
-      "community": 0,
+      "community": 36,
       "norm_label": "partnerselectionpanelprops"
     },
     {
@@ -2061,7 +2061,7 @@
       "source_file": "src/components/game/PartnerSelectionPanel.tsx",
       "source_location": "L13",
       "id": "game_partnerselectionpanel_partnerselectionpanel",
-      "community": 0,
+      "community": 36,
       "norm_label": "partnerselectionpanel()"
     },
     {
@@ -2070,7 +2070,7 @@
       "source_file": "src/components/game/PlayerHand.tsx",
       "source_location": "L1",
       "id": "src_components_game_playerhand_tsx",
-      "community": 0,
+      "community": 9,
       "norm_label": "playerhand.tsx"
     },
     {
@@ -2079,7 +2079,7 @@
       "source_file": "src/components/game/PlayerHand.tsx",
       "source_location": "L5",
       "id": "game_playerhand_playerhandprops",
-      "community": 0,
+      "community": 9,
       "norm_label": "playerhandprops"
     },
     {
@@ -2088,7 +2088,7 @@
       "source_file": "src/components/game/PlayerHand.tsx",
       "source_location": "L13",
       "id": "game_playerhand_playerhand",
-      "community": 0,
+      "community": 9,
       "norm_label": "playerhand()"
     },
     {
@@ -2097,7 +2097,7 @@
       "source_file": "src/components/game/GameTable.tsx",
       "source_location": "L1",
       "id": "src_components_game_gametable_tsx",
-      "community": 0,
+      "community": 9,
       "norm_label": "gametable.tsx"
     },
     {
@@ -2106,7 +2106,7 @@
       "source_file": "src/components/game/GameTable.tsx",
       "source_location": "L8",
       "id": "game_gametable_gametable",
-      "community": 0,
+      "community": 9,
       "norm_label": "gametable()"
     },
     {
@@ -2133,7 +2133,7 @@
       "source_file": "src/components/game/TopGameControls.tsx",
       "source_location": "L1",
       "id": "src_components_game_topgamecontrols_tsx",
-      "community": 0,
+      "community": 29,
       "norm_label": "topgamecontrols.tsx"
     },
     {
@@ -2142,7 +2142,7 @@
       "source_file": "src/components/game/TopGameControls.tsx",
       "source_location": "L4",
       "id": "game_topgamecontrols_topgamecontrolsprops",
-      "community": 0,
+      "community": 29,
       "norm_label": "topgamecontrolsprops"
     },
     {
@@ -2151,7 +2151,7 @@
       "source_file": "src/components/game/TopGameControls.tsx",
       "source_location": "L9",
       "id": "game_topgamecontrols_topgamecontrols",
-      "community": 0,
+      "community": 29,
       "norm_label": "topgamecontrols()"
     },
     {
@@ -2160,7 +2160,7 @@
       "source_file": "src/components/game/DealingAnimation.tsx",
       "source_location": "L1",
       "id": "src_components_game_dealinganimation_tsx",
-      "community": 0,
+      "community": 9,
       "norm_label": "dealinganimation.tsx"
     },
     {
@@ -2169,7 +2169,7 @@
       "source_file": "src/components/game/DealingAnimation.tsx",
       "source_location": "L6",
       "id": "game_dealinganimation_dealinganimationprops",
-      "community": 0,
+      "community": 9,
       "norm_label": "dealinganimationprops"
     },
     {
@@ -2178,7 +2178,7 @@
       "source_file": "src/components/game/DealingAnimation.tsx",
       "source_location": "L13",
       "id": "game_dealinganimation_dealinganimation",
-      "community": 0,
+      "community": 9,
       "norm_label": "dealinganimation()"
     },
     {
@@ -2187,7 +2187,7 @@
       "source_file": "src/components/game/BiddingPanel.tsx",
       "source_location": "L1",
       "id": "src_components_game_biddingpanel_tsx",
-      "community": 0,
+      "community": 9,
       "norm_label": "biddingpanel.tsx"
     },
     {
@@ -2196,7 +2196,7 @@
       "source_file": "src/components/game/BiddingPanel.tsx",
       "source_location": "L6",
       "id": "game_biddingpanel_biddingpanelprops",
-      "community": 0,
+      "community": 9,
       "norm_label": "biddingpanelprops"
     },
     {
@@ -2205,7 +2205,7 @@
       "source_file": "src/components/game/BiddingPanel.tsx",
       "source_location": "L14",
       "id": "game_biddingpanel_biddingpanel",
-      "community": 0,
+      "community": 9,
       "norm_label": "biddingpanel()"
     },
     {
@@ -2214,7 +2214,7 @@
       "source_file": "src/components/game/GameUIContainers.tsx",
       "source_location": "L1",
       "id": "src_components_game_gameuicontainers_tsx",
-      "community": 0,
+      "community": 40,
       "norm_label": "gameuicontainers.tsx"
     },
     {
@@ -2223,7 +2223,7 @@
       "source_file": "src/components/game/GameUIContainers.tsx",
       "source_location": "L4",
       "id": "game_gameuicontainers_gameuicontainersprops",
-      "community": 0,
+      "community": 40,
       "norm_label": "gameuicontainersprops"
     },
     {
@@ -2232,7 +2232,7 @@
       "source_file": "src/components/game/GameUIContainers.tsx",
       "source_location": "L12",
       "id": "game_gameuicontainers_gameuicontainers",
-      "community": 0,
+      "community": 40,
       "norm_label": "gameuicontainers()"
     },
     {
@@ -2241,7 +2241,7 @@
       "source_file": "src/hooks/useSoundEffects.ts",
       "source_location": "L1",
       "id": "src_hooks_usesoundeffects_ts",
-      "community": 0,
+      "community": 9,
       "norm_label": "usesoundeffects.ts"
     },
     {
@@ -2250,7 +2250,7 @@
       "source_file": "src/hooks/useSoundEffects.ts",
       "source_location": "L3",
       "id": "hooks_usesoundeffects_soundeffects",
-      "community": 0,
+      "community": 9,
       "norm_label": "soundeffects"
     },
     {
@@ -2259,7 +2259,7 @@
       "source_file": "src/hooks/useSoundEffects.ts",
       "source_location": "L12",
       "id": "hooks_usesoundeffects_usesoundeffects",
-      "community": 0,
+      "community": 9,
       "norm_label": "usesoundeffects()"
     },
     {
@@ -2574,7 +2574,7 @@
       "source_file": "src/lib/server/gameFactory.ts",
       "source_location": "L1",
       "id": "src_lib_server_gamefactory_ts",
-      "community": 3,
+      "community": 0,
       "norm_label": "gamefactory.ts"
     },
     {
@@ -2583,7 +2583,7 @@
       "source_file": "src/lib/server/gameFactory.ts",
       "source_location": "L17",
       "id": "server_gamefactory_createroomoptions",
-      "community": 3,
+      "community": 0,
       "norm_label": "createroomoptions"
     },
     {
@@ -2592,7 +2592,7 @@
       "source_file": "src/lib/server/gameFactory.ts",
       "source_location": "L26",
       "id": "server_gamefactory_buildplayers",
-      "community": 3,
+      "community": 0,
       "norm_label": "buildplayers()"
     },
     {
@@ -2601,7 +2601,7 @@
       "source_file": "src/lib/server/gameFactory.ts",
       "source_location": "L38",
       "id": "server_gamefactory_createinitialgamestate",
-      "community": 3,
+      "community": 0,
       "norm_label": "createinitialgamestate()"
     },
     {
@@ -2790,7 +2790,7 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L212",
       "id": "server_sqlitedb_withdatabase",
-      "community": 13,
+      "community": 4,
       "norm_label": "withdatabase()"
     },
     {
@@ -2898,7 +2898,7 @@
       "source_file": "src/pages/game.tsx",
       "source_location": "L1",
       "id": "src_pages_game_tsx",
-      "community": 0,
+      "community": 29,
       "norm_label": "game.tsx"
     },
     {
@@ -2907,7 +2907,7 @@
       "source_file": "src/pages/game.tsx",
       "source_location": "L15",
       "id": "pages_game_gamepage",
-      "community": 0,
+      "community": 36,
       "norm_label": "gamepage()"
     },
     {
@@ -2952,7 +2952,7 @@
       "source_file": "src/pages/game_enhanced.tsx",
       "source_location": "L1",
       "id": "src_pages_game_enhanced_tsx",
-      "community": 0,
+      "community": 36,
       "norm_label": "game_enhanced.tsx"
     },
     {
@@ -2961,7 +2961,7 @@
       "source_file": "src/pages/game_enhanced.tsx",
       "source_location": "L13",
       "id": "pages_game_enhanced_gamepage",
-      "community": 0,
+      "community": 36,
       "norm_label": "gamepage()"
     },
     {
@@ -3051,7 +3051,7 @@
       "source_file": "src/pages/api/game/action.ts",
       "source_location": "L25",
       "id": "game_action_gameactionrequest",
-      "community": 0,
+      "community": 34,
       "norm_label": "gameactionrequest"
     },
     {
@@ -3150,7 +3150,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L1",
       "id": "src_store_gamestore_ts",
-      "community": 0,
+      "community": 34,
       "norm_label": "gamestore.ts"
     },
     {
@@ -3159,7 +3159,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L7",
       "id": "store_gamestore_getplayersessionkey",
-      "community": 0,
+      "community": 34,
       "norm_label": "getplayersessionkey()"
     },
     {
@@ -3168,7 +3168,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L9",
       "id": "store_gamestore_creategameonserver",
-      "community": 0,
+      "community": 34,
       "norm_label": "creategameonserver()"
     },
     {
@@ -3177,7 +3177,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L36",
       "id": "store_gamestore_joingameonserver",
-      "community": 0,
+      "community": 34,
       "norm_label": "joingameonserver()"
     },
     {
@@ -3186,7 +3186,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L56",
       "id": "store_gamestore_fetchgamestatefromserver",
-      "community": 0,
+      "community": 34,
       "norm_label": "fetchgamestatefromserver()"
     },
     {
@@ -3195,7 +3195,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L82",
       "id": "store_gamestore_executeaction",
-      "community": 0,
+      "community": 34,
       "norm_label": "executeaction()"
     },
     {
@@ -3204,7 +3204,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L99",
       "id": "store_gamestore_saveplayersession",
-      "community": 0,
+      "community": 34,
       "norm_label": "saveplayersession()"
     },
     {
@@ -3213,7 +3213,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L108",
       "id": "store_gamestore_loadplayersession",
-      "community": 0,
+      "community": 34,
       "norm_label": "loadplayersession()"
     },
     {
@@ -3222,7 +3222,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L117",
       "id": "store_gamestore_gamestore",
-      "community": 0,
+      "community": 34,
       "norm_label": "gamestore"
     },
     {
@@ -3231,7 +3231,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L145",
       "id": "store_gamestore_usegamestore",
-      "community": 0,
+      "community": 36,
       "norm_label": "usegamestore"
     },
     {
@@ -3240,7 +3240,7 @@
       "source_file": "src/store/gameStore.ts",
       "source_location": "L508",
       "id": "store_gamestore_getnextplayer",
-      "community": 0,
+      "community": 34,
       "norm_label": "getnextplayer()"
     },
     {
@@ -3433,6 +3433,1239 @@
       "norm_label": "in progress now"
     },
     {
+      "label": "project_context.md",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L1",
+      "id": "claude_project_context_md",
+      "community": 30,
+      "norm_label": "project_context.md"
+    },
+    {
+      "label": "kadi-tiri-game Project Context",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L1",
+      "id": "claude_project_context_kadi_tiri_game_project_context",
+      "community": 30,
+      "norm_label": "kadi-tiri-game project context"
+    },
+    {
+      "label": "Business Purpose",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L5",
+      "id": "claude_project_context_business_purpose",
+      "community": 30,
+      "norm_label": "business purpose"
+    },
+    {
+      "label": "System Overview",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L8",
+      "id": "claude_project_context_system_overview",
+      "community": 30,
+      "norm_label": "system overview"
+    },
+    {
+      "label": "Major Applications",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L11",
+      "id": "claude_project_context_major_applications",
+      "community": 30,
+      "norm_label": "major applications"
+    },
+    {
+      "label": "Environments",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L15",
+      "id": "claude_project_context_environments",
+      "community": 30,
+      "norm_label": "environments"
+    },
+    {
+      "label": "Tech Stack",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L19",
+      "id": "claude_project_context_tech_stack",
+      "community": 30,
+      "norm_label": "tech stack"
+    },
+    {
+      "label": "Critical Dependencies",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L26",
+      "id": "claude_project_context_critical_dependencies",
+      "community": 30,
+      "norm_label": "critical dependencies"
+    },
+    {
+      "label": "Major Workflows",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L40",
+      "id": "claude_project_context_major_workflows",
+      "community": 30,
+      "norm_label": "major workflows"
+    },
+    {
+      "label": "Operational Constraints",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L47",
+      "id": "claude_project_context_operational_constraints",
+      "community": 30,
+      "norm_label": "operational constraints"
+    },
+    {
+      "label": "Scaling Constraints",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L52",
+      "id": "claude_project_context_scaling_constraints",
+      "community": 30,
+      "norm_label": "scaling constraints"
+    },
+    {
+      "label": "Deployment Model",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L55",
+      "id": "claude_project_context_deployment_model",
+      "community": 30,
+      "norm_label": "deployment model"
+    },
+    {
+      "label": "Important APIs",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L58",
+      "id": "claude_project_context_important_apis",
+      "community": 30,
+      "norm_label": "important apis"
+    },
+    {
+      "label": "Important Databases",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L64",
+      "id": "claude_project_context_important_databases",
+      "community": 30,
+      "norm_label": "important databases"
+    },
+    {
+      "label": "Important Queues / Events",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L68",
+      "id": "claude_project_context_important_queues_events",
+      "community": 30,
+      "norm_label": "important queues / events"
+    },
+    {
+      "label": "Known Technical Debt",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L73",
+      "id": "claude_project_context_known_technical_debt",
+      "community": 30,
+      "norm_label": "known technical debt"
+    },
+    {
+      "label": "Current Architecture Themes",
+      "file_type": "document",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L80",
+      "id": "claude_project_context_current_architecture_themes",
+      "community": 30,
+      "norm_label": "current architecture themes"
+    },
+    {
+      "label": "workflows.md",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L1",
+      "id": "claude_workflows_md",
+      "community": 35,
+      "norm_label": "workflows.md"
+    },
+    {
+      "label": "kadi-tiri-game Workflows",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L1",
+      "id": "claude_workflows_kadi_tiri_game_workflows",
+      "community": 35,
+      "norm_label": "kadi-tiri-game workflows"
+    },
+    {
+      "label": "Local Development",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L3",
+      "id": "claude_workflows_local_development",
+      "community": 35,
+      "norm_label": "local development"
+    },
+    {
+      "label": "Testing",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L7",
+      "id": "claude_workflows_testing",
+      "community": 35,
+      "norm_label": "testing"
+    },
+    {
+      "label": "Deployment",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L13",
+      "id": "claude_workflows_deployment",
+      "community": 35,
+      "norm_label": "deployment"
+    },
+    {
+      "label": "Migrations",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L16",
+      "id": "claude_workflows_migrations",
+      "community": 35,
+      "norm_label": "migrations"
+    },
+    {
+      "label": "Feature Rollout",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L19",
+      "id": "claude_workflows_feature_rollout",
+      "community": 35,
+      "norm_label": "feature rollout"
+    },
+    {
+      "label": "Incident Response",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L23",
+      "id": "claude_workflows_incident_response",
+      "community": 35,
+      "norm_label": "incident response"
+    },
+    {
+      "label": "Debugging",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L28",
+      "id": "claude_workflows_debugging",
+      "community": 35,
+      "norm_label": "debugging"
+    },
+    {
+      "label": "Rollback",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L33",
+      "id": "claude_workflows_rollback",
+      "community": 35,
+      "norm_label": "rollback"
+    },
+    {
+      "label": "Observability Investigation",
+      "file_type": "document",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L38",
+      "id": "claude_workflows_observability_investigation",
+      "community": 35,
+      "norm_label": "observability investigation"
+    },
+    {
+      "label": "architecture.md",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L1",
+      "id": "claude_architecture_md",
+      "community": 33,
+      "norm_label": "architecture.md"
+    },
+    {
+      "label": "kadi-tiri-game Architecture",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L1",
+      "id": "claude_architecture_kadi_tiri_game_architecture",
+      "community": 33,
+      "norm_label": "kadi-tiri-game architecture"
+    },
+    {
+      "label": "End-to-End Request Flows",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L3",
+      "id": "claude_architecture_end_to_end_request_flows",
+      "community": 33,
+      "norm_label": "end-to-end request flows"
+    },
+    {
+      "label": "Frontend / Backend Interaction",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L6",
+      "id": "claude_architecture_frontend_backend_interaction",
+      "community": 33,
+      "norm_label": "frontend / backend interaction"
+    },
+    {
+      "label": "Service Boundaries",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L9",
+      "id": "claude_architecture_service_boundaries",
+      "community": 33,
+      "norm_label": "service boundaries"
+    },
+    {
+      "label": "Sync vs Async Flows",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L13",
+      "id": "claude_architecture_sync_vs_async_flows",
+      "community": 33,
+      "norm_label": "sync vs async flows"
+    },
+    {
+      "label": "Event-Driven Architecture",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L18",
+      "id": "claude_architecture_event_driven_architecture",
+      "community": 33,
+      "norm_label": "event-driven architecture"
+    },
+    {
+      "label": "Caching Layers",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L21",
+      "id": "claude_architecture_caching_layers",
+      "community": 33,
+      "norm_label": "caching layers"
+    },
+    {
+      "label": "Auth Flow",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L26",
+      "id": "claude_architecture_auth_flow",
+      "community": 33,
+      "norm_label": "auth flow"
+    },
+    {
+      "label": "Deployment Topology",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L29",
+      "id": "claude_architecture_deployment_topology",
+      "community": 33,
+      "norm_label": "deployment topology"
+    },
+    {
+      "label": "Scaling Behavior",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L32",
+      "id": "claude_architecture_scaling_behavior",
+      "community": 33,
+      "norm_label": "scaling behavior"
+    },
+    {
+      "label": "Resilience Mechanisms",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L36",
+      "id": "claude_architecture_resilience_mechanisms",
+      "community": 33,
+      "norm_label": "resilience mechanisms"
+    },
+    {
+      "label": "Failover Behavior",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L41",
+      "id": "claude_architecture_failover_behavior",
+      "community": 33,
+      "norm_label": "failover behavior"
+    },
+    {
+      "label": "Observability Architecture",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L44",
+      "id": "claude_architecture_observability_architecture",
+      "community": 33,
+      "norm_label": "observability architecture"
+    },
+    {
+      "label": "Retry / Idempotency Patterns",
+      "file_type": "document",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L47",
+      "id": "claude_architecture_retry_idempotency_patterns",
+      "community": 33,
+      "norm_label": "retry / idempotency patterns"
+    },
+    {
+      "label": "repository_navigation.md",
+      "file_type": "document",
+      "source_file": ".claude/repository_navigation.md",
+      "source_location": "L1",
+      "id": "claude_repository_navigation_md",
+      "community": 44,
+      "norm_label": "repository_navigation.md"
+    },
+    {
+      "label": "Top-Level Modules",
+      "file_type": "document",
+      "source_file": ".claude/repository_navigation.md",
+      "source_location": "L1",
+      "id": "claude_repository_navigation_top_level_modules",
+      "community": 44,
+      "norm_label": "top-level modules"
+    },
+    {
+      "label": "Read First",
+      "file_type": "document",
+      "source_file": ".claude/repository_navigation.md",
+      "source_location": "L10",
+      "id": "claude_repository_navigation_read_first",
+      "community": 44,
+      "norm_label": "read first"
+    },
+    {
+      "label": "Critical Entrypoints",
+      "file_type": "document",
+      "source_file": ".claude/repository_navigation.md",
+      "source_location": "L18",
+      "id": "claude_repository_navigation_critical_entrypoints",
+      "community": 44,
+      "norm_label": "critical entrypoints"
+    },
+    {
+      "label": "graph_relationships.md",
+      "file_type": "document",
+      "source_file": ".claude/graph_relationships.md",
+      "source_location": "L1",
+      "id": "claude_graph_relationships_md",
+      "community": 45,
+      "norm_label": "graph_relationships.md"
+    },
+    {
+      "label": "kadi-tiri-game Graph Relationships",
+      "file_type": "document",
+      "source_file": ".claude/graph_relationships.md",
+      "source_location": "L1",
+      "id": "claude_graph_relationships_kadi_tiri_game_graph_relationships",
+      "community": 45,
+      "norm_label": "kadi-tiri-game graph relationships"
+    },
+    {
+      "label": "decision_log.md",
+      "file_type": "document",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L1",
+      "id": "claude_decision_log_md",
+      "community": 43,
+      "norm_label": "decision_log.md"
+    },
+    {
+      "label": "kadi-tiri-game Decision Log",
+      "file_type": "document",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L1",
+      "id": "claude_decision_log_kadi_tiri_game_decision_log",
+      "community": 43,
+      "norm_label": "kadi-tiri-game decision log"
+    },
+    {
+      "label": "Graphify-first repo discovery",
+      "file_type": "document",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L3",
+      "id": "claude_decision_log_graphify_first_repo_discovery",
+      "community": 43,
+      "norm_label": "graphify-first repo discovery"
+    },
+    {
+      "label": "Preserve repo separation",
+      "file_type": "document",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L9",
+      "id": "claude_decision_log_preserve_repo_separation",
+      "community": 43,
+      "norm_label": "preserve repo separation"
+    },
+    {
+      "label": "Server-authoritative multiplayer direction",
+      "file_type": "document",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L15",
+      "id": "claude_decision_log_server_authoritative_multiplayer_direction",
+      "community": 43,
+      "norm_label": "server-authoritative multiplayer direction"
+    },
+    {
+      "label": "known_pitfalls.md",
+      "file_type": "document",
+      "source_file": ".claude/known_pitfalls.md",
+      "source_location": "L1",
+      "id": "claude_known_pitfalls_md",
+      "community": 46,
+      "norm_label": "known_pitfalls.md"
+    },
+    {
+      "label": "kadi-tiri-game Known Pitfalls",
+      "file_type": "document",
+      "source_file": ".claude/known_pitfalls.md",
+      "source_location": "L1",
+      "id": "claude_known_pitfalls_kadi_tiri_game_known_pitfalls",
+      "community": 46,
+      "norm_label": "kadi-tiri-game known pitfalls"
+    },
+    {
+      "label": "onboarding.md",
+      "file_type": "document",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L1",
+      "id": "claude_onboarding_md",
+      "community": 41,
+      "norm_label": "onboarding.md"
+    },
+    {
+      "label": "kadi-tiri-game Onboarding",
+      "file_type": "document",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L1",
+      "id": "claude_onboarding_kadi_tiri_game_onboarding",
+      "community": 41,
+      "norm_label": "kadi-tiri-game onboarding"
+    },
+    {
+      "label": "First Read",
+      "file_type": "document",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L3",
+      "id": "claude_onboarding_first_read",
+      "community": 41,
+      "norm_label": "first read"
+    },
+    {
+      "label": "Critical Entrypoints",
+      "file_type": "document",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L11",
+      "id": "claude_onboarding_critical_entrypoints",
+      "community": 41,
+      "norm_label": "critical entrypoints"
+    },
+    {
+      "label": "Module Map",
+      "file_type": "document",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L20",
+      "id": "claude_onboarding_module_map",
+      "community": 41,
+      "norm_label": "module map"
+    },
+    {
+      "label": "How To Start Reasoning",
+      "file_type": "document",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L29",
+      "id": "claude_onboarding_how_to_start_reasoning",
+      "community": 41,
+      "norm_label": "how to start reasoning"
+    },
+    {
+      "label": "Local Run Baseline",
+      "file_type": "document",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L34",
+      "id": "claude_onboarding_local_run_baseline",
+      "community": 41,
+      "norm_label": "local run baseline"
+    },
+    {
+      "label": "coding_rules.md",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L1",
+      "id": "claude_coding_rules_md",
+      "community": 37,
+      "norm_label": "coding_rules.md"
+    },
+    {
+      "label": "kadi-tiri-game Coding Rules",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L1",
+      "id": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "community": 37,
+      "norm_label": "kadi-tiri-game coding rules"
+    },
+    {
+      "label": "Naming / Structure",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L3",
+      "id": "claude_coding_rules_naming_structure",
+      "community": 37,
+      "norm_label": "naming / structure"
+    },
+    {
+      "label": "Architecture Patterns",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L7",
+      "id": "claude_coding_rules_architecture_patterns",
+      "community": 37,
+      "norm_label": "architecture patterns"
+    },
+    {
+      "label": "State Management",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L14",
+      "id": "claude_coding_rules_state_management",
+      "community": 37,
+      "norm_label": "state management"
+    },
+    {
+      "label": "Error Handling / Logging",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L18",
+      "id": "claude_coding_rules_error_handling_logging",
+      "community": 37,
+      "norm_label": "error handling / logging"
+    },
+    {
+      "label": "API Conventions",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L23",
+      "id": "claude_coding_rules_api_conventions",
+      "community": 37,
+      "norm_label": "api conventions"
+    },
+    {
+      "label": "Testing Conventions",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L27",
+      "id": "claude_coding_rules_testing_conventions",
+      "community": 37,
+      "norm_label": "testing conventions"
+    },
+    {
+      "label": "Typing / Abstractions",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L33",
+      "id": "claude_coding_rules_typing_abstractions",
+      "community": 37,
+      "norm_label": "typing / abstractions"
+    },
+    {
+      "label": "Database / Migration Patterns",
+      "file_type": "document",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L37",
+      "id": "claude_coding_rules_database_migration_patterns",
+      "community": 37,
+      "norm_label": "database / migration patterns"
+    },
+    {
+      "label": "system_prompt.md",
+      "file_type": "document",
+      "source_file": ".claude/system_prompt.md",
+      "source_location": "L1",
+      "id": "claude_system_prompt_md",
+      "community": 53,
+      "norm_label": "system_prompt.md"
+    },
+    {
+      "label": "kadi-tiri-game Claude System Prompt",
+      "file_type": "document",
+      "source_file": ".claude/system_prompt.md",
+      "source_location": "L1",
+      "id": "claude_system_prompt_kadi_tiri_game_claude_system_prompt",
+      "community": 53,
+      "norm_label": "kadi-tiri-game claude system prompt"
+    },
+    {
+      "label": "debug.md",
+      "file_type": "document",
+      "source_file": ".claude/prompts/debug.md",
+      "source_location": "L1",
+      "id": "claude_prompts_debug_md",
+      "community": 48,
+      "norm_label": "debug.md"
+    },
+    {
+      "label": "Debug Prompt",
+      "file_type": "document",
+      "source_file": ".claude/prompts/debug.md",
+      "source_location": "L1",
+      "id": "prompts_debug_debug_prompt",
+      "community": 48,
+      "norm_label": "debug prompt"
+    },
+    {
+      "label": "incident_response.md",
+      "file_type": "document",
+      "source_file": ".claude/prompts/incident_response.md",
+      "source_location": "L1",
+      "id": "claude_prompts_incident_response_md",
+      "community": 50,
+      "norm_label": "incident_response.md"
+    },
+    {
+      "label": "Incident Response Prompt",
+      "file_type": "document",
+      "source_file": ".claude/prompts/incident_response.md",
+      "source_location": "L1",
+      "id": "prompts_incident_response_incident_response_prompt",
+      "community": 50,
+      "norm_label": "incident response prompt"
+    },
+    {
+      "label": "architecture_review.md",
+      "file_type": "document",
+      "source_file": ".claude/prompts/architecture_review.md",
+      "source_location": "L1",
+      "id": "claude_prompts_architecture_review_md",
+      "community": 47,
+      "norm_label": "architecture_review.md"
+    },
+    {
+      "label": "Architecture Review Prompt",
+      "file_type": "document",
+      "source_file": ".claude/prompts/architecture_review.md",
+      "source_location": "L1",
+      "id": "prompts_architecture_review_architecture_review_prompt",
+      "community": 47,
+      "norm_label": "architecture review prompt"
+    },
+    {
+      "label": "refactor.md",
+      "file_type": "document",
+      "source_file": ".claude/prompts/refactor.md",
+      "source_location": "L1",
+      "id": "claude_prompts_refactor_md",
+      "community": 52,
+      "norm_label": "refactor.md"
+    },
+    {
+      "label": "Refactor Prompt",
+      "file_type": "document",
+      "source_file": ".claude/prompts/refactor.md",
+      "source_location": "L1",
+      "id": "prompts_refactor_refactor_prompt",
+      "community": 52,
+      "norm_label": "refactor prompt"
+    },
+    {
+      "label": "feature.md",
+      "file_type": "document",
+      "source_file": ".claude/prompts/feature.md",
+      "source_location": "L1",
+      "id": "claude_prompts_feature_md",
+      "community": 49,
+      "norm_label": "feature.md"
+    },
+    {
+      "label": "Feature Prompt",
+      "file_type": "document",
+      "source_file": ".claude/prompts/feature.md",
+      "source_location": "L1",
+      "id": "prompts_feature_feature_prompt",
+      "community": 49,
+      "norm_label": "feature prompt"
+    },
+    {
+      "label": "performance_analysis.md",
+      "file_type": "document",
+      "source_file": ".claude/prompts/performance_analysis.md",
+      "source_location": "L1",
+      "id": "claude_prompts_performance_analysis_md",
+      "community": 51,
+      "norm_label": "performance_analysis.md"
+    },
+    {
+      "label": "Performance Analysis Prompt",
+      "file_type": "document",
+      "source_file": ".claude/prompts/performance_analysis.md",
+      "source_location": "L1",
+      "id": "prompts_performance_analysis_performance_analysis_prompt",
+      "community": 51,
+      "norm_label": "performance analysis prompt"
+    },
+    {
+      "label": "game-api.md",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L1",
+      "id": "claude_services_game_api_md",
+      "community": 31,
+      "norm_label": "game-api.md"
+    },
+    {
+      "label": "Game Api",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L1",
+      "id": "services_game_api_game_api",
+      "community": 31,
+      "norm_label": "game api"
+    },
+    {
+      "label": "Responsibility",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L3",
+      "id": "services_game_api_responsibility",
+      "community": 31,
+      "norm_label": "responsibility"
+    },
+    {
+      "label": "Dependencies",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L6",
+      "id": "services_game_api_dependencies",
+      "community": 31,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "Inbound APIs",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L13",
+      "id": "services_game_api_inbound_apis",
+      "community": 31,
+      "norm_label": "inbound apis"
+    },
+    {
+      "label": "Outbound APIs",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L19",
+      "id": "services_game_api_outbound_apis",
+      "community": 31,
+      "norm_label": "outbound apis"
+    },
+    {
+      "label": "Databases Used",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L25",
+      "id": "services_game_api_databases_used",
+      "community": 31,
+      "norm_label": "databases used"
+    },
+    {
+      "label": "Queues / Topics",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L29",
+      "id": "services_game_api_queues_topics",
+      "community": 31,
+      "norm_label": "queues / topics"
+    },
+    {
+      "label": "Critical Workflows",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L34",
+      "id": "services_game_api_critical_workflows",
+      "community": 31,
+      "norm_label": "critical workflows"
+    },
+    {
+      "label": "Failure Modes",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L39",
+      "id": "services_game_api_failure_modes",
+      "community": 31,
+      "norm_label": "failure modes"
+    },
+    {
+      "label": "Scaling Concerns",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L44",
+      "id": "services_game_api_scaling_concerns",
+      "community": 31,
+      "norm_label": "scaling concerns"
+    },
+    {
+      "label": "Operational Concerns",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L48",
+      "id": "services_game_api_operational_concerns",
+      "community": 31,
+      "norm_label": "operational concerns"
+    },
+    {
+      "label": "Important Source Files",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L52",
+      "id": "services_game_api_important_source_files",
+      "community": 31,
+      "norm_label": "important source files"
+    },
+    {
+      "label": "Dangerous Code Paths",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L60",
+      "id": "services_game_api_dangerous_code_paths",
+      "community": 31,
+      "norm_label": "dangerous code paths"
+    },
+    {
+      "label": "Testing Strategy",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L65",
+      "id": "services_game_api_testing_strategy",
+      "community": 31,
+      "norm_label": "testing strategy"
+    },
+    {
+      "label": "Known Technical Debt",
+      "file_type": "document",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L71",
+      "id": "services_game_api_known_technical_debt",
+      "community": 31,
+      "norm_label": "known technical debt"
+    },
+    {
+      "label": "game-client-store.md",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L1",
+      "id": "claude_services_game_client_store_md",
+      "community": 32,
+      "norm_label": "game-client-store.md"
+    },
+    {
+      "label": "Game Client Store",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L1",
+      "id": "services_game_client_store_game_client_store",
+      "community": 32,
+      "norm_label": "game client store"
+    },
+    {
+      "label": "Responsibility",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L3",
+      "id": "services_game_client_store_responsibility",
+      "community": 32,
+      "norm_label": "responsibility"
+    },
+    {
+      "label": "Dependencies",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L6",
+      "id": "services_game_client_store_dependencies",
+      "community": 32,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "Inbound APIs",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L13",
+      "id": "services_game_client_store_inbound_apis",
+      "community": 32,
+      "norm_label": "inbound apis"
+    },
+    {
+      "label": "Outbound APIs",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L19",
+      "id": "services_game_client_store_outbound_apis",
+      "community": 32,
+      "norm_label": "outbound apis"
+    },
+    {
+      "label": "Databases Used",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L25",
+      "id": "services_game_client_store_databases_used",
+      "community": 32,
+      "norm_label": "databases used"
+    },
+    {
+      "label": "Queues / Topics",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L29",
+      "id": "services_game_client_store_queues_topics",
+      "community": 32,
+      "norm_label": "queues / topics"
+    },
+    {
+      "label": "Critical Workflows",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L34",
+      "id": "services_game_client_store_critical_workflows",
+      "community": 32,
+      "norm_label": "critical workflows"
+    },
+    {
+      "label": "Failure Modes",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L39",
+      "id": "services_game_client_store_failure_modes",
+      "community": 32,
+      "norm_label": "failure modes"
+    },
+    {
+      "label": "Scaling Concerns",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L44",
+      "id": "services_game_client_store_scaling_concerns",
+      "community": 32,
+      "norm_label": "scaling concerns"
+    },
+    {
+      "label": "Operational Concerns",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L48",
+      "id": "services_game_client_store_operational_concerns",
+      "community": 32,
+      "norm_label": "operational concerns"
+    },
+    {
+      "label": "Important Source Files",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L52",
+      "id": "services_game_client_store_important_source_files",
+      "community": 32,
+      "norm_label": "important source files"
+    },
+    {
+      "label": "Dangerous Code Paths",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L60",
+      "id": "services_game_client_store_dangerous_code_paths",
+      "community": 32,
+      "norm_label": "dangerous code paths"
+    },
+    {
+      "label": "Testing Strategy",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L65",
+      "id": "services_game_client_store_testing_strategy",
+      "community": 32,
+      "norm_label": "testing strategy"
+    },
+    {
+      "label": "Known Technical Debt",
+      "file_type": "document",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L71",
+      "id": "services_game_client_store_known_technical_debt",
+      "community": 32,
+      "norm_label": "known technical debt"
+    },
+    {
+      "label": "error-context.md",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L1",
+      "id": "test_results_room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_md",
+      "community": 38,
+      "norm_label": "error-context.md"
+    },
+    {
+      "label": "Instructions",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L1",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_instructions",
+      "community": 38,
+      "norm_label": "instructions"
+    },
+    {
+      "label": "Test info",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L7",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_test_info",
+      "community": 38,
+      "norm_label": "test info"
+    },
+    {
+      "label": "Error details",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L12",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_error_details",
+      "community": 38,
+      "norm_label": "error details"
+    },
+    {
+      "label": "code:block1 (Error: Timeout 15000ms exceeded while waiting on the predica)",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L14",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_codeblock_1",
+      "community": 38,
+      "norm_label": "code:block1 (error: timeout 15000ms exceeded while waiting on the predica)"
+    },
+    {
+      "label": "Page snapshot",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L18",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_page_snapshot",
+      "community": 38,
+      "norm_label": "page snapshot"
+    },
+    {
+      "label": "code:yaml (- generic [active] [ref=e1]:)",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L20",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_codeblock_2",
+      "community": 38,
+      "norm_label": "code:yaml (- generic [active] [ref=e1]:)"
+    },
+    {
+      "label": "Test source",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L183",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_test_source",
+      "community": 38,
+      "norm_label": "test source"
+    },
+    {
+      "label": "code:ts (21  |         })",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L185",
+      "id": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_codeblock_3",
+      "community": 38,
+      "norm_label": "code:ts (21  |         })"
+    },
+    {
+      "label": "error-context.md",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L1",
+      "id": "test_results_room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_md",
+      "community": 39,
+      "norm_label": "error-context.md"
+    },
+    {
+      "label": "Instructions",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L1",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_instructions",
+      "community": 39,
+      "norm_label": "instructions"
+    },
+    {
+      "label": "Test info",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L7",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_test_info",
+      "community": 39,
+      "norm_label": "test info"
+    },
+    {
+      "label": "Error details",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L12",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_error_details",
+      "community": 39,
+      "norm_label": "error details"
+    },
+    {
+      "label": "code:block1 (Error: expect(received).not.toBe(expected) // Object.is equa)",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L14",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_codeblock_1",
+      "community": 39,
+      "norm_label": "code:block1 (error: expect(received).not.tobe(expected) // object.is equa)"
+    },
+    {
+      "label": "Page snapshot",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L23",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_page_snapshot",
+      "community": 39,
+      "norm_label": "page snapshot"
+    },
+    {
+      "label": "code:yaml (- generic [active] [ref=e1]:)",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L25",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_codeblock_2",
+      "community": 39,
+      "norm_label": "code:yaml (- generic [active] [ref=e1]:)"
+    },
+    {
+      "label": "Test source",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L191",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_test_source",
+      "community": 39,
+      "norm_label": "test source"
+    },
+    {
+      "label": "code:ts (1   | import { Browser, BrowserContext, expect, Page, test })",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L193",
+      "id": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_codeblock_3",
+      "community": 39,
+      "norm_label": "code:ts (1   | import { browser, browsercontext, expect, page, test })"
+    },
+    {
       "label": "error-context.md",
       "file_type": "document",
       "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
@@ -3469,19 +4702,19 @@
       "norm_label": "error details"
     },
     {
-      "label": "code:block1 (Test timeout of 300000ms exceeded.)",
+      "label": "code:block1 (Error: expect(locator).toHaveCount(expected) failed)",
       "file_type": "document",
       "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
       "source_location": "L14",
       "id": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_codeblock_1",
       "community": 12,
-      "norm_label": "code:block1 (test timeout of 300000ms exceeded.)"
+      "norm_label": "code:block1 (error: expect(locator).tohavecount(expected) failed)"
     },
     {
       "label": "Page snapshot",
       "file_type": "document",
       "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
-      "source_location": "L18",
+      "source_location": "L30",
       "id": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_page_snapshot",
       "community": 12,
       "norm_label": "page snapshot"
@@ -3490,9 +4723,90 @@
       "label": "code:yaml (- generic [active] [ref=e1]:)",
       "file_type": "document",
       "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
-      "source_location": "L20",
+      "source_location": "L32",
       "id": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_codeblock_2",
       "community": 12,
+      "norm_label": "code:yaml (- generic [active] [ref=e1]:)"
+    },
+    {
+      "label": "Test source",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
+      "source_location": "L72",
+      "id": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_test_source",
+      "community": 12,
+      "norm_label": "test source"
+    },
+    {
+      "label": "code:ts (1   | import { Browser, BrowserContext, expect, Page, test })",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
+      "source_location": "L74",
+      "id": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_codeblock_3",
+      "community": 12,
+      "norm_label": "code:ts (1   | import { browser, browsercontext, expect, page, test })"
+    },
+    {
+      "label": "error-context.md",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L1",
+      "id": "test_results_room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_md",
+      "community": 42,
+      "norm_label": "error-context.md"
+    },
+    {
+      "label": "Instructions",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L1",
+      "id": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_instructions",
+      "community": 42,
+      "norm_label": "instructions"
+    },
+    {
+      "label": "Test info",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L7",
+      "id": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_test_info",
+      "community": 42,
+      "norm_label": "test info"
+    },
+    {
+      "label": "Error details",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L12",
+      "id": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_error_details",
+      "community": 42,
+      "norm_label": "error details"
+    },
+    {
+      "label": "code:block1 (Test timeout of 180000ms exceeded.)",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L14",
+      "id": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_codeblock_1",
+      "community": 42,
+      "norm_label": "code:block1 (test timeout of 180000ms exceeded.)"
+    },
+    {
+      "label": "Page snapshot",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L18",
+      "id": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_page_snapshot",
+      "community": 42,
+      "norm_label": "page snapshot"
+    },
+    {
+      "label": "code:yaml (- generic [active] [ref=e1]:)",
+      "file_type": "document",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L20",
+      "id": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_codeblock_2",
+      "community": 42,
       "norm_label": "code:yaml (- generic [active] [ref=e1]:)"
     },
     {
@@ -3653,7 +4967,7 @@
       "file_type": "code",
       "source_file": "src/store/gameStore.ts",
       "source_location": "L12",
-      "community": 0,
+      "community": 34,
       "norm_label": "getgameupdateschannel()",
       "id": "store_gamestore_getgameupdateschannel"
     },
@@ -3662,7 +4976,7 @@
       "file_type": "code",
       "source_file": "src/store/gameStore.ts",
       "source_location": "L24",
-      "community": 0,
+      "community": 34,
       "norm_label": "broadcastgameupdate()",
       "id": "store_gamestore_broadcastgameupdate"
     }
@@ -4034,9 +5348,9 @@
       "source_file": "package.json",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "kadi_tiri_game_package_dependencies",
-      "target": "kadi_tiri_game_package_dependencies_sql_js",
-      "confidence_score": 1.0
+      "target": "kadi_tiri_game_package_dependencies_sql_js"
     },
     {
       "relation": "contains",
@@ -9003,9 +10317,9 @@
       "source_file": "src/lib/server/gameStorage.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_gamestorage_ts",
-      "target": "src_lib_server_sqlitedb_ts",
-      "confidence_score": 1.0
+      "target": "src_lib_server_sqlitedb_ts"
     },
     {
       "relation": "imports",
@@ -9014,9 +10328,9 @@
       "source_file": "src/lib/server/gameStorage.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_gamestorage_ts",
-      "target": "server_sqlitedb_persistdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_persistdatabase"
     },
     {
       "relation": "imports",
@@ -9025,9 +10339,9 @@
       "source_file": "src/lib/server/gameStorage.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_gamestorage_ts",
-      "target": "server_sqlitedb_withdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_withdatabase"
     },
     {
       "relation": "contains",
@@ -9443,9 +10757,9 @@
       "source_file": "src/lib/server/gamePersistence.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_gamepersistence_ts",
-      "target": "src_lib_server_sqlitedb_ts",
-      "confidence_score": 1.0
+      "target": "src_lib_server_sqlitedb_ts"
     },
     {
       "relation": "imports",
@@ -9454,9 +10768,9 @@
       "source_file": "src/lib/server/gamePersistence.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_gamepersistence_ts",
-      "target": "server_sqlitedb_persistdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_persistdatabase"
     },
     {
       "relation": "imports",
@@ -9465,9 +10779,9 @@
       "source_file": "src/lib/server/gamePersistence.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_gamepersistence_ts",
-      "target": "server_sqlitedb_withdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_withdatabase"
     },
     {
       "relation": "contains",
@@ -9823,9 +11137,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_initsqljs",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_initsqljs"
     },
     {
       "relation": "contains",
@@ -9833,9 +11147,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_datadir",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_datadir"
     },
     {
       "relation": "contains",
@@ -9843,9 +11157,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_databasefile",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_databasefile"
     },
     {
       "relation": "contains",
@@ -9853,9 +11167,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_legacygamesfile",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_legacygamesfile"
     },
     {
       "relation": "contains",
@@ -9863,9 +11177,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_legacyeventlogfile",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_legacyeventlogfile"
     },
     {
       "relation": "contains",
@@ -9873,9 +11187,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_legacywebhookfile",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_legacywebhookfile"
     },
     {
       "relation": "contains",
@@ -9883,9 +11197,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_dbqueue",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_dbqueue"
     },
     {
       "relation": "contains",
@@ -9893,9 +11207,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_fileexists",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_fileexists"
     },
     {
       "relation": "contains",
@@ -9903,9 +11217,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_ensuredatadir",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_ensuredatadir"
     },
     {
       "relation": "contains",
@@ -9913,9 +11227,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_loadsql",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_loadsql"
     },
     {
       "relation": "contains",
@@ -9923,9 +11237,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_getcount",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_getcount"
     },
     {
       "relation": "contains",
@@ -9933,9 +11247,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_migratelegacygames",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_migratelegacygames"
     },
     {
       "relation": "contains",
@@ -9943,9 +11257,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_migratelegacyeventlog",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_migratelegacyeventlog"
     },
     {
       "relation": "contains",
@@ -9953,9 +11267,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_migratelegacywebhookdeliveries",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_migratelegacywebhookdeliveries"
     },
     {
       "relation": "contains",
@@ -9963,9 +11277,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_persistifneeded",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_persistifneeded"
     },
     {
       "relation": "contains",
@@ -9973,9 +11287,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L145",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_setupschema",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_setupschema"
     },
     {
       "relation": "contains",
@@ -9983,9 +11297,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L183",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_loaddatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_loaddatabase"
     },
     {
       "relation": "contains",
@@ -9993,9 +11307,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_getdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_getdatabase"
     },
     {
       "relation": "contains",
@@ -10003,9 +11317,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L207",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_persistdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_persistdatabase"
     },
     {
       "relation": "contains",
@@ -10013,9 +11327,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L212",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_lib_server_sqlitedb_ts",
-      "target": "server_sqlitedb_withdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_withdatabase"
     },
     {
       "relation": "calls",
@@ -10024,9 +11338,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_loadsql",
-      "target": "server_sqlitedb_initsqljs",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_initsqljs"
     },
     {
       "relation": "calls",
@@ -10035,9 +11349,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_migratelegacygames",
-      "target": "server_sqlitedb_fileexists",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_fileexists"
     },
     {
       "relation": "calls",
@@ -10046,9 +11360,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_migratelegacyeventlog",
-      "target": "server_sqlitedb_fileexists",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_fileexists"
     },
     {
       "relation": "calls",
@@ -10057,9 +11371,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_migratelegacywebhookdeliveries",
-      "target": "server_sqlitedb_fileexists",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_fileexists"
     },
     {
       "relation": "calls",
@@ -10068,9 +11382,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L188",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_loaddatabase",
-      "target": "server_sqlitedb_fileexists",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_fileexists"
     },
     {
       "relation": "calls",
@@ -10079,9 +11393,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_loaddatabase",
-      "target": "server_sqlitedb_ensuredatadir",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_ensuredatadir"
     },
     {
       "relation": "calls",
@@ -10090,9 +11404,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L208",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_persistdatabase",
-      "target": "server_sqlitedb_ensuredatadir",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_ensuredatadir"
     },
     {
       "relation": "calls",
@@ -10101,9 +11415,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_loaddatabase",
-      "target": "server_sqlitedb_loadsql",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_loadsql"
     },
     {
       "relation": "calls",
@@ -10112,9 +11426,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_migratelegacygames",
-      "target": "server_sqlitedb_getcount",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_getcount"
     },
     {
       "relation": "calls",
@@ -10123,9 +11437,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_migratelegacyeventlog",
-      "target": "server_sqlitedb_getcount",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_getcount"
     },
     {
       "relation": "calls",
@@ -10134,9 +11448,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_migratelegacywebhookdeliveries",
-      "target": "server_sqlitedb_getcount",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_getcount"
     },
     {
       "relation": "calls",
@@ -10145,9 +11459,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L177",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_setupschema",
-      "target": "server_sqlitedb_migratelegacygames",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_migratelegacygames"
     },
     {
       "relation": "calls",
@@ -10156,9 +11470,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L178",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_setupschema",
-      "target": "server_sqlitedb_migratelegacyeventlog",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_migratelegacyeventlog"
     },
     {
       "relation": "calls",
@@ -10167,9 +11481,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L179",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_setupschema",
-      "target": "server_sqlitedb_migratelegacywebhookdeliveries",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_migratelegacywebhookdeliveries"
     },
     {
       "relation": "calls",
@@ -10178,9 +11492,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_persistifneeded",
-      "target": "server_sqlitedb_persistdatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_persistdatabase"
     },
     {
       "relation": "calls",
@@ -10189,9 +11503,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_setupschema",
-      "target": "server_sqlitedb_persistifneeded",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_persistifneeded"
     },
     {
       "relation": "calls",
@@ -10200,9 +11514,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L195",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_loaddatabase",
-      "target": "server_sqlitedb_setupschema",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_setupschema"
     },
     {
       "relation": "calls",
@@ -10211,9 +11525,9 @@
       "source_file": "src/lib/server/sqliteDb.ts",
       "source_location": "L201",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_sqlitedb_getdatabase",
-      "target": "server_sqlitedb_loaddatabase",
-      "confidence_score": 1.0
+      "target": "server_sqlitedb_loaddatabase"
     },
     {
       "relation": "contains",
@@ -10996,6 +12310,1176 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_project_context_md",
+      "target": "claude_project_context_kadi_tiri_game_project_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_business_purpose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_system_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_major_applications",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_environments",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_tech_stack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_critical_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_major_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_operational_constraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_scaling_constraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_deployment_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_important_apis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_important_databases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_important_queues_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_known_technical_debt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/project_context.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "claude_project_context_kadi_tiri_game_project_context",
+      "target": "claude_project_context_current_architecture_themes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_workflows_md",
+      "target": "claude_workflows_kadi_tiri_game_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_local_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_testing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_deployment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_migrations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_feature_rollout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_incident_response",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_debugging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_rollback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/workflows.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "claude_workflows_kadi_tiri_game_workflows",
+      "target": "claude_workflows_observability_investigation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_architecture_md",
+      "target": "claude_architecture_kadi_tiri_game_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_end_to_end_request_flows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_frontend_backend_interaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_service_boundaries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_sync_vs_async_flows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_event_driven_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_caching_layers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_auth_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_deployment_topology",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_scaling_behavior",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_resilience_mechanisms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_failover_behavior",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_observability_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/architecture.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "claude_architecture_kadi_tiri_game_architecture",
+      "target": "claude_architecture_retry_idempotency_patterns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/repository_navigation.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_repository_navigation_md",
+      "target": "claude_repository_navigation_top_level_modules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/repository_navigation.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "claude_repository_navigation_md",
+      "target": "claude_repository_navigation_read_first",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/repository_navigation.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "claude_repository_navigation_md",
+      "target": "claude_repository_navigation_critical_entrypoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/graph_relationships.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_graph_relationships_md",
+      "target": "claude_graph_relationships_kadi_tiri_game_graph_relationships",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_decision_log_md",
+      "target": "claude_decision_log_kadi_tiri_game_decision_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_decision_log_kadi_tiri_game_decision_log",
+      "target": "claude_decision_log_graphify_first_repo_discovery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "claude_decision_log_kadi_tiri_game_decision_log",
+      "target": "claude_decision_log_preserve_repo_separation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/decision_log.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "claude_decision_log_kadi_tiri_game_decision_log",
+      "target": "claude_decision_log_server_authoritative_multiplayer_direction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/known_pitfalls.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_known_pitfalls_md",
+      "target": "claude_known_pitfalls_kadi_tiri_game_known_pitfalls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_onboarding_md",
+      "target": "claude_onboarding_kadi_tiri_game_onboarding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_onboarding_kadi_tiri_game_onboarding",
+      "target": "claude_onboarding_first_read",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "claude_onboarding_kadi_tiri_game_onboarding",
+      "target": "claude_onboarding_critical_entrypoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "claude_onboarding_kadi_tiri_game_onboarding",
+      "target": "claude_onboarding_module_map",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "claude_onboarding_kadi_tiri_game_onboarding",
+      "target": "claude_onboarding_how_to_start_reasoning",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/onboarding.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "claude_onboarding_kadi_tiri_game_onboarding",
+      "target": "claude_onboarding_local_run_baseline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_coding_rules_md",
+      "target": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_naming_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_architecture_patterns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_state_management",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_error_handling_logging",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_api_conventions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_testing_conventions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_typing_abstractions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/coding_rules.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "claude_coding_rules_kadi_tiri_game_coding_rules",
+      "target": "claude_coding_rules_database_migration_patterns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/system_prompt.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_system_prompt_md",
+      "target": "claude_system_prompt_kadi_tiri_game_claude_system_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/prompts/debug.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_prompts_debug_md",
+      "target": "prompts_debug_debug_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/prompts/incident_response.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_prompts_incident_response_md",
+      "target": "prompts_incident_response_incident_response_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/prompts/architecture_review.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_prompts_architecture_review_md",
+      "target": "prompts_architecture_review_architecture_review_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/prompts/refactor.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_prompts_refactor_md",
+      "target": "prompts_refactor_refactor_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/prompts/feature.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_prompts_feature_md",
+      "target": "prompts_feature_feature_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/prompts/performance_analysis.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_prompts_performance_analysis_md",
+      "target": "prompts_performance_analysis_performance_analysis_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_services_game_api_md",
+      "target": "services_game_api_game_api",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_responsibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_inbound_apis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_outbound_apis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_databases_used",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_queues_topics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_critical_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_failure_modes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_scaling_concerns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_operational_concerns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_important_source_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_dangerous_code_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_testing_strategy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-api.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "services_game_api_game_api",
+      "target": "services_game_api_known_technical_debt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude_services_game_client_store_md",
+      "target": "services_game_client_store_game_client_store",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_responsibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_inbound_apis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_outbound_apis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_databases_used",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_queues_topics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_critical_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_failure_modes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_scaling_concerns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_operational_concerns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_important_source_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_dangerous_code_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_testing_strategy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/services/game-client-store.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "services_game_client_store_game_client_store",
+      "target": "services_game_client_store_known_technical_debt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "test_results_room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_md",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_instructions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "test_results_room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_md",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_test_info",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "test_results_room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_md",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_error_details",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "test_results_room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_md",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_page_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "test_results_room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_md",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_test_source",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_error_details",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_page_snapshot",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-follow-suit-is-e-8bc73-er-has-the-led-suit-in-hand-chromium/error-context.md",
+      "source_location": "L185",
+      "weight": 1.0,
+      "source": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_test_source",
+      "target": "room_flow_follow_suit_is_e_8bc73_er_has_the_led_suit_in_hand_chromium_error_context_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_md",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_instructions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_md",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_test_info",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_md",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_error_details",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_md",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_page_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L191",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_md",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_test_source",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_error_details",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_page_snapshot",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-99f64-the-winner-to-the-next-turn-chromium/error-context.md",
+      "source_location": "L193",
+      "weight": 1.0,
+      "source": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_test_source",
+      "target": "room_flow_four_players_can_99f64_the_winner_to_the_next_turn_chromium_error_context_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -11037,6 +13521,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_md",
+      "target": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_test_source",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
       "source_location": "L14",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -11052,6 +13546,76 @@
       "confidence_score": 1.0,
       "source": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_page_snapshot",
       "target": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_codeblock_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-83283-d-see-the-first-played-card-chromium/error-context.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_test_source",
+      "target": "room_flow_four_players_can_83283_d_see_the_first_played_card_chromium_error_context_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_md",
+      "target": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_instructions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_md",
+      "target": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_test_info",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_md",
+      "target": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_error_details",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "test_results_room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_md",
+      "target": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_page_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_error_details",
+      "target": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test-results/room-flow-four-players-can-8c6b7-nd-reach-scoring-settlement-chromium/error-context.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_page_snapshot",
+      "target": "room_flow_four_players_can_8c6b7_nd_reach_scoring_settlement_chromium_error_context_codeblock_2",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -11132,5 +13696,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "035b3417b5c6c7f27a6c5fbe073d018460f5888f"
+  "built_at_commit": "574bd29f2c942d5e3cd9fb7ee4a9dd4594f91eea"
 }

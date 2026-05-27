@@ -1,16 +1,16 @@
-# Graph Report - kadi-tiri-game  (2026-05-20)
+# Graph Report - kadi-tiri-game  (2026-05-26)
 
 ## Corpus Check
-- 59 files · ~140,112 words
+- 80 files · ~272,843 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 407 nodes · 710 edges · 30 communities (26 shown, 4 thin omitted)
+- 553 nodes · 835 edges · 54 communities (42 shown, 12 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `035b3417`
+- Built from commit: `574bd29f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,52 +34,76 @@
 - [[_COMMUNITY_Community 16|Community 16]]
 - [[_COMMUNITY_Community 28|Community 28]]
 - [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
+- [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
+- [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
+- [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 52|Community 52]]
+- [[_COMMUNITY_Community 53|Community 53]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `GameState` - 18 edges
 2. `dependencies` - 16 edges
-3. `compilerOptions` - 15 edges
-4. `useGameStore` - 15 edges
-5. `nextUpdatedAt()` - 13 edges
-6. `scripts` - 12 edges
-7. `Card` - 11 edges
-8. `createGameEvent()` - 10 edges
-9. `useSoundEffects()` - 9 edges
-10. `publishGameEvent()` - 9 edges
+3. `kadi-tiri-game Project Context` - 16 edges
+4. `compilerOptions` - 15 edges
+5. `useGameStore` - 15 edges
+6. `Game Api` - 15 edges
+7. `Game Client Store` - 15 edges
+8. `kadi-tiri-game Architecture` - 14 edges
+9. `nextUpdatedAt()` - 13 edges
+10. `scripts` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `createInitialGameState()` --calls--> `getDifficultyConfig()`  [EXTRACTED]
-  src/lib/server/gameFactory.ts → src/types/game.ts
-- `PlayingCard()` --calls--> `useSoundEffects()`  [EXTRACTED]
-  src/components/ui/PlayingCard.tsx → src/hooks/useSoundEffects.ts
 - `GamePlayArea()` --calls--> `useGameStore`  [EXTRACTED]
   src/components/game/GamePlayArea.tsx → src/store/gameStore.ts
-- `GameBoard()` --calls--> `useGameStore`  [EXTRACTED]
-  src/components/game/GameBoard.tsx → src/store/gameStore.ts
-- `DealingAnimation()` --calls--> `useSoundEffects()`  [EXTRACTED]
-  src/components/game/DealingAnimation.tsx → src/hooks/useSoundEffects.ts
+- `createInitialGameState()` --calls--> `createDeck()`  [EXTRACTED]
+  src/lib/server/gameFactory.ts → src/utils/gameUtils.ts
+- `createInitialGameState()` --calls--> `removeCardsFromDeck()`  [EXTRACTED]
+  src/lib/server/gameFactory.ts → src/utils/gameUtils.ts
+- `PlayingCard()` --calls--> `useSoundEffects()`  [EXTRACTED]
+  src/components/ui/PlayingCard.tsx → src/hooks/useSoundEffects.ts
+- `GameSetup()` --calls--> `useGameStore`  [EXTRACTED]
+  src/components/game/GameSetup.tsx → src/store/gameStore.ts
 
-## Communities (30 total, 4 thin omitted)
+## Communities (54 total, 12 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.05
-Nodes (51): GameActionRequest, BiddingPanel(), BiddingPanelProps, DealingAnimation(), DealingAnimationProps, GameBoard(), GameFinishedModalProps, GamePlayArea() (+43 more)
+Cohesion: 0.11
+Nodes (24): GameSetup(), buildPlayers(), createInitialGameState(), CreateRoomOptions, BiddingConfig, CreateGameRequest, Difficulty, DIFFICULTY_CONFIGS (+16 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.06
-Nodes (30): author, description, devDependencies, eslint, eslint-config-next, jest, jest-environment-jsdom, @playwright/test (+22 more)
+Cohesion: 0.04
+Nodes (46): author, dependencies, bootstrap, class-variance-authority, clsx, framer-motion, lucide-react, next (+38 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.19
 Nodes (19): databaseFile, dataDir, dbQueue, ensureDataDir(), fileExists(), getCount(), getDatabase(), initSqlJs (+11 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.1
-Nodes (42): actionEventTypes, GameActionType, ActionResult, applyPassBid(), applyPlaceBid(), applyPlayCard(), applySelectPartners(), applySelectPowerhouse() (+34 more)
+Cohesion: 0.13
+Nodes (33): actionEventTypes, GameActionType, ActionResult, applyPassBid(), applyPlaceBid(), applyPlayCard(), applySelectPartners(), applySelectPowerhouse() (+25 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.15
-Nodes (23): GameEvent, appendGameEvent(), dataDir, ensureEventLogFile(), ensureFile(), ensureWebhookDeliveryFile(), eventLogFile, getWebhookDelivery() (+15 more)
+Nodes (24): GameEvent, appendGameEvent(), dataDir, ensureEventLogFile(), ensureFile(), ensureWebhookDeliveryFile(), eventLogFile, getWebhookDelivery() (+16 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.11
@@ -87,7 +111,7 @@ Nodes (20): activeBidPage(), activePassPage(), bidWinnerTeamScore, createFourPla
 
 ### Community 6 - "Community 6"
 Cohesion: 0.09
-Nodes (19): BiddingPanelProps, BreakpointProps, CardAnimation, CardProps, ChatMessage, ChatProps, GameControlsProps, GameCreationSettings (+11 more)
+Nodes (18): BiddingPanelProps, BreakpointProps, CardAnimation, CardProps, ChatMessage, ChatProps, GameControlsProps, GameCreationSettings (+10 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.1
@@ -98,8 +122,8 @@ Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, baseUrl, esModuleInterop, incremental, isolatedModules, jsx, lib (+10 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.12
-Nodes (16): dependencies, bootstrap, class-variance-authority, clsx, framer-motion, lucide-react, next, react (+8 more)
+Cohesion: 0.18
+Nodes (11): BiddingPanel(), BiddingPanelProps, DealingAnimation(), DealingAnimationProps, PlayerHandProps, SoundEffects, useSoundEffects(), Card (+3 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.15
@@ -110,36 +134,100 @@ Cohesion: 0.25
 Nodes (7): Goal, In progress now, Kadi Tiri Plan, Phase 1: Server authority, Phase 2: Live sync, Phase 3: Webhooks, Phase 4: Persistence hardening
 
 ### Community 12 - "Community 12"
-Cohesion: 0.29
-Nodes (6): code:block1 (Test timeout of 300000ms exceeded.), code:yaml (- generic [active] [ref=e1]:), Error details, Instructions, Page snapshot, Test info
+Cohesion: 0.22
+Nodes (8): code:block1 (Error: expect(locator).toHaveCount(expected) failed), code:yaml (- generic [active] [ref=e1]:), code:ts (1   | import { Browser, BrowserContext, expect, Page, test }), Error details, Instructions, Page snapshot, Test info, Test source
 
 ### Community 13 - "Community 13"
 Cohesion: 0.1
-Nodes (31): handler(), handler(), handler(), handler(), config, handler(), StreamingResponse, handler() (+23 more)
+Nodes (30): handler(), handler(), handler(), handler(), config, handler(), StreamingResponse, handler() (+22 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.5
 Nodes (3): createJestConfig, customJestConfig, nextJest
 
+### Community 29 - "Community 29"
+Cohesion: 0.22
+Nodes (4): GameFinishedModalProps, TopGameControlsProps, GameState, ModalProps
+
+### Community 30 - "Community 30"
+Cohesion: 0.12
+Nodes (16): Business Purpose, Critical Dependencies, Current Architecture Themes, Deployment Model, Environments, Important APIs, Important Databases, Important Queues / Events (+8 more)
+
+### Community 31 - "Community 31"
+Cohesion: 0.12
+Nodes (15): Critical Workflows, Dangerous Code Paths, Databases Used, Dependencies, Failure Modes, Game Api, Important Source Files, Inbound APIs (+7 more)
+
+### Community 32 - "Community 32"
+Cohesion: 0.12
+Nodes (15): Critical Workflows, Dangerous Code Paths, Databases Used, Dependencies, Failure Modes, Game Client Store, Important Source Files, Inbound APIs (+7 more)
+
+### Community 33 - "Community 33"
+Cohesion: 0.13
+Nodes (14): Auth Flow, Caching Layers, Deployment Topology, End-to-End Request Flows, Event-Driven Architecture, Failover Behavior, Frontend / Backend Interaction, kadi-tiri-game Architecture (+6 more)
+
+### Community 34 - "Community 34"
+Cohesion: 0.17
+Nodes (10): GameActionRequest, broadcastGameUpdate(), executeAction(), GameStore, getGameUpdatesChannel(), getPlayerSessionKey(), loadPlayerSession(), savePlayerSession() (+2 more)
+
+### Community 35 - "Community 35"
+Cohesion: 0.18
+Nodes (10): Debugging, Deployment, Feature Rollout, Incident Response, kadi-tiri-game Workflows, Local Development, Migrations, Observability Investigation (+2 more)
+
+### Community 36 - "Community 36"
+Cohesion: 0.25
+Nodes (8): GameBoard(), PartnerSelectionPanel(), PartnerSelectionPanelProps, GamePage(), GamePage(), useGameStore, POWERHOUSE_SUITS, Suit
+
+### Community 37 - "Community 37"
+Cohesion: 0.2
+Nodes (9): API Conventions, Architecture Patterns, Database / Migration Patterns, Error Handling / Logging, kadi-tiri-game Coding Rules, Naming / Structure, State Management, Testing Conventions (+1 more)
+
+### Community 38 - "Community 38"
+Cohesion: 0.22
+Nodes (8): code:block1 (Error: Timeout 15000ms exceeded while waiting on the predica), code:yaml (- generic [active] [ref=e1]:), code:ts (21  |         }), Error details, Instructions, Page snapshot, Test info, Test source
+
+### Community 39 - "Community 39"
+Cohesion: 0.22
+Nodes (8): code:block1 (Error: expect(received).not.toBe(expected) // Object.is equa), code:yaml (- generic [active] [ref=e1]:), code:ts (1   | import { Browser, BrowserContext, expect, Page, test }), Error details, Instructions, Page snapshot, Test info, Test source
+
+### Community 40 - "Community 40"
+Cohesion: 0.25
+Nodes (5): GamePlayArea(), GamePlayAreaProps, GameUIContainersProps, Player, canPlayCard()
+
+### Community 41 - "Community 41"
+Cohesion: 0.29
+Nodes (6): Critical Entrypoints, First Read, How To Start Reasoning, kadi-tiri-game Onboarding, Local Run Baseline, Module Map
+
+### Community 42 - "Community 42"
+Cohesion: 0.29
+Nodes (6): code:block1 (Test timeout of 180000ms exceeded.), code:yaml (- generic [active] [ref=e1]:), Error details, Instructions, Page snapshot, Test info
+
+### Community 43 - "Community 43"
+Cohesion: 0.4
+Nodes (4): Graphify-first repo discovery, kadi-tiri-game Decision Log, Preserve repo separation, Server-authoritative multiplayer direction
+
+### Community 44 - "Community 44"
+Cohesion: 0.5
+Nodes (3): Critical Entrypoints, Read First, Top-Level Modules
+
 ## Knowledge Gaps
-- **183 isolated node(s):** `nextJest`, `createJestConfig`, `customJestConfig`, `name`, `version` (+178 more)
+- **291 isolated node(s):** `nextJest`, `createJestConfig`, `customJestConfig`, `name`, `version` (+286 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `GameState` connect `Community 0` to `Community 3`, `Community 13`, `Community 6`, `Community 7`?**
-  _High betweenness centrality (0.076) - this node is a cross-community bridge._
-- **Why does `Card` connect `Community 0` to `Community 3`, `Community 6`, `Community 7`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `Player` connect `Community 3` to `Community 0`, `Community 13`, `Community 6`, `Community 7`?**
+- **Why does `GameState` connect `Community 29` to `Community 0`, `Community 34`, `Community 3`, `Community 36`, `Community 6`, `Community 7`, `Community 40`, `Community 9`, `Community 13`?**
+  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+- **Why does `Card` connect `Community 9` to `Community 0`, `Community 34`, `Community 3`, `Community 36`, `Community 6`, `Community 7`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **Why does `Player` connect `Community 40` to `Community 0`, `Community 34`, `Community 3`, `Community 6`, `Community 7`, `Community 13`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `nextJest`, `createJestConfig`, `customJestConfig` to the rest of the system?**
-  _183 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _291 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.05 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.06 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.1 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13 - nodes in this community are weakly interconnected._
